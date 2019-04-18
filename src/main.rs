@@ -397,7 +397,7 @@ impl Timer {
             match sleep(time::Duration::new(0, difference)){
                 Some(reamin) => {
                     let after = unsafe {self.read()} ;
-                    let nanoseconds_passed: u64 = 1000* (after-before) as u64;
+                    let nanoseconds_passed: u32 = 1000* (after-before) as u32;
                     nanos -= nanoseconds_passed;
                 }
                 None => {
