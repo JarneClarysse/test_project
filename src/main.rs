@@ -394,7 +394,7 @@ impl Timer {
         if nanos > kJitterAllowanceNanos + 5000 {
             let before = unsafe {self.read() };
             let difference = nanos - kJitterAllowanceNanos;
-            match sleep(time::Duration::new(0, difference)){
+            match sleep(std::time::Duration::new(0, difference)){
                 Some(reamin) => {
                     let after = unsafe {self.read()} ;
                     let nanoseconds_passed: u32 = 1000* (after-before) as u32;
