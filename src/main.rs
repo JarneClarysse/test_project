@@ -394,27 +394,22 @@ impl Timer {
         if nanos > kJitterAllowanceNanos + 5000 {
             let before = unsafe {self.read() };
             let difference = nanos - kJitterAllowanceNanos;
-            let mut sleep_time: libc::Timespec = libc::Timespec {
-                sec: 0,
-                nsec: difference
-            };
-            libc::nanosleep(sleep_time, None);
-            let after = unsafe {self.read()} ;
-            let nanoseconds_passed: u64 = 1000* (after-before) as u64;
-            if (nanoseconds_passed > nanos) {
-                return;
-            } else {
-                nanos -= nanoseconds_passed;
+            match sleep(time::Duration::new(0, difference)){
+                Some(reamin) => {
+                    let after = unsafe {self.read()} ;
+                    let nanoseconds_passed: u64 = 1000* (after-before) as u64;
+                    nanos -= nanoseconds_passed;
+                }
+                None => {
+                    return
+                }
             }
-
-            if (nanos <20) {return }
-            let start = (nanos - 20) * 100/110;
-            for i in start..1{
-                asm!("")
-            }
-
         }
-
+        if (nanos <20) {return }
+        let mut nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
+        for x in nanoseconds_left..0 {
+            unsafe{self.read()};
+        }
     }
 }
 
