@@ -110,6 +110,9 @@ const VALID_BITS: u64 = GPIO_BIT!(PIN_OE) | GPIO_BIT!(PIN_CLK) | GPIO_BIT!(PIN_L
 // mmap_bcm_register - convenience function used to map the GPIO register block
 // ============================================================================
 
+static mut row_mask: u32 = 0;
+
+
 fn mmap_bcm_register(register_offset: usize) -> Option<MemoryMap> {
 
     let mem_file = 
@@ -191,8 +194,22 @@ impl GPIO {
 
     fn init_outputs(self: &mut GPIO, mut outputs: u32) -> u32 {
 
+        // alle gebruikte bits controleren of valid indien ze valid zijn zal in de output hun waarde op 1 staan
+        outputs &= VALID_BITS;
 
+        // indien er output en input bits gekend zijn dan gaan we deze uit de geldige output bits filteren dus enkel al de ongebruikte bits gaan dan
+        // is dit de eerste keer dat init_outputs opgeroepen wordt dan zal ouputbits en inputbits op 0 staan
+        outputs &= !(self.output_bits_ | self.input_bits_ );
 
+        // alle 28 bits overlopen en controleren of deze op 1 staan indien zo dan worden ze geconfigureerd als output bits
+        for b in 0..28 {
+            if outputs & (1<<b) !=0 {
+                self.configure_output_pin(b as u64);
+            }
+        }
+
+        self.output_bits_ |= outputs;
+        outputs
         // TODO: Implement this yourself. Note: this function expects 
         // a bitmask as the @outputs argument
     }
@@ -200,11 +217,28 @@ impl GPIO {
     fn set_bits(self: &mut GPIO, value: u32) {
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
+
+        if !value {
+            return
+        }
+
+        self.gpio_set_bits_ = *value;
+        for i in 0..self.slowdown_ {
+            self.gpio_set_bits_ = *value;
+        }
     }
 
     fn clear_bits(self: &mut GPIO, value: u32) {        
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
+        if !value {
+            return
+        }
+
+        self.gpio_clr_bits_ = *value;
+        for i in 0..self.slowdown_ {
+            self.gpio_clr_bits_ = *value;
+        }
     }
 
     // Write all the bits of @value that also appear in @mask. Leave the rest untouched.
@@ -214,7 +248,12 @@ impl GPIO {
         value: u32,
         mask: u32
     ) {
+
         // TODO: Implement this yourself.
+
+        self.clear_bits(!value & mask);
+        self.set_bits(value & mask);
+
     }
 
     fn new(slowdown: u32) -> GPIO {
@@ -245,44 +284,44 @@ impl GPIO {
                     // Keep in mind that Rust raw pointer arithmetic works exactly like
                     // C pointer arithmetic. See the course slides for details
 
-                    io.gpio_set_bits_ = io.gpio_port_.offset(0x1C);
-                    io.gpio_clr_bits_ = io.gpio_port_.offset(0x28);
-                    io.gpio_read_bits_ = io.gpio_port_.offset(0x34);
+                    io.gpio_set_bits_ = io.gpio_port_.offset(7);
+                    io.gpio_clr_bits_ = io.gpio_port_.offset(10);
+                    io.gpio_read_bits_ = io.gpio_port_.offset(13);
+
+                    let mut all_used_bits : u32 = 0;
+                    all_used_bits |= GPIO_BIT!(PIN_OE) | GPIO_BIT!(PIN_CLK) | GPIO_BIT!(PIN_LAT) |
+                        GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1)  |
+                        GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
+
+                    row_mask = GPIO_BIT!(PIN_A);
+                    match rows /SUB_PANELS_ {
+                        d if d > 2 => row_mask |= GPIO_BIT!(PIN_B),
+                        d if d > 4 => row_mask |= GPIO_BIT!(PIN_C),
+                        d if d > 8 => row_mask |= GPIO_BIT!(PIN_D),
+                        d if d > 16 => row_mask |= GPIO_BIT!(PIN_E),
+                        _ => {}
+                    }
 
 
-                }
-                let mut all_used_bits : u32 = 0;
-                all_used_bits |= GPIO_BIT!(PIN_OE) | GPIO_BIT!(PIN_CLK) | GPIO_BIT!(PIN_LAT) |
-                    GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1)  |
-                    GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
+                    all_used_bits |= row_mask;
 
-                let mut row_mask = GPIO_BIT!(PIN_A);
-                if rows /SUB_PANELS_ >2 {
-                    row_mask |= GPIO_BIT!(PIN_B);
                 }
-                if rows / SUB_PANELS_ > 4 {
-                    row_mask |= GPIO_BIT!(PIN_C);
-                }
-                if rows / SUB_PANELS_ > 8 {
-                    row_mask |= GPIO_BIT!(PIN_D);
-                }
-                if rows / SUB_PANELS_ > 16{
-                    row_mask |= GPIO_BIT!(PIN_E);
-                }
-
-                all_used_bits |= row_mask;
-
-                io.init_outputs(all_used_bits);
                 // TODO: Implement this yourself.
+
+
+
+                result :u32 = io.init_outputs(all_used_bits);
+                assert(result == all_used_bits);
+                let timing_ns: u32 = 200;
+                for  b in 0..COLOR_DEPTH {
+                    io.bitplane_timings[b] = timing_ns;
+                    timing_ns *= 2;
+                }
             },
             None => {}
         }
 
-        let timing_ns: u32 = 200;
-        for  b in 0..COLOR_DEPTH {
-            io.bitplane_timings[b] = timing_ns;
-            timing_ns *= 2;
-        }
+
         io.gpio_map_ = map;
         io
     }
@@ -290,6 +329,30 @@ impl GPIO {
     // Calculates the pins we must activate to push the address of the specified double_row
     fn get_row_bits(self: &GPIO, double_row: u8) -> u32 {
         // TODO: Implement this yourself.
+        let mut row_address: u8;
+        match (double_row & 0x01)!=0 {
+            True=> row_address = GPIO_BIT!(PIN_A),
+            False=> row_address = 0,
+        };
+        match (double_row & 0x02)!=0 {
+            True=> row_address |= GPIO_BIT!(PIN_B),
+            False=> row_address = 0,
+        };
+        match (double_row & 0x04)!=0 {
+            True=> row_address |= GPIO_BIT!(PIN_C),
+            False=> row_address = 0,
+        };
+        match (double_row & 0x08)!=0 {
+            True=> row_address |= GPIO_BIT!(PIN_D),
+            False=> row_address = 0,
+        };
+        match (double_row & 0x10)!=0 {
+            True=> row_address |= GPIO_BIT!(PIN_E),
+            False=> row_address = 0,
+        };
+        unsafe {
+            return row_address as u32 & row_mask;
+        }
     }
 }
 
@@ -297,10 +360,37 @@ impl Timer {
     // Reads from the 1Mhz timer register (see Section 2.5 in the assignment)
     unsafe fn read(self: &Timer) -> u32 {
         // TODO: Implement this yourself.
+        match self.timereg {
+            Some(reg) => { return unsafe { std::ptr::read_volatile(reg) } },
+            None()=> { return 0}
+        }
+
     }
 
     fn new() -> Timer {
         // TODO: Implement this yourself.
+
+        let map = mmap_bcm_register(TIMER_REGISTER_OFFSET as usize);
+
+        let mut timer: Timer = Timer {
+            _timemap: None,
+            timereg: 0 as *mut u32
+        };
+
+        match &map {
+            Some(map) =>{
+                unsafe {
+                    timer.timereg = map.data() as * mut u32;
+                    timer.timereg.offset(1);
+                }
+            },
+            None => {}
+
+        };
+
+        timer
+
+
     }
 
     // High-precision sleep function (see section 2.5 in the assignment)
@@ -310,6 +400,20 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
+        let mut kJitterAllowanceNanos: u64 = 60*1000;
+        if nanos > kJitterAllowanceNanos + 5000 {
+            let before = unsafe {self.read() };
+            let difference = nanos - kJitterAllowanceNanos;
+            let mut sleep_time: timespec = timespec {
+                0,
+                difference
+            };
+            libc::nanosleep(sleep_time, std::ptr::null());
+            let after = unsafe {self.read()} ;
+
+
+        }
+
     }
 }
 
