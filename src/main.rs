@@ -305,7 +305,7 @@ impl GPIO {
                 // TODO: Implement this yourself.
 
 
-                let timing_ns: u32 = 200;
+                let mut timing_ns: u32 = 200;
                 for  b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
                     timing_ns *= 2;
