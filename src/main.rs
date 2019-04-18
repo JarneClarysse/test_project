@@ -27,6 +27,7 @@ use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
 use std::mem::size_of;
 
+
 #[derive(Copy, Clone)]
 struct Pixel {
     r: u16,
@@ -195,7 +196,7 @@ impl GPIO {
     fn init_outputs(self: &mut GPIO, mut outputs: u32) -> u32 {
 
         // alle gebruikte bits controleren of valid indien ze valid zijn zal in de output hun waarde op 1 staan
-        outputs &= VALID_BITS;
+        outputs &= VALID_BITS as u32;
 
         // indien er output en input bits gekend zijn dan gaan we deze uit de geldige output bits filteren dus enkel al de ongebruikte bits gaan dan
         // is dit de eerste keer dat init_outputs opgeroepen wordt dan zal ouputbits en inputbits op 0 staan
@@ -218,26 +219,18 @@ impl GPIO {
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
 
-        if !value {
-            return
-        }
-
-        self.gpio_set_bits_ = *value;
+        self.gpio_set_bits_ = value as *mut u32;
         for i in 0..self.slowdown_ {
-            self.gpio_set_bits_ = *value;
+            self.gpio_set_bits_ = value as *mut u32;
         }
     }
 
     fn clear_bits(self: &mut GPIO, value: u32) {        
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
-        if !value {
-            return
-        }
-
-        self.gpio_clr_bits_ = *value;
+        self.gpio_clr_bits_ = value as *mut u32;
         for i in 0..self.slowdown_ {
-            self.gpio_clr_bits_ = *value;
+            self.gpio_clr_bits_ = value as *mut u32;
         }
     }
 
@@ -294,7 +287,7 @@ impl GPIO {
                         GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
 
                     row_mask = GPIO_BIT!(PIN_A);
-                    match rows /SUB_PANELS_ {
+                    match ROWS /SUB_PANELS_ {
                         d if d > 2 => row_mask |= GPIO_BIT!(PIN_B),
                         d if d > 4 => row_mask |= GPIO_BIT!(PIN_C),
                         d if d > 8 => row_mask |= GPIO_BIT!(PIN_D),
@@ -305,13 +298,13 @@ impl GPIO {
 
                     all_used_bits |= row_mask;
 
+                    let result = io.init_outputs(all_used_bits);
+                    assert!(result == all_used_bits);
+
                 }
                 // TODO: Implement this yourself.
 
 
-
-                result :u32 = io.init_outputs(all_used_bits);
-                assert(result == all_used_bits);
                 let timing_ns: u32 = 200;
                 for  b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
@@ -360,10 +353,7 @@ impl Timer {
     // Reads from the 1Mhz timer register (see Section 2.5 in the assignment)
     unsafe fn read(self: &Timer) -> u32 {
         // TODO: Implement this yourself.
-        match self.timereg {
-            Some(reg) => { return unsafe { std::ptr::read_volatile(reg) } },
-            None()=> { return 0}
-        }
+        unsafe { std::ptr::read_volatile(self.timereg) }
 
     }
 
@@ -400,17 +390,28 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let mut kJitterAllowanceNanos: u64 = 60*1000;
+        let mut kJitterAllowanceNanos: u32 = 60*1000;
         if nanos > kJitterAllowanceNanos + 5000 {
             let before = unsafe {self.read() };
             let difference = nanos - kJitterAllowanceNanos;
-            let mut sleep_time: timespec = timespec {
-                0,
-                difference
+            let mut sleep_time: libc::Timespec = libc::Timespec {
+                sec: 0,
+                nsec: difference
             };
-            libc::nanosleep(sleep_time, std::ptr::null());
+            libc::nanosleep(sleep_time, None);
             let after = unsafe {self.read()} ;
+            let nanoseconds_passed: u64 = 1000* (after-before) as u64;
+            if (nanoseconds_passed > nanos) {
+                return;
+            } else {
+                nanos -= nanoseconds_passed;
+            }
 
+            if (nanos <20) {return }
+            let start = (nanos - 20) * 100/110;
+            for i in start..1{
+                asm!("")
+            }
 
         }
 
