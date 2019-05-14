@@ -26,7 +26,7 @@ use std::time::Duration;
 use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
 use std::mem::size_of;
-use std::io::Cursor;
+use std::io::{Read, Cursor};
 
 
 #[derive(Copy, Clone)]
