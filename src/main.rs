@@ -494,13 +494,11 @@ impl Image {
         cursor.read(&mut header);
 
 
-
         match &header {
             b"P6" => {println!("Header match"); },
             _ => {bail!("header mismatch"); }
         }
 
-        println!("test");
 
         let mut c:[u8; 1] = [0];
         loop{
@@ -581,8 +579,6 @@ impl Image {
 
         let mut allePix: Vec<Vec<Pixel>> = vec![];
 
-
-
         loop{
             cursor.read(&mut c)?;
             match &c {
@@ -601,16 +597,13 @@ impl Image {
             allePix.insert(0, hoogte_pix)
         }
 
-
         image.width=w;
         image.height=h;
         image.pixels=allePix;
 
-
-
-
-
+        println!("Klaar");
         Ok(image)
+
     }
 
 
@@ -633,7 +626,7 @@ pub fn main() {
     // TODO: Read the PPM file here. You can find its name in args[1]
     let path = Path::new(&args[1]);
     let display = path.display();
-    
+
     let mut file = match File::open(&path)    {
         Err(why) => panic!("Could not open file: {} (Reason: {})",
                            display, why.description()),
