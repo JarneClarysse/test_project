@@ -11,3 +11,4 @@ simple-error="0.1.13"
 shuteye="0.3.3"
 mmap="0.1.1"
 nix="0.13.0"
+sdl2 = { version = "0.31.0", features = ["bundled", "static-link"] }
