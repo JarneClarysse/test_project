@@ -586,7 +586,7 @@ impl Image {
                 _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
             };
         };
-
+        println!("Klaar3");
         for x in 0..h {
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
@@ -596,12 +596,12 @@ impl Image {
             }
             allePix.insert(0, hoogte_pix)
         }
-
+        println!("Klaar2");
         image.width=w;
         image.height=h;
         image.pixels=allePix;
 
-        println!("Klaar");
+        println!("Klaar1");
         Ok(image)
 
     }
