@@ -632,7 +632,8 @@ pub fn main() {
     
     // TODO: Read the PPM file here. You can find its name in args[1]
     let path = Path::new(&args[1]);
-
+    let display = path.display();
+    
     let mut file = match File::open(&path)    {
         Err(why) => panic!("Could not open file: {} (Reason: {})",
                            display, why.description()),
