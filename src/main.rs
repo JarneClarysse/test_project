@@ -26,6 +26,7 @@ use std::time::Duration;
 use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
 use std::mem::size_of;
+use std::io::Cursor;
 
 
 #[derive(Copy, Clone)]
@@ -427,6 +428,194 @@ impl Frame {
 // You may assume that the max_color value is always 255, but you should add sanity checks
 // to safely reject files with other max_color values
 impl Image {
+
+    fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
+
+        let mut r = cursor.read_u8()?;
+        let mut g = cursor.read_u8()?;
+        let mut b = cursor.read_u8()?;
+
+        let mut pixel = Pixel {
+            R: r as u32,
+            G: g as u32,
+            B: b as u32
+        };
+
+
+        Ok(pixel)
+
+    }
+
+    fn read_num(cursor: &mut Cursor<Vec<u8>>) -> Result<u32, Box<std::error::Error>> {
+        let mut v: Vec<u8> = vec![];
+        let mut c:[u8; 1] = [0];
+
+
+
+
+        //consume whitespace
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b" " | b"\t" | b"\n" => {},
+                _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+
+        //read number
+        loop{
+            cursor.read(&mut c)?;
+            match c[0] {
+                b'0' ... b'9' => { v.push(c[0]);},
+                b' '| b'\t' | b'\n' => { cursor.seek(std::io::SeekFrom::Current(-1)); break;}
+                _ => {bail!("Parse error");}
+            };
+        };
+
+
+
+        let num_str = std::str::from_utf8(&v)?;
+        let num = num_str.parse::<u32>()?;
+
+
+
+        Ok(num)
+
+    }
+
+    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>) -> Result<Image, Box<std::error::Error>> {
+        let mut image = Image {
+            width: 0,
+            height: 0,
+            pixels: vec![]
+        };
+        //let mut buf2 = vec![];
+
+        let mut header: [u8;2] = [0,2];
+        cursor.read(&mut header);
+
+
+
+        match &header {
+            b"P6" => {println!("Header match"); },
+            _ => {bail!("header mismatch"); }
+        }
+
+        println!("test");
+
+        let mut c:[u8; 1] = [0];
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b"#" => {loop{
+                    cursor.read(&mut c)?;
+                    match &c {
+                        b"\n" => {break;},
+                        _ => {}
+                    };
+                };},
+                b" " | b"\t" | b"\n" => {},
+                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+        let w = read_num(cursor)?;
+
+
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b"#" => {loop{
+                    cursor.read(&mut c)?;
+                    match &c {
+                        b"\n" => {break;},
+                        _ => {}
+                    };
+                };},
+                b" " | b"\t" | b"\n" => {},
+                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+
+        let h = read_num(cursor)?;
+
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b"#" => {loop{
+                    cursor.read(&mut c)?;
+                    match &c {
+                        b"\n" => {break;},
+                        _ => {}
+                    };
+                };},
+                b" " | b"\t" | b"\n" => {},
+                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+        let max = read_num(cursor)?;
+
+        if max != 255{
+            panic!("Max Value too damn high!");
+        }
+
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b"#" => {loop{
+                    cursor.read(&mut c)?;
+                    match &c {
+                        b"\n" => {break;},
+                        _ => {}
+                    };
+                };},
+                b" " | b"\t" | b"\n" => {},
+                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+        println!("{}", h);
+        println!("{}", w);
+        println!("{}",max);
+
+        let mut allePix: Vec<Vec<Pixel>> = vec![];
+
+
+
+        loop{
+            cursor.read(&mut c)?;
+            match &c {
+                b" " | b"\t" | b"\n" => {},
+                _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+            };
+        };
+
+        for x in 0..h {
+            let mut hoogte_pix: Vec<Pixel> = vec![];
+
+            for x in 0..w {
+                let pixel = read_pixel(cursor)?;
+                hoogte_pix.push(pixel);
+            }
+            allePix.insert(0, hoogte_pix)
+        }
+
+        // TODO: Parse the image here
+        image.width=w;
+        image.height=h;
+        image.pixels=allePix;
+
+
+
+
+
+        Ok(image)
+    }
+
+
 
 }
 
