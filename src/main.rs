@@ -27,6 +27,7 @@ use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
 use std::mem::size_of;
 use std::io::{Read, Cursor};
+use byteorder::{LittleEndian, ReadBytesExt};
 
 
 #[derive(Copy, Clone)]
