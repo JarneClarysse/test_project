@@ -444,7 +444,7 @@ impl Image {
 
     }
 
-    fn read_num(cursor: &mut Cursor<Vec<u8>>) -> Result<u32, Box<std::error::Error>> {
+    fn read_num(cursor: &mut Cursor<Vec<u8>>) -> Result<usize, Box<std::error::Error>> {
         let mut v: Vec<u8> = vec![];
         let mut c:[u8; 1] = [0];
 
@@ -474,7 +474,7 @@ impl Image {
 
 
         let num_str = std::str::from_utf8(&v)?;
-        let num = num_str.parse::<u32>()?;
+        let num = num_str.parse::<usize>()?;
 
 
 
@@ -518,7 +518,7 @@ impl Image {
             };
         };
 
-        let w = read_num(cursor)?;
+        let w = Image::read_num(cursor)?;
 
 
         loop{
@@ -537,7 +537,7 @@ impl Image {
         };
 
 
-        let h = read_num(cursor)?;
+        let h = Image::read_num(cursor)?;
 
         loop{
             cursor.read(&mut c)?;
@@ -554,7 +554,7 @@ impl Image {
             };
         };
 
-        let max = read_num(cursor)?;
+        let max = Image::read_num(cursor)?;
 
         if max != 255{
             panic!("Max Value too damn high!");
