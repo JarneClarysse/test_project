@@ -1,0 +1,1 @@
+{"rustc":3532882908832478373,"features":"[\"bundled\", \"cmake\", \"default\", \"flate2\", \"reqwest\", \"static-link\", \"tar\"]","target":9693885020609444710,"profile":7833362280014754708,"path":13181879445947486930,"deps":[],"local":[{"Precalculated":"0.31.0"}],"rustflags":[],"edition":"Edition2015"}

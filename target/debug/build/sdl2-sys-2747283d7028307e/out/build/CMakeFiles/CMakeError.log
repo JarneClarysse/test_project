@@ -1,0 +1,1045 @@
+Performing C SOURCE FILE Test HAVE_GCC_PREFERRED_STACK_BOUNDARY failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_96a68/fast"
+/usr/bin/make -f CMakeFiles/cmTC_96a68.dir/build.make CMakeFiles/cmTC_96a68.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_96a68.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_PREFERRED_STACK_BOUNDARY -mpreferred-stack-boundary=2   -o CMakeFiles/cmTC_96a68.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-mpreferred-stack-boundary=2’; did you mean ‘-mstructure-size-boundary=’?
+CMakeFiles/cmTC_96a68.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_96a68.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_96a68.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_96a68/fast' failed
+make: *** [cmTC_96a68/fast] Error 2
+
+Source file was:
+int x = 0; int main(int argc, char **argv) {}
+Performing C SOURCE FILE Test HAVE_MMX failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7cf07/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7cf07.dir/build.make CMakeFiles/cmTC_7cf07.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7cf07.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_MMX -mmmx   -o CMakeFiles/cmTC_7cf07.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-mmmx’
+CMakeFiles/cmTC_7cf07.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_7cf07.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_7cf07.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7cf07/fast' failed
+make: *** [cmTC_7cf07/fast] Error 2
+
+Source file was:
+
+          #ifdef __MINGW32__
+          #include <_mingw.h>
+          #ifdef __MINGW64_VERSION_MAJOR
+          #include <intrin.h>
+          #else
+          #include <mmintrin.h>
+          #endif
+          #else
+          #include <mmintrin.h>
+          #endif
+          #ifndef __MMX__
+          #error Assembler CPP flag not enabled
+          #endif
+          int main(int argc, char **argv) { }
+Performing C SOURCE FILE Test HAVE_3DNOW failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d6c48/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d6c48.dir/build.make CMakeFiles/cmTC_d6c48.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d6c48.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_3DNOW -m3dnow   -o CMakeFiles/cmTC_d6c48.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-m3dnow’
+CMakeFiles/cmTC_d6c48.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_d6c48.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_d6c48.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d6c48/fast' failed
+make: *** [cmTC_d6c48/fast] Error 2
+
+Source file was:
+
+          #include <mm3dnow.h>
+          #ifndef __3dNOW__
+          #error Assembler CPP flag not enabled
+          #endif
+          int main(int argc, char **argv) {
+            void *p = 0;
+            _m_prefetch(p);
+          }
+Performing C SOURCE FILE Test HAVE_SSE failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bc979/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bc979.dir/build.make CMakeFiles/cmTC_bc979.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bc979.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_SSE -msse   -o CMakeFiles/cmTC_bc979.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-msse’; did you mean ‘-fdse’?
+CMakeFiles/cmTC_bc979.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_bc979.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_bc979.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_bc979/fast' failed
+make: *** [cmTC_bc979/fast] Error 2
+
+Source file was:
+
+          #ifdef __MINGW32__
+          #include <_mingw.h>
+          #ifdef __MINGW64_VERSION_MAJOR
+          #include <intrin.h>
+          #else
+          #include <xmmintrin.h>
+          #endif
+          #else
+          #include <xmmintrin.h>
+          #endif
+          #ifndef __SSE__
+          #error Assembler CPP flag not enabled
+          #endif
+          int main(int argc, char **argv) { }
+Performing C SOURCE FILE Test HAVE_ALTIVEC_H_HDR failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_10f1c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_10f1c.dir/build.make CMakeFiles/cmTC_10f1c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_10f1c.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_ALTIVEC_H_HDR -maltivec   -o CMakeFiles/cmTC_10f1c.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-maltivec’; did you mean ‘-mglibc’?
+CMakeFiles/cmTC_10f1c.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_10f1c.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_10f1c.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_10f1c/fast' failed
+make: *** [cmTC_10f1c/fast] Error 2
+
+Source file was:
+
+          #include <altivec.h>
+          vector unsigned int vzero() {
+              return vec_splat_u32(0);
+          }
+          int main(int argc, char **argv) { }
+Performing C SOURCE FILE Test HAVE_ALTIVEC failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_42e20/fast"
+/usr/bin/make -f CMakeFiles/cmTC_42e20.dir/build.make CMakeFiles/cmTC_42e20.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_42e20.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_ALTIVEC -maltivec   -o CMakeFiles/cmTC_42e20.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option ‘-maltivec’; did you mean ‘-mglibc’?
+CMakeFiles/cmTC_42e20.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_42e20.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_42e20.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_42e20/fast' failed
+make: *** [cmTC_42e20/fast] Error 2
+
+Source file was:
+
+          vector unsigned int vzero() {
+              return vec_splat_u32(0);
+          }
+          int main(int argc, char **argv) { }
+Determining if the function strlcpy exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_09e6e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_09e6e.dir/build.make CMakeFiles/cmTC_09e6e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_09e6e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlcpy   -o CMakeFiles/cmTC_09e6e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_09e6e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09e6e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlcpy    CMakeFiles/cmTC_09e6e.dir/CheckFunctionExists.c.o  -o cmTC_09e6e -rdynamic 
+CMakeFiles/cmTC_09e6e.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `strlcpy'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_09e6e.dir/build.make:97: recipe for target 'cmTC_09e6e' failed
+make[1]: *** [cmTC_09e6e] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_09e6e/fast' failed
+make: *** [cmTC_09e6e/fast] Error 2
+
+
+Determining if the function strlcat exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_59571/fast"
+/usr/bin/make -f CMakeFiles/cmTC_59571.dir/build.make CMakeFiles/cmTC_59571.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_59571.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlcat   -o CMakeFiles/cmTC_59571.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_59571
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59571.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlcat    CMakeFiles/cmTC_59571.dir/CheckFunctionExists.c.o  -o cmTC_59571 -rdynamic 
+CMakeFiles/cmTC_59571.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_59571.dir/build.make:97: recipe for target 'cmTC_59571' failed
+make[1]: *** [cmTC_59571] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_59571/fast' failed
+make: *** [cmTC_59571/fast] Error 2
+
+
+Determining if the function _strrev exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7d88c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7d88c.dir/build.make CMakeFiles/cmTC_7d88c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7d88c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strrev   -o CMakeFiles/cmTC_7d88c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7d88c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7d88c.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strrev    CMakeFiles/cmTC_7d88c.dir/CheckFunctionExists.c.o  -o cmTC_7d88c -rdynamic 
+CMakeFiles/cmTC_7d88c.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_strrev'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7d88c.dir/build.make:97: recipe for target 'cmTC_7d88c' failed
+make[1]: *** [cmTC_7d88c] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7d88c/fast' failed
+make: *** [cmTC_7d88c/fast] Error 2
+
+
+Determining if the function _strupr exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_485f7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_485f7.dir/build.make CMakeFiles/cmTC_485f7.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_485f7.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strupr   -o CMakeFiles/cmTC_485f7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_485f7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_485f7.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strupr    CMakeFiles/cmTC_485f7.dir/CheckFunctionExists.c.o  -o cmTC_485f7 -rdynamic 
+CMakeFiles/cmTC_485f7.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_strupr'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_485f7.dir/build.make:97: recipe for target 'cmTC_485f7' failed
+make[1]: *** [cmTC_485f7] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_485f7/fast' failed
+make: *** [cmTC_485f7/fast] Error 2
+
+
+Determining if the function _strlwr exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee44f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee44f.dir/build.make CMakeFiles/cmTC_ee44f.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee44f.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strlwr   -o CMakeFiles/cmTC_ee44f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ee44f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee44f.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strlwr    CMakeFiles/cmTC_ee44f.dir/CheckFunctionExists.c.o  -o cmTC_ee44f -rdynamic 
+CMakeFiles/cmTC_ee44f.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_strlwr'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_ee44f.dir/build.make:97: recipe for target 'cmTC_ee44f' failed
+make[1]: *** [cmTC_ee44f] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ee44f/fast' failed
+make: *** [cmTC_ee44f/fast] Error 2
+
+
+Determining if the function itoa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_72a65/fast"
+/usr/bin/make -f CMakeFiles/cmTC_72a65.dir/build.make CMakeFiles/cmTC_72a65.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_72a65.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=itoa   -o CMakeFiles/cmTC_72a65.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_72a65
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72a65.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=itoa    CMakeFiles/cmTC_72a65.dir/CheckFunctionExists.c.o  -o cmTC_72a65 -rdynamic 
+CMakeFiles/cmTC_72a65.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `itoa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_72a65.dir/build.make:97: recipe for target 'cmTC_72a65' failed
+make[1]: *** [cmTC_72a65] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_72a65/fast' failed
+make: *** [cmTC_72a65/fast] Error 2
+
+
+Determining if the function _ltoa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e0364/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e0364.dir/build.make CMakeFiles/cmTC_e0364.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0364.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ltoa   -o CMakeFiles/cmTC_e0364.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e0364
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0364.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ltoa    CMakeFiles/cmTC_e0364.dir/CheckFunctionExists.c.o  -o cmTC_e0364 -rdynamic 
+CMakeFiles/cmTC_e0364.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_ltoa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_e0364.dir/build.make:97: recipe for target 'cmTC_e0364' failed
+make[1]: *** [cmTC_e0364] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e0364/fast' failed
+make: *** [cmTC_e0364/fast] Error 2
+
+
+Determining if the function _uitoa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_510f0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_510f0.dir/build.make CMakeFiles/cmTC_510f0.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_510f0.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_uitoa   -o CMakeFiles/cmTC_510f0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_510f0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_510f0.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_uitoa    CMakeFiles/cmTC_510f0.dir/CheckFunctionExists.c.o  -o cmTC_510f0 -rdynamic 
+CMakeFiles/cmTC_510f0.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_uitoa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_510f0.dir/build.make:97: recipe for target 'cmTC_510f0' failed
+make[1]: *** [cmTC_510f0] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_510f0/fast' failed
+make: *** [cmTC_510f0/fast] Error 2
+
+
+Determining if the function _ultoa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d0e4e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d0e4e.dir/build.make CMakeFiles/cmTC_d0e4e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d0e4e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ultoa   -o CMakeFiles/cmTC_d0e4e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d0e4e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d0e4e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ultoa    CMakeFiles/cmTC_d0e4e.dir/CheckFunctionExists.c.o  -o cmTC_d0e4e -rdynamic 
+CMakeFiles/cmTC_d0e4e.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_ultoa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_d0e4e.dir/build.make:97: recipe for target 'cmTC_d0e4e' failed
+make[1]: *** [cmTC_d0e4e] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d0e4e/fast' failed
+make: *** [cmTC_d0e4e/fast] Error 2
+
+
+Determining if the function _i64toa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9c85b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9c85b.dir/build.make CMakeFiles/cmTC_9c85b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9c85b.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_i64toa   -o CMakeFiles/cmTC_9c85b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9c85b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c85b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_i64toa    CMakeFiles/cmTC_9c85b.dir/CheckFunctionExists.c.o  -o cmTC_9c85b -rdynamic 
+CMakeFiles/cmTC_9c85b.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_i64toa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_9c85b.dir/build.make:97: recipe for target 'cmTC_9c85b' failed
+make[1]: *** [cmTC_9c85b] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9c85b/fast' failed
+make: *** [cmTC_9c85b/fast] Error 2
+
+
+Determining if the function _ui64toa exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d5d91/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d5d91.dir/build.make CMakeFiles/cmTC_d5d91.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d5d91.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ui64toa   -o CMakeFiles/cmTC_d5d91.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d5d91
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5d91.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_ui64toa    CMakeFiles/cmTC_d5d91.dir/CheckFunctionExists.c.o  -o cmTC_d5d91 -rdynamic 
+CMakeFiles/cmTC_d5d91.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_ui64toa'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_d5d91.dir/build.make:97: recipe for target 'cmTC_d5d91' failed
+make[1]: *** [cmTC_d5d91] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d5d91/fast' failed
+make: *** [cmTC_d5d91/fast] Error 2
+
+
+Determining if the function _stricmp exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_65aa4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_65aa4.dir/build.make CMakeFiles/cmTC_65aa4.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_65aa4.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_stricmp   -o CMakeFiles/cmTC_65aa4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_65aa4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_65aa4.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_stricmp    CMakeFiles/cmTC_65aa4.dir/CheckFunctionExists.c.o  -o cmTC_65aa4 -rdynamic 
+CMakeFiles/cmTC_65aa4.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_stricmp'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_65aa4.dir/build.make:97: recipe for target 'cmTC_65aa4' failed
+make[1]: *** [cmTC_65aa4] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_65aa4/fast' failed
+make: *** [cmTC_65aa4/fast] Error 2
+
+
+Determining if the function _strnicmp exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d40dc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d40dc.dir/build.make CMakeFiles/cmTC_d40dc.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d40dc.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strnicmp   -o CMakeFiles/cmTC_d40dc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d40dc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d40dc.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=_strnicmp    CMakeFiles/cmTC_d40dc.dir/CheckFunctionExists.c.o  -o cmTC_d40dc -rdynamic 
+CMakeFiles/cmTC_d40dc.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `_strnicmp'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_d40dc.dir/build.make:97: recipe for target 'cmTC_d40dc' failed
+make[1]: *** [cmTC_d40dc] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d40dc/fast' failed
+make: *** [cmTC_d40dc/fast] Error 2
+
+
+Determining if the function sysctlbyname exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5345c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5345c.dir/build.make CMakeFiles/cmTC_5345c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5345c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sysctlbyname   -o CMakeFiles/cmTC_5345c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5345c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5345c.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sysctlbyname    CMakeFiles/cmTC_5345c.dir/CheckFunctionExists.c.o  -o cmTC_5345c -rdynamic 
+CMakeFiles/cmTC_5345c.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `sysctlbyname'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_5345c.dir/build.make:97: recipe for target 'cmTC_5345c' failed
+make[1]: *** [cmTC_5345c] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_5345c/fast' failed
+make: *** [cmTC_5345c/fast] Error 2
+
+
+Determining if the function iconv_open exists in the iconv failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3190e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3190e.dir/build.make CMakeFiles/cmTC_3190e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3190e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=iconv_open   -o CMakeFiles/cmTC_3190e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3190e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3190e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=iconv_open    CMakeFiles/cmTC_3190e.dir/CheckFunctionExists.c.o  -o cmTC_3190e -rdynamic -liconv 
+/usr/bin/ld: cannot find -liconv
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3190e.dir/build.make:97: recipe for target 'cmTC_3190e' failed
+make[1]: *** [cmTC_3190e] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3190e/fast' failed
+make: *** [cmTC_3190e/fast] Error 2
+
+
+Determining if the function alloca exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_78b76/fast"
+/usr/bin/make -f CMakeFiles/cmTC_78b76.dir/build.make CMakeFiles/cmTC_78b76.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_78b76.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=alloca   -o CMakeFiles/cmTC_78b76.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘alloca’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_78b76
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78b76.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=alloca    CMakeFiles/cmTC_78b76.dir/CheckFunctionExists.c.o  -o cmTC_78b76 -rdynamic 
+CMakeFiles/cmTC_78b76.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `alloca'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_78b76.dir/build.make:97: recipe for target 'cmTC_78b76' failed
+make[1]: *** [cmTC_78b76] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_78b76/fast' failed
+make: *** [cmTC_78b76/fast] Error 2
+
+
+Determining if the function dlopen exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9460a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9460a.dir/build.make CMakeFiles/cmTC_9460a.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9460a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=dlopen   -o CMakeFiles/cmTC_9460a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9460a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9460a.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=dlopen    CMakeFiles/cmTC_9460a.dir/CheckFunctionExists.c.o  -o cmTC_9460a -rdynamic 
+CMakeFiles/cmTC_9460a.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `dlopen'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_9460a.dir/build.make:97: recipe for target 'cmTC_9460a' failed
+make[1]: *** [cmTC_9460a] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9460a/fast' failed
+make: *** [cmTC_9460a/fast] Error 2
+
+
+Determining if the include file alsa/asoundlib.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8db18/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8db18.dir/build.make CMakeFiles/cmTC_8db18.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8db18.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_8db18.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:28: fatal error: alsa/asoundlib.h: No such file or directory
+ #include <alsa/asoundlib.h>
+                            ^
+compilation terminated.
+CMakeFiles/cmTC_8db18.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_8db18.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_8db18.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_8db18/fast' failed
+make: *** [cmTC_8db18/fast] Error 2
+
+
+Determining if the include file audio/audiolib.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f277e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f277e.dir/build.make CMakeFiles/cmTC_f277e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f277e.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_f277e.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:28: fatal error: audio/audiolib.h: No such file or directory
+ #include <audio/audiolib.h>
+                            ^
+compilation terminated.
+CMakeFiles/cmTC_f277e.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_f277e.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_f277e.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_f277e/fast' failed
+make: *** [cmTC_f277e/fast] Error 2
+
+
+Determining if the include file sndio.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b8be2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b8be2.dir/build.make CMakeFiles/cmTC_b8be2.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b8be2.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_b8be2.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:19: fatal error: sndio.h: No such file or directory
+ #include <sndio.h>
+                   ^
+compilation terminated.
+CMakeFiles/cmTC_b8be2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b8be2.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_b8be2.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b8be2/fast' failed
+make: *** [cmTC_b8be2/fast] Error 2
+
+
+Determining if the include file X11/Xcursor/Xcursor.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_07d53/fast"
+/usr/bin/make -f CMakeFiles/cmTC_07d53.dir/build.make CMakeFiles/cmTC_07d53.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_07d53.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_07d53.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:33: fatal error: X11/Xcursor/Xcursor.h: No such file or directory
+ #include <X11/Xcursor/Xcursor.h>
+                                 ^
+compilation terminated.
+CMakeFiles/cmTC_07d53.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_07d53.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_07d53.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_07d53/fast' failed
+make: *** [cmTC_07d53/fast] Error 2
+
+
+Determining if the include file X11/extensions/Xinerama.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3ca95/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ca95.dir/build.make CMakeFiles/cmTC_3ca95.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3ca95.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_3ca95.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:37: fatal error: X11/extensions/Xinerama.h: No such file or directory
+ #include <X11/extensions/Xinerama.h>
+                                     ^
+compilation terminated.
+CMakeFiles/cmTC_3ca95.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3ca95.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3ca95.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3ca95/fast' failed
+make: *** [cmTC_3ca95/fast] Error 2
+
+
+Determining if the include file X11/extensions/XInput2.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fa11f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fa11f.dir/build.make CMakeFiles/cmTC_fa11f.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fa11f.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_fa11f.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:36: fatal error: X11/extensions/XInput2.h: No such file or directory
+ #include <X11/extensions/XInput2.h>
+                                    ^
+compilation terminated.
+CMakeFiles/cmTC_fa11f.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_fa11f.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_fa11f.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_fa11f/fast' failed
+make: *** [cmTC_fa11f/fast] Error 2
+
+
+Determining if the include file X11/extensions/Xrandr.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_04788/fast"
+/usr/bin/make -f CMakeFiles/cmTC_04788.dir/build.make CMakeFiles/cmTC_04788.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_04788.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_04788.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:35: fatal error: X11/extensions/Xrandr.h: No such file or directory
+ #include <X11/extensions/Xrandr.h>
+                                   ^
+compilation terminated.
+CMakeFiles/cmTC_04788.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_04788.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_04788.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_04788/fast' failed
+make: *** [cmTC_04788/fast] Error 2
+
+
+Determining if the include file X11/extensions/Xrender.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_de167/fast"
+/usr/bin/make -f CMakeFiles/cmTC_de167.dir/build.make CMakeFiles/cmTC_de167.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_de167.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_de167.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:36: fatal error: X11/extensions/Xrender.h: No such file or directory
+ #include <X11/extensions/Xrender.h>
+                                    ^
+compilation terminated.
+CMakeFiles/cmTC_de167.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_de167.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_de167.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_de167/fast' failed
+make: *** [cmTC_de167/fast] Error 2
+
+
+Determining if the include file X11/extensions/scrnsaver.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cce02/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cce02.dir/build.make CMakeFiles/cmTC_cce02.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cce02.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_cce02.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:38: fatal error: X11/extensions/scrnsaver.h: No such file or directory
+ #include <X11/extensions/scrnsaver.h>
+                                      ^
+compilation terminated.
+CMakeFiles/cmTC_cce02.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_cce02.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_cce02.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cce02/fast' failed
+make: *** [cmTC_cce02/fast] Error 2
+
+
+Determining if the include file X11/extensions/shape.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e4e84/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e4e84.dir/build.make CMakeFiles/cmTC_e4e84.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e4e84.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_e4e84.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:34: fatal error: X11/extensions/shape.h: No such file or directory
+ #include <X11/extensions/shape.h>
+                                  ^
+compilation terminated.
+CMakeFiles/cmTC_e4e84.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_e4e84.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_e4e84.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e4e84/fast' failed
+make: *** [cmTC_e4e84/fast] Error 2
+
+
+Determining if files X11/Xlib.h;X11/extensions/xf86vmode.h exist failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fcc94/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fcc94.dir/build.make CMakeFiles/cmTC_fcc94.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fcc94.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_fcc94.dir/CheckIncludeFiles.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c:2:22: fatal error: X11/Xlib.h: No such file or directory
+ #include <X11/Xlib.h>
+                      ^
+compilation terminated.
+CMakeFiles/cmTC_fcc94.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_fcc94.dir/CheckIncludeFiles.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_fcc94.dir/CheckIncludeFiles.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_fcc94/fast' failed
+make: *** [cmTC_fcc94/fast] Error 2
+
+Source:
+/* */
+#include <X11/Xlib.h>
+#include <X11/extensions/xf86vmode.h>
+
+
+int main(void){return 0;}
+
+Determining if files X11/Xlib.h;X11/Xproto.h;X11/extensions/Xext.h exist failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_27802/fast"
+/usr/bin/make -f CMakeFiles/cmTC_27802.dir/build.make CMakeFiles/cmTC_27802.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27802.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_27802.dir/CheckIncludeFiles.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c:2:22: fatal error: X11/Xlib.h: No such file or directory
+ #include <X11/Xlib.h>
+                      ^
+compilation terminated.
+CMakeFiles/cmTC_27802.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_27802.dir/CheckIncludeFiles.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_27802.dir/CheckIncludeFiles.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_27802/fast' failed
+make: *** [cmTC_27802/fast] Error 2
+
+Source:
+/* */
+#include <X11/Xlib.h>
+#include <X11/Xproto.h>
+#include <X11/extensions/Xext.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test HAVE_VIDEO_OPENGL failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3ccf3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ccf3.dir/build.make CMakeFiles/cmTC_3ccf3.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3ccf3.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGL   -o CMakeFiles/cmTC_3ccf3.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:2:27: fatal error: GL/gl.h: No such file or directory
+         #include <GL/gl.h>
+                           ^
+compilation terminated.
+CMakeFiles/cmTC_3ccf3.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3ccf3.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3ccf3.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3ccf3/fast' failed
+make: *** [cmTC_3ccf3/fast] Error 2
+
+Source file was:
+
+        #include <GL/gl.h>
+        #include <GL/glx.h>
+        int main(int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_VIVANTE_VDK failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ed505/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ed505.dir/build.make CMakeFiles/cmTC_ed505.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ed505.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_VIVANTE_VDK   -o CMakeFiles/cmTC_ed505.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:2:28: fatal error: gc_vdk.h: No such file or directory
+         #include <gc_vdk.h>
+                            ^
+compilation terminated.
+CMakeFiles/cmTC_ed505.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_ed505.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ed505.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ed505/fast' failed
+make: *** [cmTC_ed505/fast] Error 2
+
+Source file was:
+
+        #include <gc_vdk.h>
+        int main(int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_VIVANTE_EGL_FB failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_aa38f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aa38f.dir/build.make CMakeFiles/cmTC_aa38f.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aa38f.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_VIVANTE_EGL_FB   -o CMakeFiles/cmTC_aa38f.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:4:36: fatal error: EGL/eglvivante.h: No such file or directory
+         #include <EGL/eglvivante.h>
+                                    ^
+compilation terminated.
+CMakeFiles/cmTC_aa38f.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_aa38f.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_aa38f.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_aa38f/fast' failed
+make: *** [cmTC_aa38f/fast] Error 2
+
+Source file was:
+
+        #define LINUX
+        #define EGL_API_FB
+        #include <EGL/eglvivante.h>
+        int main(int argc, char** argv) {}
+Determining if the include file libudev.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a2a47/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a2a47.dir/build.make CMakeFiles/cmTC_a2a47.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a2a47.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_a2a47.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:21: fatal error: libudev.h: No such file or directory
+ #include <libudev.h>
+                     ^
+compilation terminated.
+CMakeFiles/cmTC_a2a47.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_a2a47.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_a2a47.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a2a47/fast' failed
+make: *** [cmTC_a2a47/fast] Error 2
+
+
+Determining if the include file fcitx/frontend.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9b333/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9b333.dir/build.make CMakeFiles/cmTC_9b333.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9b333.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_9b333.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:28: fatal error: fcitx/frontend.h: No such file or directory
+ #include <fcitx/frontend.h>
+                            ^
+compilation terminated.
+CMakeFiles/cmTC_9b333.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_9b333.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9b333.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9b333/fast' failed
+make: *** [cmTC_9b333/fast] Error 2
+
+
+Performing C SOURCE FILE Test HAVE_INPUT_TSLIB failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b5fad/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b5fad.dir/build.make CMakeFiles/cmTC_b5fad.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b5fad.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_INPUT_TSLIB   -o CMakeFiles/cmTC_b5fad.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:2:27: fatal error: tslib.h: No such file or directory
+         #include "tslib.h"
+                           ^
+compilation terminated.
+CMakeFiles/cmTC_b5fad.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b5fad.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_b5fad.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b5fad/fast' failed
+make: *** [cmTC_b5fad/fast] Error 2
+
+Source file was:
+
+        #include "tslib.h"
+        int main(int argc, char** argv) { }
+Determining if the function hid_init exists in the usbhid failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c9ec8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c9ec8.dir/build.make CMakeFiles/cmTC_c9ec8.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c9ec8.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=hid_init   -o CMakeFiles/cmTC_c9ec8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c9ec8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c9ec8.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=hid_init    CMakeFiles/cmTC_c9ec8.dir/CheckFunctionExists.c.o  -o cmTC_c9ec8 -rdynamic -lusbhid 
+/usr/bin/ld: cannot find -lusbhid
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c9ec8.dir/build.make:97: recipe for target 'cmTC_c9ec8' failed
+make[1]: *** [cmTC_c9ec8] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_c9ec8/fast' failed
+make: *** [cmTC_c9ec8/fast] Error 2
+
+
+Determining if the include file usb.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3754e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3754e.dir/build.make CMakeFiles/cmTC_3754e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3754e.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_3754e.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:17: fatal error: usb.h: No such file or directory
+ #include <usb.h>
+                 ^
+compilation terminated.
+CMakeFiles/cmTC_3754e.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3754e.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3754e.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3754e/fast' failed
+make: *** [cmTC_3754e/fast] Error 2
+
+
+Determining if the include file libusb.h exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_83f15/fast"
+/usr/bin/make -f CMakeFiles/cmTC_83f15.dir/build.make CMakeFiles/cmTC_83f15.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_83f15.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib     -o CMakeFiles/cmTC_83f15.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:20: fatal error: libusb.h: No such file or directory
+ #include <libusb.h>
+                    ^
+compilation terminated.
+CMakeFiles/cmTC_83f15.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_83f15.dir/CheckIncludeFile.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_83f15.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_83f15/fast' failed
+make: *** [cmTC_83f15/fast] Error 2
+
+
+Determining if the function hid_init exists in the usb failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f83cb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f83cb.dir/build.make CMakeFiles/cmTC_f83cb.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f83cb.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=hid_init   -o CMakeFiles/cmTC_f83cb.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f83cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f83cb.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=hid_init    CMakeFiles/cmTC_f83cb.dir/CheckFunctionExists.c.o  -o cmTC_f83cb -rdynamic -lusb 
+/usr/bin/ld: cannot find -lusb
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_f83cb.dir/build.make:97: recipe for target 'cmTC_f83cb' failed
+make[1]: *** [cmTC_f83cb] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_f83cb/fast' failed
+make: *** [cmTC_f83cb/fast] Error 2
+
+
+Performing C SOURCE FILE Test HAVE_USBHID failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_15459/fast"
+/usr/bin/make -f CMakeFiles/cmTC_15459.dir/build.make CMakeFiles/cmTC_15459.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_15459.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_USBHID   -o CMakeFiles/cmTC_15459.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:10:34: fatal error: dev/usb/usb.h: No such file or directory
+         # include <dev/usb/usb.h>
+                                  ^
+compilation terminated.
+CMakeFiles/cmTC_15459.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_15459.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_15459.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_15459/fast' failed
+make: *** [cmTC_15459/fast] Error 2
+
+Source file was:
+
+       #include <sys/types.h>
+        #if defined(HAVE_USB_H)
+        #include <usb.h>
+        #endif
+        #ifdef __DragonFly__
+        # include <bus/usb/usb.h>
+        # include <bus/usb/usbhid.h>
+        #else
+        # include <dev/usb/usb.h>
+        # include <dev/usb/usbhid.h>
+        #endif
+        #if defined(HAVE_USBHID_H)
+        #include <usbhid.h>
+        #elif defined(HAVE_LIBUSB_H)
+        #include <libusb.h>
+        #elif defined(HAVE_LIBUSBHID_H)
+        #include <libusbhid.h>
+        #endif
+        int main(int argc, char **argv) {
+          struct report_desc *repdesc;
+          struct usb_ctl_report *repbuf;
+          hid_kind_t hidkind;
+          return 0;
+        }
+Performing C SOURCE FILE Test HAVE_PTHREAD_NP_H failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d591/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9d591.dir/build.make CMakeFiles/cmTC_9d591.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d591.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_PTHREAD_NP_H   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_9d591.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:3:34: fatal error: pthread_np.h: No such file or directory
+           #include <pthread_np.h>
+                                  ^
+compilation terminated.
+CMakeFiles/cmTC_9d591.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_9d591.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9d591.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9d591/fast' failed
+make: *** [cmTC_9d591/fast] Error 2
+
+Source file was:
+
+          #include <pthread.h>
+          #include <pthread_np.h>
+          int main(int argc, char** argv) { return 0; }
+Determining if the function pthread_set_name_np exists failed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c297/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c297.dir/build.make CMakeFiles/cmTC_1c297.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c297.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=pthread_set_name_np   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_1c297.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1c297
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c297.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=pthread_set_name_np   -D_REENTRANT -pthread    CMakeFiles/cmTC_1c297.dir/CheckFunctionExists.c.o  -o cmTC_1c297 -rdynamic 
+CMakeFiles/cmTC_1c297.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x14): undefined reference to `pthread_set_name_np'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_1c297.dir/build.make:97: recipe for target 'cmTC_1c297' failed
+make[1]: *** [cmTC_1c297] Error 1
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_1c297/fast' failed
+make: *** [cmTC_1c297/fast] Error 2
+
+

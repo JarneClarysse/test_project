@@ -1,0 +1,1893 @@
+The system is: Linux - 4.9.80-v7+ - armv7l
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: ;-ffunction-sections;-fdata-sections;-fPIC;-march=armv7-a
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/3.7.2/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6ad6d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6ad6d.dir/build.make CMakeFiles/cmTC_6ad6d.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6ad6d.dir/testCCompiler.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_6ad6d.dir/testCCompiler.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_6ad6d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ad6d.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_6ad6d.dir/testCCompiler.c.o  -o cmTC_6ad6d -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5ca48/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5ca48.dir/build.make CMakeFiles/cmTC_5ca48.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_5ca48
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5ca48.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -v CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o  -o cmTC_5ca48 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/6/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Raspbian 6.3.0-18+rpi1+deb9u1' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
+Thread model: posix
+gcc version 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1+deb9u1) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/6/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+COLLECT_GCC_OPTIONS='-ffunction-sections' '-fdata-sections' '-fPIC' '-march=armv7-a' '-v' '-o' 'cmTC_5ca48' '-rdynamic' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu'
+ /usr/lib/gcc/arm-linux-gnueabihf/6/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/6/lto-wrapper -plugin-opt=-fresolution=/tmp/cccEAzeq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_5ca48 /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/6/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/6 -L/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/6/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/6/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crtn.o
+COLLECT_GCC_OPTIONS='-ffunction-sections' '-fdata-sections' '-fPIC' '-march=armv7-a' '-v' '-o' 'cmTC_5ca48' '-rdynamic' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu'
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_5ca48/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_5ca48.dir/build.make CMakeFiles/cmTC_5ca48.dir/build]
+  ignore line: [make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_5ca48]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5ca48.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -v CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o  -o cmTC_5ca48 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/6/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Raspbian 6.3.0-18+rpi1+deb9u1' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1+deb9u1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/6/:/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/6/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-ffunction-sections' '-fdata-sections' '-fPIC' '-march=armv7-a' '-v' '-o' 'cmTC_5ca48' '-rdynamic' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/6/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/6/lto-wrapper -plugin-opt=-fresolution=/tmp/cccEAzeq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_5ca48 /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/6/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/6 -L/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/6/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/6/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/6/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cccEAzeq.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_5ca48] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/6] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/6]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/6/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/6/../../..]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [CMakeFiles/cmTC_5ca48.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/6] ==> [/usr/lib/gcc/arm-linux-gnueabihf/6]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/6/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/6/../../..] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/6;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_283ae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_283ae.dir/build.make CMakeFiles/cmTC_283ae.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_283ae.dir/feature_tests.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -std=c11 -o CMakeFiles/cmTC_283ae.dir/feature_tests.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_283ae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_283ae.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_283ae.dir/feature_tests.c.o  -o cmTC_283ae -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b0324/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b0324.dir/build.make CMakeFiles/cmTC_b0324.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0324.dir/feature_tests.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -std=c99 -o CMakeFiles/cmTC_b0324.dir/feature_tests.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_b0324
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0324.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_b0324.dir/feature_tests.c.o  -o cmTC_b0324 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_237ee/fast"
+/usr/bin/make -f CMakeFiles/cmTC_237ee.dir/build.make CMakeFiles/cmTC_237ee.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_237ee.dir/feature_tests.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -std=c90 -o CMakeFiles/cmTC_237ee.dir/feature_tests.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_237ee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_237ee.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_237ee.dir/feature_tests.c.o  -o cmTC_237ee -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Performing C SOURCE FILE Test HAVE_GCC_WALL succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_76a38/fast"
+/usr/bin/make -f CMakeFiles/cmTC_76a38.dir/build.make CMakeFiles/cmTC_76a38.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_76a38.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WALL   -Wall -o CMakeFiles/cmTC_76a38.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_76a38
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76a38.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WALL    CMakeFiles/cmTC_76a38.dir/src.c.o  -o cmTC_76a38 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_WDECLARATION_AFTER_STATEMENT succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_69eb5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_69eb5.dir/build.make CMakeFiles/cmTC_69eb5.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_69eb5.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WDECLARATION_AFTER_STATEMENT   -Wdeclaration-after-statement -o CMakeFiles/cmTC_69eb5.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_69eb5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69eb5.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WDECLARATION_AFTER_STATEMENT    CMakeFiles/cmTC_69eb5.dir/src.c.o  -o cmTC_69eb5 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_WERROR_DECLARATION_AFTER_STATEMENT succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5d272/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5d272.dir/build.make CMakeFiles/cmTC_5d272.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5d272.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WERROR_DECLARATION_AFTER_STATEMENT   -Werror=declaration-after-statement -o CMakeFiles/cmTC_5d272.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5d272
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5d272.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WERROR_DECLARATION_AFTER_STATEMENT    CMakeFiles/cmTC_5d272.dir/src.c.o  -o cmTC_5d272 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_ATOMICS succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee9be/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee9be.dir/build.make CMakeFiles/cmTC_ee9be.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee9be.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_ATOMICS   -o CMakeFiles/cmTC_ee9be.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ee9be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee9be.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_ATOMICS    CMakeFiles/cmTC_ee9be.dir/src.c.o  -o cmTC_ee9be -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(int argc, char **argv) {
+        int a;
+        void *x, *y, *z;
+        __sync_lock_test_and_set(&a, 4);
+        __sync_lock_test_and_set(&x, y);
+        __sync_fetch_and_add(&a, 1);
+        __sync_bool_compare_and_swap(&a, 5, 10);
+        __sync_bool_compare_and_swap(&x, y, z); }
+Performing C SOURCE FILE Test HAVE_GCC_FVISIBILITY succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_78ede/fast"
+/usr/bin/make -f CMakeFiles/cmTC_78ede.dir/build.make CMakeFiles/cmTC_78ede.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_78ede.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_FVISIBILITY -fvisibility=hidden -Werror   -o CMakeFiles/cmTC_78ede.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_78ede
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78ede.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_FVISIBILITY -fvisibility=hidden -Werror    CMakeFiles/cmTC_78ede.dir/src.c.o  -o cmTC_78ede -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+      #if !defined(__GNUC__) || __GNUC__ < 4
+      #error SDL only uses visibility attributes in GCC 4 or newer
+      #endif
+      int main(int argc, char **argv) {}
+Performing C SOURCE FILE Test HAVE_GCC_WSHADOW succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c76cd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c76cd.dir/build.make CMakeFiles/cmTC_c76cd.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c76cd.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WSHADOW   -Wshadow -o CMakeFiles/cmTC_c76cd.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c76cd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c76cd.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_GCC_WSHADOW    CMakeFiles/cmTC_c76cd.dir/src.c.o  -o cmTC_c76cd -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_NO_UNDEFINED succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8ba74/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8ba74.dir/build.make CMakeFiles/cmTC_8ba74.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8ba74.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_NO_UNDEFINED -Wl,--no-undefined   -o CMakeFiles/cmTC_8ba74.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8ba74
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ba74.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_NO_UNDEFINED -Wl,--no-undefined    CMakeFiles/cmTC_8ba74.dir/src.c.o  -o cmTC_8ba74 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_48661/fast"
+/usr/bin/make -f CMakeFiles/cmTC_48661.dir/build.make CMakeFiles/cmTC_48661.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48661.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_48661.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_48661
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48661.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_48661.dir/CheckIncludeFile.c.o  -o cmTC_48661 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6b746/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6b746.dir/build.make CMakeFiles/cmTC_6b746.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b746.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_6b746.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6b746
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b746.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_6b746.dir/CheckIncludeFile.c.o  -o cmTC_6b746 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f3286/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f3286.dir/build.make CMakeFiles/cmTC_f3286.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f3286.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_f3286.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f3286
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3286.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_f3286.dir/CheckIncludeFile.c.o  -o cmTC_f3286 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d116d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d116d.dir/build.make CMakeFiles/cmTC_d116d.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d116d.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_d116d.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d116d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d116d.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_d116d.dir/CheckIncludeFile.c.o  -o cmTC_d116d -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f1fca/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f1fca.dir/build.make CMakeFiles/cmTC_f1fca.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f1fca.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_f1fca.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f1fca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1fca.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_f1fca.dir/CheckIncludeFile.c.o  -o cmTC_f1fca -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f5fca/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f5fca.dir/build.make CMakeFiles/cmTC_f5fca.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f5fca.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_f5fca.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f5fca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5fca.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_f5fca.dir/CheckIncludeFile.c.o  -o cmTC_f5fca -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5edd5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5edd5.dir/build.make CMakeFiles/cmTC_5edd5.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5edd5.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_5edd5.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5edd5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5edd5.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_5edd5.dir/CheckIncludeFile.c.o  -o cmTC_5edd5 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8c3b4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8c3b4.dir/build.make CMakeFiles/cmTC_8c3b4.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8c3b4.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_8c3b4.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_8c3b4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c3b4.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_8c3b4.dir/CheckIncludeFile.c.o  -o cmTC_8c3b4 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a8487/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8487.dir/build.make CMakeFiles/cmTC_a8487.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8487.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_a8487.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a8487
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8487.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_a8487.dir/CheckIncludeFile.c.o  -o cmTC_a8487 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f82e6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f82e6.dir/build.make CMakeFiles/cmTC_f82e6.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f82e6.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_f82e6.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f82e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f82e6.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_f82e6.dir/CheckIncludeFile.c.o  -o cmTC_f82e6 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2845a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2845a.dir/build.make CMakeFiles/cmTC_2845a.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2845a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_2845a.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2845a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2845a.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_2845a.dir/CheckIncludeFile.c.o  -o cmTC_2845a -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file ctype.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6b7d8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6b7d8.dir/build.make CMakeFiles/cmTC_6b7d8.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b7d8.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_6b7d8.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6b7d8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b7d8.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_6b7d8.dir/CheckIncludeFile.c.o  -o cmTC_6b7d8 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file math.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d8216/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d8216.dir/build.make CMakeFiles/cmTC_d8216.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8216.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_d8216.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d8216
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8216.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_d8216.dir/CheckIncludeFile.c.o  -o cmTC_d8216 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file iconv.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_41c60/fast"
+/usr/bin/make -f CMakeFiles/cmTC_41c60.dir/build.make CMakeFiles/cmTC_41c60.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_41c60.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_41c60.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_41c60
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41c60.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_41c60.dir/CheckIncludeFile.c.o  -o cmTC_41c60 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c61bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c61bf.dir/build.make CMakeFiles/cmTC_c61bf.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c61bf.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_c61bf.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c61bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c61bf.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_c61bf.dir/CheckIncludeFile.c.o  -o cmTC_c61bf -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files dlfcn.h;stdint.h;stddef.h;inttypes.h;stdlib.h;strings.h;string.h;float.h exist passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6dc8d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6dc8d.dir/build.make CMakeFiles/cmTC_6dc8d.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6dc8d.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_6dc8d.dir/CheckIncludeFiles.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_6dc8d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6dc8d.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_6dc8d.dir/CheckIncludeFiles.c.o  -o cmTC_6dc8d -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of size_t passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8402b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8402b.dir/build.make CMakeFiles/cmTC_8402b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8402b.dir/SIZEOF_SIZE_T.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_8402b.dir/SIZEOF_SIZE_T.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CheckTypeSize/SIZEOF_SIZE_T.c
+Linking C executable cmTC_8402b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8402b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_8402b.dir/SIZEOF_SIZE_T.c.o  -o cmTC_8402b -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the M_PI exist passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8d149/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8d149.dir/build.make CMakeFiles/cmTC_8d149.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8d149.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_8d149.dir/CheckSymbolExists.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_8d149
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d149.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_8d149.dir/CheckSymbolExists.c.o  -o cmTC_8d149 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+File /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <math.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef M_PI
+  return ((int*)(&M_PI))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C SOURCE FILE Test HAVE_MPROTECT succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_da652/fast"
+/usr/bin/make -f CMakeFiles/cmTC_da652.dir/build.make CMakeFiles/cmTC_da652.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_da652.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_MPROTECT   -o CMakeFiles/cmTC_da652.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_da652
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_da652.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_MPROTECT    CMakeFiles/cmTC_da652.dir/src.c.o  -o cmTC_da652 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+#include <sys/types.h>
+                             #include <sys/mman.h>
+                             int main() { }
+Determining if the function strtod exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_06dc1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_06dc1.dir/build.make CMakeFiles/cmTC_06dc1.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_06dc1.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtod   -o CMakeFiles/cmTC_06dc1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_06dc1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_06dc1.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtod    CMakeFiles/cmTC_06dc1.dir/CheckFunctionExists.c.o  -o cmTC_06dc1 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function malloc exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d7987/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d7987.dir/build.make CMakeFiles/cmTC_d7987.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7987.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=malloc   -o CMakeFiles/cmTC_d7987.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘malloc’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_d7987
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7987.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=malloc    CMakeFiles/cmTC_d7987.dir/CheckFunctionExists.c.o  -o cmTC_d7987 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function calloc exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_76a3f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_76a3f.dir/build.make CMakeFiles/cmTC_76a3f.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_76a3f.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=calloc   -o CMakeFiles/cmTC_76a3f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘calloc’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_76a3f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76a3f.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=calloc    CMakeFiles/cmTC_76a3f.dir/CheckFunctionExists.c.o  -o cmTC_76a3f -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function realloc exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2cc8c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2cc8c.dir/build.make CMakeFiles/cmTC_2cc8c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2cc8c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=realloc   -o CMakeFiles/cmTC_2cc8c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘realloc’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_2cc8c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2cc8c.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=realloc    CMakeFiles/cmTC_2cc8c.dir/CheckFunctionExists.c.o  -o cmTC_2cc8c -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function free exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a530d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a530d.dir/build.make CMakeFiles/cmTC_a530d.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a530d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=free   -o CMakeFiles/cmTC_a530d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘free’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_a530d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a530d.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=free    CMakeFiles/cmTC_a530d.dir/CheckFunctionExists.c.o  -o cmTC_a530d -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function getenv exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_45c86/fast"
+/usr/bin/make -f CMakeFiles/cmTC_45c86.dir/build.make CMakeFiles/cmTC_45c86.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_45c86.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=getenv   -o CMakeFiles/cmTC_45c86.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_45c86
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45c86.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=getenv    CMakeFiles/cmTC_45c86.dir/CheckFunctionExists.c.o  -o cmTC_45c86 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function setenv exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_481f2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_481f2.dir/build.make CMakeFiles/cmTC_481f2.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_481f2.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=setenv   -o CMakeFiles/cmTC_481f2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_481f2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_481f2.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=setenv    CMakeFiles/cmTC_481f2.dir/CheckFunctionExists.c.o  -o cmTC_481f2 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function putenv exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e364a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e364a.dir/build.make CMakeFiles/cmTC_e364a.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e364a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=putenv   -o CMakeFiles/cmTC_e364a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e364a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e364a.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=putenv    CMakeFiles/cmTC_e364a.dir/CheckFunctionExists.c.o  -o cmTC_e364a -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function unsetenv exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c0dd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c0dd.dir/build.make CMakeFiles/cmTC_1c0dd.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c0dd.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=unsetenv   -o CMakeFiles/cmTC_1c0dd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1c0dd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c0dd.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=unsetenv    CMakeFiles/cmTC_1c0dd.dir/CheckFunctionExists.c.o  -o cmTC_1c0dd -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function qsort exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_94455/fast"
+/usr/bin/make -f CMakeFiles/cmTC_94455.dir/build.make CMakeFiles/cmTC_94455.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_94455.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=qsort   -o CMakeFiles/cmTC_94455.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_94455
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94455.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=qsort    CMakeFiles/cmTC_94455.dir/CheckFunctionExists.c.o  -o cmTC_94455 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function abs exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9da86/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9da86.dir/build.make CMakeFiles/cmTC_9da86.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9da86.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=abs   -o CMakeFiles/cmTC_9da86.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘abs’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_9da86
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9da86.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=abs    CMakeFiles/cmTC_9da86.dir/CheckFunctionExists.c.o  -o cmTC_9da86 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function bcopy exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2682a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2682a.dir/build.make CMakeFiles/cmTC_2682a.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2682a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=bcopy   -o CMakeFiles/cmTC_2682a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘bcopy’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_2682a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2682a.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=bcopy    CMakeFiles/cmTC_2682a.dir/CheckFunctionExists.c.o  -o cmTC_2682a -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memset exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_40753/fast"
+/usr/bin/make -f CMakeFiles/cmTC_40753.dir/build.make CMakeFiles/cmTC_40753.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_40753.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memset   -o CMakeFiles/cmTC_40753.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘memset’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_40753
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40753.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memset    CMakeFiles/cmTC_40753.dir/CheckFunctionExists.c.o  -o cmTC_40753 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memcpy exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2266e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2266e.dir/build.make CMakeFiles/cmTC_2266e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2266e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memcpy   -o CMakeFiles/cmTC_2266e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘memcpy’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_2266e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2266e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memcpy    CMakeFiles/cmTC_2266e.dir/CheckFunctionExists.c.o  -o cmTC_2266e -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memmove exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9e4bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9e4bf.dir/build.make CMakeFiles/cmTC_9e4bf.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9e4bf.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memmove   -o CMakeFiles/cmTC_9e4bf.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘memmove’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_9e4bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e4bf.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memmove    CMakeFiles/cmTC_9e4bf.dir/CheckFunctionExists.c.o  -o cmTC_9e4bf -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memcmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_95aef/fast"
+/usr/bin/make -f CMakeFiles/cmTC_95aef.dir/build.make CMakeFiles/cmTC_95aef.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_95aef.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memcmp   -o CMakeFiles/cmTC_95aef.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘memcmp’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_95aef
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95aef.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=memcmp    CMakeFiles/cmTC_95aef.dir/CheckFunctionExists.c.o  -o cmTC_95aef -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strlen exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fdae9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fdae9.dir/build.make CMakeFiles/cmTC_fdae9.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fdae9.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlen   -o CMakeFiles/cmTC_fdae9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strlen’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_fdae9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdae9.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strlen    CMakeFiles/cmTC_fdae9.dir/CheckFunctionExists.c.o  -o cmTC_fdae9 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strdup exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c75bb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c75bb.dir/build.make CMakeFiles/cmTC_c75bb.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c75bb.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strdup   -o CMakeFiles/cmTC_c75bb.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strdup’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_c75bb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c75bb.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strdup    CMakeFiles/cmTC_c75bb.dir/CheckFunctionExists.c.o  -o cmTC_c75bb -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strchr exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_aae26/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aae26.dir/build.make CMakeFiles/cmTC_aae26.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aae26.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strchr   -o CMakeFiles/cmTC_aae26.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strchr’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_aae26
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aae26.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strchr    CMakeFiles/cmTC_aae26.dir/CheckFunctionExists.c.o  -o cmTC_aae26 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strrchr exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c3ff6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c3ff6.dir/build.make CMakeFiles/cmTC_c3ff6.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c3ff6.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strrchr   -o CMakeFiles/cmTC_c3ff6.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strrchr’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_c3ff6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c3ff6.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strrchr    CMakeFiles/cmTC_c3ff6.dir/CheckFunctionExists.c.o  -o cmTC_c3ff6 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strstr exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a6707/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a6707.dir/build.make CMakeFiles/cmTC_a6707.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a6707.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strstr   -o CMakeFiles/cmTC_a6707.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strstr’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_a6707
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a6707.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strstr    CMakeFiles/cmTC_a6707.dir/CheckFunctionExists.c.o  -o cmTC_a6707 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtol exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e0c7c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e0c7c.dir/build.make CMakeFiles/cmTC_e0c7c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0c7c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtol   -o CMakeFiles/cmTC_e0c7c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e0c7c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0c7c.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtol    CMakeFiles/cmTC_e0c7c.dir/CheckFunctionExists.c.o  -o cmTC_e0c7c -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoul exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d7b77/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d7b77.dir/build.make CMakeFiles/cmTC_d7b77.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7b77.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoul   -o CMakeFiles/cmTC_d7b77.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d7b77
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7b77.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoul    CMakeFiles/cmTC_d7b77.dir/CheckFunctionExists.c.o  -o cmTC_d7b77 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3423e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3423e.dir/build.make CMakeFiles/cmTC_3423e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3423e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoll   -o CMakeFiles/cmTC_3423e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3423e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3423e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoll    CMakeFiles/cmTC_3423e.dir/CheckFunctionExists.c.o  -o cmTC_3423e -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoull exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b160e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b160e.dir/build.make CMakeFiles/cmTC_b160e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b160e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoull   -o CMakeFiles/cmTC_b160e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b160e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b160e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strtoull    CMakeFiles/cmTC_b160e.dir/CheckFunctionExists.c.o  -o cmTC_b160e -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function atoi exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a35b4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a35b4.dir/build.make CMakeFiles/cmTC_a35b4.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a35b4.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atoi   -o CMakeFiles/cmTC_a35b4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a35b4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a35b4.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atoi    CMakeFiles/cmTC_a35b4.dir/CheckFunctionExists.c.o  -o cmTC_a35b4 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function atof exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_08271/fast"
+/usr/bin/make -f CMakeFiles/cmTC_08271.dir/build.make CMakeFiles/cmTC_08271.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08271.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atof   -o CMakeFiles/cmTC_08271.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_08271
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08271.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atof    CMakeFiles/cmTC_08271.dir/CheckFunctionExists.c.o  -o cmTC_08271 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0b36d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0b36d.dir/build.make CMakeFiles/cmTC_0b36d.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0b36d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strcmp   -o CMakeFiles/cmTC_0b36d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strcmp’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_0b36d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b36d.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strcmp    CMakeFiles/cmTC_0b36d.dir/CheckFunctionExists.c.o  -o cmTC_0b36d -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a8f87/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8f87.dir/build.make CMakeFiles/cmTC_a8f87.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8f87.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strncmp   -o CMakeFiles/cmTC_a8f87.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strncmp’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_a8f87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8f87.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strncmp    CMakeFiles/cmTC_a8f87.dir/CheckFunctionExists.c.o  -o cmTC_a8f87 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcasecmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_83891/fast"
+/usr/bin/make -f CMakeFiles/cmTC_83891.dir/build.make CMakeFiles/cmTC_83891.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_83891.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strcasecmp   -o CMakeFiles/cmTC_83891.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strcasecmp’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_83891
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83891.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strcasecmp    CMakeFiles/cmTC_83891.dir/CheckFunctionExists.c.o  -o cmTC_83891 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncasecmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d7637/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d7637.dir/build.make CMakeFiles/cmTC_d7637.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7637.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strncasecmp   -o CMakeFiles/cmTC_d7637.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘strncasecmp’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_d7637
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7637.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=strncasecmp    CMakeFiles/cmTC_d7637.dir/CheckFunctionExists.c.o  -o cmTC_d7637 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function vsscanf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_dfc64/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dfc64.dir/build.make CMakeFiles/cmTC_dfc64.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dfc64.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=vsscanf   -o CMakeFiles/cmTC_dfc64.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘vsscanf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_dfc64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dfc64.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=vsscanf    CMakeFiles/cmTC_dfc64.dir/CheckFunctionExists.c.o  -o cmTC_dfc64 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function vsnprintf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3c9c4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3c9c4.dir/build.make CMakeFiles/cmTC_3c9c4.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3c9c4.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=vsnprintf   -o CMakeFiles/cmTC_3c9c4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘vsnprintf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_3c9c4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c9c4.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=vsnprintf    CMakeFiles/cmTC_3c9c4.dir/CheckFunctionExists.c.o  -o cmTC_3c9c4 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fseeko exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_60884/fast"
+/usr/bin/make -f CMakeFiles/cmTC_60884.dir/build.make CMakeFiles/cmTC_60884.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_60884.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fseeko   -o CMakeFiles/cmTC_60884.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_60884
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60884.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fseeko    CMakeFiles/cmTC_60884.dir/CheckFunctionExists.c.o  -o cmTC_60884 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fseeko64 exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cf4cb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cf4cb.dir/build.make CMakeFiles/cmTC_cf4cb.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cf4cb.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fseeko64   -o CMakeFiles/cmTC_cf4cb.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cf4cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cf4cb.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fseeko64    CMakeFiles/cmTC_cf4cb.dir/CheckFunctionExists.c.o  -o cmTC_cf4cb -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sigaction exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b987c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b987c.dir/build.make CMakeFiles/cmTC_b987c.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b987c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sigaction   -o CMakeFiles/cmTC_b987c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b987c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b987c.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sigaction    CMakeFiles/cmTC_b987c.dir/CheckFunctionExists.c.o  -o cmTC_b987c -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function setjmp exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b17b0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b17b0.dir/build.make CMakeFiles/cmTC_b17b0.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b17b0.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=setjmp   -o CMakeFiles/cmTC_b17b0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b17b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b17b0.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=setjmp    CMakeFiles/cmTC_b17b0.dir/CheckFunctionExists.c.o  -o cmTC_b17b0 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function nanosleep exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7dbc9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7dbc9.dir/build.make CMakeFiles/cmTC_7dbc9.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7dbc9.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=nanosleep   -o CMakeFiles/cmTC_7dbc9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7dbc9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7dbc9.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=nanosleep    CMakeFiles/cmTC_7dbc9.dir/CheckFunctionExists.c.o  -o cmTC_7dbc9 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sysconf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_54afc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_54afc.dir/build.make CMakeFiles/cmTC_54afc.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_54afc.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sysconf   -o CMakeFiles/cmTC_54afc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_54afc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54afc.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sysconf    CMakeFiles/cmTC_54afc.dir/CheckFunctionExists.c.o  -o cmTC_54afc -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pow exists in the m passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fdd92/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fdd92.dir/build.make CMakeFiles/cmTC_fdd92.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fdd92.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=pow   -o CMakeFiles/cmTC_fdd92.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘pow’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_fdd92
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdd92.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=pow    CMakeFiles/cmTC_fdd92.dir/CheckFunctionExists.c.o  -o cmTC_fdd92 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function atan exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fffcf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fffcf.dir/build.make CMakeFiles/cmTC_fffcf.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fffcf.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atan   -o CMakeFiles/cmTC_fffcf.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘atan’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_fffcf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fffcf.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atan    CMakeFiles/cmTC_fffcf.dir/CheckFunctionExists.c.o  -o cmTC_fffcf -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function atan2 exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5a1e1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5a1e1.dir/build.make CMakeFiles/cmTC_5a1e1.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5a1e1.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atan2   -o CMakeFiles/cmTC_5a1e1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘atan2’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_5a1e1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a1e1.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=atan2    CMakeFiles/cmTC_5a1e1.dir/CheckFunctionExists.c.o  -o cmTC_5a1e1 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function ceil exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3566b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3566b.dir/build.make CMakeFiles/cmTC_3566b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3566b.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=ceil   -o CMakeFiles/cmTC_3566b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘ceil’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_3566b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3566b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=ceil    CMakeFiles/cmTC_3566b.dir/CheckFunctionExists.c.o  -o cmTC_3566b -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function copysign exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4a0ae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4a0ae.dir/build.make CMakeFiles/cmTC_4a0ae.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4a0ae.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=copysign   -o CMakeFiles/cmTC_4a0ae.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘copysign’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_4a0ae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a0ae.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=copysign    CMakeFiles/cmTC_4a0ae.dir/CheckFunctionExists.c.o  -o cmTC_4a0ae -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function cos exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_99104/fast"
+/usr/bin/make -f CMakeFiles/cmTC_99104.dir/build.make CMakeFiles/cmTC_99104.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_99104.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=cos   -o CMakeFiles/cmTC_99104.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘cos’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_99104
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_99104.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=cos    CMakeFiles/cmTC_99104.dir/CheckFunctionExists.c.o  -o cmTC_99104 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function cosf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fbf07/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fbf07.dir/build.make CMakeFiles/cmTC_fbf07.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fbf07.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=cosf   -o CMakeFiles/cmTC_fbf07.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘cosf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_fbf07
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbf07.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=cosf    CMakeFiles/cmTC_fbf07.dir/CheckFunctionExists.c.o  -o cmTC_fbf07 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fabs exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_35d2f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_35d2f.dir/build.make CMakeFiles/cmTC_35d2f.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_35d2f.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fabs   -o CMakeFiles/cmTC_35d2f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘fabs’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_35d2f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35d2f.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=fabs    CMakeFiles/cmTC_35d2f.dir/CheckFunctionExists.c.o  -o cmTC_35d2f -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function floor exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_049d4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_049d4.dir/build.make CMakeFiles/cmTC_049d4.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_049d4.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=floor   -o CMakeFiles/cmTC_049d4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘floor’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_049d4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_049d4.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=floor    CMakeFiles/cmTC_049d4.dir/CheckFunctionExists.c.o  -o cmTC_049d4 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function log exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8e38b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8e38b.dir/build.make CMakeFiles/cmTC_8e38b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e38b.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=log   -o CMakeFiles/cmTC_8e38b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘log’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_8e38b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e38b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=log    CMakeFiles/cmTC_8e38b.dir/CheckFunctionExists.c.o  -o cmTC_8e38b -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pow exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d4a24/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d4a24.dir/build.make CMakeFiles/cmTC_d4a24.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d4a24.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=pow   -o CMakeFiles/cmTC_d4a24.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘pow’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_d4a24
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d4a24.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=pow    CMakeFiles/cmTC_d4a24.dir/CheckFunctionExists.c.o  -o cmTC_d4a24 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function scalbn exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_eeea2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_eeea2.dir/build.make CMakeFiles/cmTC_eeea2.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_eeea2.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=scalbn   -o CMakeFiles/cmTC_eeea2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘scalbn’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_eeea2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eeea2.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=scalbn    CMakeFiles/cmTC_eeea2.dir/CheckFunctionExists.c.o  -o cmTC_eeea2 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sin exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_97c40/fast"
+/usr/bin/make -f CMakeFiles/cmTC_97c40.dir/build.make CMakeFiles/cmTC_97c40.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_97c40.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sin   -o CMakeFiles/cmTC_97c40.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘sin’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_97c40
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97c40.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sin    CMakeFiles/cmTC_97c40.dir/CheckFunctionExists.c.o  -o cmTC_97c40 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sinf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a1129/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a1129.dir/build.make CMakeFiles/cmTC_a1129.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1129.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sinf   -o CMakeFiles/cmTC_a1129.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘sinf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_a1129
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1129.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sinf    CMakeFiles/cmTC_a1129.dir/CheckFunctionExists.c.o  -o cmTC_a1129 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sqrt exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b4289/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b4289.dir/build.make CMakeFiles/cmTC_b4289.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b4289.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sqrt   -o CMakeFiles/cmTC_b4289.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘sqrt’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_b4289
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4289.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sqrt    CMakeFiles/cmTC_b4289.dir/CheckFunctionExists.c.o  -o cmTC_b4289 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sqrtf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d2ade/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d2ade.dir/build.make CMakeFiles/cmTC_d2ade.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d2ade.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sqrtf   -o CMakeFiles/cmTC_d2ade.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘sqrtf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_d2ade
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2ade.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=sqrtf    CMakeFiles/cmTC_d2ade.dir/CheckFunctionExists.c.o  -o cmTC_d2ade -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function tan exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fcdf0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fcdf0.dir/build.make CMakeFiles/cmTC_fcdf0.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fcdf0.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=tan   -o CMakeFiles/cmTC_fcdf0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘tan’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_fcdf0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fcdf0.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=tan    CMakeFiles/cmTC_fcdf0.dir/CheckFunctionExists.c.o  -o cmTC_fcdf0 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function tanf exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_96324/fast"
+/usr/bin/make -f CMakeFiles/cmTC_96324.dir/build.make CMakeFiles/cmTC_96324.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_96324.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=tanf   -o CMakeFiles/cmTC_96324.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘tanf’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_96324
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96324.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=tanf    CMakeFiles/cmTC_96324.dir/CheckFunctionExists.c.o  -o cmTC_96324 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function acos exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_acf8b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_acf8b.dir/build.make CMakeFiles/cmTC_acf8b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_acf8b.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=acos   -o CMakeFiles/cmTC_acf8b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘acos’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_acf8b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acf8b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=acos    CMakeFiles/cmTC_acf8b.dir/CheckFunctionExists.c.o  -o cmTC_acf8b -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function asin exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a1a38/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a1a38.dir/build.make CMakeFiles/cmTC_a1a38.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1a38.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=asin   -o CMakeFiles/cmTC_a1a38.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘asin’
+/usr/share/cmake-3.7/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS();
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_a1a38
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1a38.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=asin    CMakeFiles/cmTC_a1a38.dir/CheckFunctionExists.c.o  -o cmTC_a1a38 -rdynamic -lm 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file alloca.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_01d87/fast"
+/usr/bin/make -f CMakeFiles/cmTC_01d87.dir/build.make CMakeFiles/cmTC_01d87.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_01d87.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a    -o CMakeFiles/cmTC_01d87.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_01d87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_01d87.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a     CMakeFiles/cmTC_01d87.dir/CheckIncludeFile.c.o  -o cmTC_01d87 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_SA_SIGACTION succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_20b9e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_20b9e.dir/build.make CMakeFiles/cmTC_20b9e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_20b9e.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_SA_SIGACTION   -o CMakeFiles/cmTC_20b9e.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_20b9e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_20b9e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_SA_SIGACTION    CMakeFiles/cmTC_20b9e.dir/src.c.o  -o cmTC_20b9e -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <signal.h>
+
+int main()
+{
+   (void)sizeof(((struct sigaction *)0)->sa_sigaction);
+   return 0;
+}
+
+Determining if the function dlopen exists in the dl passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cd597/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cd597.dir/build.make CMakeFiles/cmTC_cd597.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd597.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=dlopen   -o CMakeFiles/cmTC_cd597.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cd597
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd597.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DCHECK_FUNCTION_EXISTS=dlopen    CMakeFiles/cmTC_cd597.dir/CheckFunctionExists.c.o  -o cmTC_cd597 -rdynamic -ldl 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test OSS_FOUND succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_06237/fast"
+/usr/bin/make -f CMakeFiles/cmTC_06237.dir/build.make CMakeFiles/cmTC_06237.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_06237.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DOSS_FOUND   -o CMakeFiles/cmTC_06237.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_06237
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_06237.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DOSS_FOUND    CMakeFiles/cmTC_06237.dir/src.c.o  -o cmTC_06237 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #include <sys/soundcard.h>
+        int main() { int arg = SNDCTL_DSP_SETFRAGMENT; }
+Performing C SOURCE FILE Test HAVE_VIDEO_RPI succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cc20e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cc20e.dir/build.make CMakeFiles/cmTC_cc20e.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cc20e.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_VIDEO_RPI  -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib   -o CMakeFiles/cmTC_cc20e.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_cc20e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc20e.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -DHAVE_VIDEO_RPI  -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib    CMakeFiles/cmTC_cc20e.dir/src.c.o  -o cmTC_cc20e -rdynamic -lbcm_host 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #include <bcm_host.h>
+        int main(int argc, char **argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_OPENGL_EGL succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d29f5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d29f5.dir/build.make CMakeFiles/cmTC_d29f5.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d29f5.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGL_EGL   -o CMakeFiles/cmTC_d29f5.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d29f5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d29f5.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGL_EGL    CMakeFiles/cmTC_d29f5.dir/src.c.o  -o cmTC_d29f5 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #define EGL_API_FB
+        #include <EGL/egl.h>
+        int main (int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_OPENGLES_V1 succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c5063/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c5063.dir/build.make CMakeFiles/cmTC_c5063.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c5063.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGLES_V1   -o CMakeFiles/cmTC_c5063.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c5063
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5063.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGLES_V1    CMakeFiles/cmTC_c5063.dir/src.c.o  -o cmTC_c5063 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+      #include <GLES/gl.h>
+      #include <GLES/glext.h>
+      int main (int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_OPENGLES_V2 succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8c0fe/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8c0fe.dir/build.make CMakeFiles/cmTC_8c0fe.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8c0fe.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGLES_V2   -o CMakeFiles/cmTC_8c0fe.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8c0fe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c0fe.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_VIDEO_OPENGLES_V2    CMakeFiles/cmTC_8c0fe.dir/src.c.o  -o cmTC_8c0fe -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+      #include <GLES2/gl2.h>
+      #include <GLES2/gl2ext.h>
+      int main (int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_INPUT_EVENTS succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6518b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6518b.dir/build.make CMakeFiles/cmTC_6518b.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6518b.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_INPUT_EVENTS   -o CMakeFiles/cmTC_6518b.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6518b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6518b.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_INPUT_EVENTS    CMakeFiles/cmTC_6518b.dir/src.c.o  -o cmTC_6518b -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #include <linux/input.h>
+        #ifndef EVIOCGNAME
+        #error EVIOCGNAME() ioctl not available
+        #endif
+        int main(int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_INPUT_KD succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7b198/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7b198.dir/build.make CMakeFiles/cmTC_7b198.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b198.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_INPUT_KD   -o CMakeFiles/cmTC_7b198.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c: In function ‘main’:
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c:9:13: warning: implicit declaration of function ‘ioctl’ [-Wimplicit-function-declaration]
+             ioctl(0, KDGKBENT, &kbe);
+             ^~~~~
+Linking C executable cmTC_7b198
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b198.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_INPUT_KD    CMakeFiles/cmTC_7b198.dir/src.c.o  -o cmTC_7b198 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #include <linux/kd.h>
+        #include <linux/keyboard.h>
+
+        int main(int argc, char **argv) 
+        {
+            struct kbentry kbe;
+            kbe.kb_table = KG_CTRL;
+            ioctl(0, KDGKBENT, &kbe);
+        }
+Performing C SOURCE FILE Test HAVE_PTHREADS succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d44ae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d44ae.dir/build.make CMakeFiles/cmTC_d44ae.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d44ae.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_PTHREADS   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_d44ae.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d44ae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d44ae.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_PTHREADS   -D_REENTRANT -pthread    CMakeFiles/cmTC_d44ae.dir/src.c.o  -o cmTC_d44ae -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Return value: 1
+Source file was:
+
+        #include <pthread.h>
+        int main(int argc, char** argv) {
+          pthread_attr_t type;
+          pthread_attr_init(&type);
+          return 0;
+        }
+Performing C SOURCE FILE Test HAVE_RECURSIVE_MUTEXES succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_665bc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_665bc.dir/build.make CMakeFiles/cmTC_665bc.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_665bc.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_RECURSIVE_MUTEXES   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_665bc.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_665bc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_665bc.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_RECURSIVE_MUTEXES   -D_REENTRANT -pthread    CMakeFiles/cmTC_665bc.dir/src.c.o  -o cmTC_665bc -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+        #include <pthread.h>
+        int main(int argc, char **argv) {
+          pthread_mutexattr_t attr;
+          pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+          return 0;
+        }
+Performing C SOURCE FILE Test HAVE_PTHREADS_SEM succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_048be/fast"
+/usr/bin/make -f CMakeFiles/cmTC_048be.dir/build.make CMakeFiles/cmTC_048be.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_048be.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_PTHREADS_SEM   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_048be.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_048be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_048be.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_PTHREADS_SEM   -D_REENTRANT -pthread    CMakeFiles/cmTC_048be.dir/src.c.o  -o cmTC_048be -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+#include <pthread.h>
+                                 #include <semaphore.h>
+                                 int main(int argc, char **argv) { return 0; }
+Performing C SOURCE FILE Test HAVE_SEM_TIMEDWAIT succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_33307/fast"
+/usr/bin/make -f CMakeFiles/cmTC_33307.dir/build.make CMakeFiles/cmTC_33307.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_33307.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_SEM_TIMEDWAIT   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_33307.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_33307
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33307.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_SEM_TIMEDWAIT   -D_REENTRANT -pthread    CMakeFiles/cmTC_33307.dir/src.c.o  -o cmTC_33307 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+              #include <pthread.h>
+              #include <semaphore.h>
+              int main(int argc, char **argv) {
+                  sem_timedwait(NULL, NULL);
+                  return 0;
+              }
+Determining if the function pthread_setname_np exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9a410/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9a410.dir/build.make CMakeFiles/cmTC_9a410.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9a410.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=pthread_setname_np   -D_REENTRANT -pthread   -o CMakeFiles/cmTC_9a410.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9a410
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a410.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DCHECK_FUNCTION_EXISTS=pthread_setname_np   -D_REENTRANT -pthread    CMakeFiles/cmTC_9a410.dir/CheckFunctionExists.c.o  -o cmTC_9a410 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file linux/version.h exists passed with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fe502/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fe502.dir/build.make CMakeFiles/cmTC_fe502.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe502.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib      -o CMakeFiles/cmTC_fe502.dir/CheckIncludeFile.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_fe502
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe502.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib       CMakeFiles/cmTC_fe502.dir/CheckIncludeFile.c.o  -o cmTC_fe502 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_ENABLE_NEW_DTAGS succeeded with the following output:
+Change Dir: /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bedb0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bedb0.dir/build.make CMakeFiles/cmTC_bedb0.dir/build
+make[1]: Entering directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bedb0.dir/src.c.o
+/usr/bin/cc    -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_LINUX_VERSION_H -DHAVE_ENABLE_NEW_DTAGS -Wl,--enable-new-dtags   -o CMakeFiles/cmTC_bedb0.dir/src.c.o   -c /home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_bedb0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bedb0.dir/link.txt --verbose=1
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -march=armv7-a -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib  -DHAVE_LINUX_VERSION_H -DHAVE_ENABLE_NEW_DTAGS -Wl,--enable-new-dtags    CMakeFiles/cmTC_bedb0.dir/src.c.o  -o cmTC_bedb0 -rdynamic 
+make[1]: Leaving directory '/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }

@@ -1,0 +1,9 @@
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/install/local.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/install.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/rebuild_cache.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/SDL2main.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/SDL2-static.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/list_install_components.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/uninstall.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/install/strip.dir
+/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/sdl2-sys-2747283d7028307e/out/build/CMakeFiles/edit_cache.dir

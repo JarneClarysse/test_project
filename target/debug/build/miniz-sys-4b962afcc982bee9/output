@@ -1,0 +1,25 @@
+TARGET = Some("armv7-unknown-linux-gnueabihf")
+OPT_LEVEL = Some("0")
+HOST = Some("armv7-unknown-linux-gnueabihf")
+CC_armv7-unknown-linux-gnueabihf = None
+CC_armv7_unknown_linux_gnueabihf = None
+HOST_CC = None
+CC = None
+CFLAGS_armv7-unknown-linux-gnueabihf = None
+CFLAGS_armv7_unknown_linux_gnueabihf = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some("true")
+CARGO_CFG_TARGET_FEATURE = None
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-march=armv7-a" "-fvisibility=hidden" "-DMINIZ_NO_STDIO" "-DMINIZ_NO_ARCHIVE_APIS" "-DMINIZ_NO_ARCHIVE_WRITING_APIS" "-DMINIZ_NO_TIME" "-DMINIZ_NO_ZLIB_COMPATIBLE_NAMES" "-o" "/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/miniz-sys-4b962afcc982bee9/out/miniz.o" "-c" "miniz.c"
+exit code: 0
+AR_armv7-unknown-linux-gnueabihf = None
+AR_armv7_unknown_linux_gnueabihf = None
+HOST_AR = None
+AR = None
+running: "ar" "crs" "/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/miniz-sys-4b962afcc982bee9/out/libminiz.a" "/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/miniz-sys-4b962afcc982bee9/out/miniz.o"
+exit code: 0
+cargo:rustc-link-lib=static=miniz
+cargo:rustc-link-search=native=/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/miniz-sys-4b962afcc982bee9/out
+cargo:root=/home/pi/Veilige_soft_test/test_project/test_project/target/debug/build/miniz-sys-4b962afcc982bee9/out

@@ -14,6 +14,7 @@ extern crate shuteye;
 extern crate mmap;
 extern crate nix;
 extern crate sdl2;
+extern crate byteorder;
 
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
