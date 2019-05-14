@@ -434,10 +434,10 @@ Scanning dependencies of target SDL2main
 [  2%] Linking C static library libSDL2main.a
 [  2%] Built target SDL2main
 Scanning dependencies of target SDL2-static
-[  4%] Building C object CMakeFiles/SDL2-static.dir/src/SDL.c.o
-[  4%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_error.c.o
-[  4%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_assert.c.o
-[  5%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_hints.c.o
+[  3%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_assert.c.o
+[  3%] Building C object CMakeFiles/SDL2-static.dir/src/SDL.c.o
+[  4%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_hints.c.o
+[  5%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_error.c.o
 [  6%] Building C object CMakeFiles/SDL2-static.dir/src/SDL_log.c.o
 [  6%] Building C object CMakeFiles/SDL2-static.dir/src/atomic/SDL_atomic.c.o
 [  7%] Building C object CMakeFiles/SDL2-static.dir/src/atomic/SDL_spinlock.c.o
@@ -500,7 +500,7 @@ Scanning dependencies of target SDL2-static
 [ 54%] Building C object CMakeFiles/SDL2-static.dir/src/stdlib/SDL_malloc.c.o
 [ 55%] Building C object CMakeFiles/SDL2-static.dir/src/stdlib/SDL_qsort.c.o
 [ 56%] Building C object CMakeFiles/SDL2-static.dir/src/stdlib/SDL_stdlib.c.o
-[ 57%] Building C object CMakeFiles/SDL2-static.dir/src/stdlib/SDL_string.c.o
+[ 56%] Building C object CMakeFiles/SDL2-static.dir/src/stdlib/SDL_string.c.o
 [ 57%] Building C object CMakeFiles/SDL2-static.dir/src/thread/SDL_thread.c.o
 [ 58%] Building C object CMakeFiles/SDL2-static.dir/src/timer/SDL_timer.c.o
 [ 59%] Building C object CMakeFiles/SDL2-static.dir/src/video/SDL_RLEaccel.c.o
@@ -549,8 +549,8 @@ Scanning dependencies of target SDL2-static
 [ 94%] Building C object CMakeFiles/SDL2-static.dir/src/thread/pthread/SDL_sysmutex.c.o
 [ 95%] Building C object CMakeFiles/SDL2-static.dir/src/thread/pthread/SDL_syscond.c.o
 [ 96%] Building C object CMakeFiles/SDL2-static.dir/src/thread/pthread/SDL_systls.c.o
-[ 97%] Building C object CMakeFiles/SDL2-static.dir/src/power/linux/SDL_syspower.c.o
 [ 97%] Building C object CMakeFiles/SDL2-static.dir/src/thread/pthread/SDL_syssem.c.o
+[ 97%] Building C object CMakeFiles/SDL2-static.dir/src/power/linux/SDL_syspower.c.o
 [ 98%] Building C object CMakeFiles/SDL2-static.dir/src/filesystem/unix/SDL_sysfilesystem.c.o
 [ 99%] Building C object CMakeFiles/SDL2-static.dir/src/timer/unix/SDL_systimer.c.o
 [100%] Linking C static library libSDL2.a
