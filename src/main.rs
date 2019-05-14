@@ -590,7 +590,7 @@ impl Image {
         for x in 0..h {
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
-            for x in 0..w {
+            for y in 0..w {
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
             }
@@ -601,7 +601,6 @@ impl Image {
         image.height=h;
         image.pixels=allePix;
 
-        println!("Klaar1");
         Ok(image)
 
     }
