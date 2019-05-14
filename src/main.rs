@@ -13,6 +13,7 @@ extern crate ctrlc;
 extern crate shuteye;
 extern crate mmap;
 extern crate nix;
+extern crate sdl2;
 
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
@@ -432,9 +433,9 @@ impl Image {
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
 
-        let mut re = cursor.read_u8()?;
-        let mut gr = cursor.read_u8()?;
-        let mut bl = cursor.read_u8()?;
+        let mut re = cursor.read_u16()?;
+        let mut gr = cursor.read_u16()?;
+        let mut bl = cursor.read_u16()?;
 
         let pixel = Pixel{r:re,g:gr,b:bl};
 
