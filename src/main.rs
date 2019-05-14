@@ -435,11 +435,7 @@ impl Image {
         let mut g = cursor.read_u8()?;
         let mut b = cursor.read_u8()?;
 
-        let mut pixel = Pixel {
-            R: r as u32,
-            G: g as u32,
-            B: b as u32
-        };
+        
 
 
         Ok(pixel)
