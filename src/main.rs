@@ -601,7 +601,7 @@ impl Image {
             allePix.insert(0, hoogte_pix)
         }
 
-        // TODO: Parse the image here
+
         image.width=w;
         image.height=h;
         image.pixels=allePix;
@@ -631,6 +631,24 @@ pub fn main() {
     } 
     
     // TODO: Read the PPM file here. You can find its name in args[1]
+    let path = Path::new(&args[1]);
+
+    let mut file = match File::open(&path)    {
+        Err(why) => panic!("Could not open file: {} (Reason: {})",
+                           display, why.description()),
+        Ok(file) => file
+    };
+
+    // read the full file into memory. panic on failure
+    let mut raw_file = Vec::new();
+    file.read_to_end(&mut raw_file).unwrap();
+
+    // construct a cursor so we can seek in the raw buffer
+    let mut cursor = Cursor::new(raw_file);
+    let mut image = match Image::decode_ppm_image(&mut cursor) {
+        Ok(img) => img,
+        Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
+    };
     // TODO: Initialize the GPIO struct and the Timer struct
     
     // This code sets up a CTRL-C handler that writes "true" to the 
