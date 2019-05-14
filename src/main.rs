@@ -409,7 +409,7 @@ impl Timer {
                 }
             }
         }
-        if (nanos <20) {return }
+        if nanos <20 {return }
         let mut nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
         for x in nanoseconds_left..0 {
             unsafe{self.read()};
@@ -434,9 +434,9 @@ impl Image {
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
 
-        let re:u16 = cursor.read_u16()?;
-        let gr:u16 = cursor.read_u16()?;
-        let bl:u16 = cursor.read_u16()?;
+        let mut re:u16 = cursor.read_u16::<LittleEndian>()?;
+        let mut gr:u16 = cursor.read_u16::<LittleEndian>()?;
+        let mut bl:u16 = cursor.read_u16::<LittleEndian>()?;
 
         let pixel = Pixel{r:re,g:gr,b:bl};
 
