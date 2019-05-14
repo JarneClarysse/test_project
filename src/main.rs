@@ -434,9 +434,9 @@ impl Image {
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
 
-        let mut re:u16 = cursor.read_u16()?;
-        let mut gr:u16 = cursor.read_u16()?;
-        let mut bl:u16 = cursor.read_u16()?;
+        let re:u16 = cursor.read_u16()?;
+        let gr:u16 = cursor.read_u16()?;
+        let bl:u16 = cursor.read_u16()?;
 
         let pixel = Pixel{r:re,g:gr,b:bl};
 
