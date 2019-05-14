@@ -595,7 +595,7 @@ impl Image {
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
             for x in 0..w {
-                let pixel = read_pixel(cursor)?;
+                let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
             }
             allePix.insert(0, hoogte_pix)
