@@ -664,22 +664,22 @@ impl Image {
 
 fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     let mut out: u32 = 0;
-    if top.r !=0 {
+    if top.r & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_R1);
     };
-    if top.g !=0 {
+    if top.g & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_G1);
     };
-    if top.b !=0 {
+    if top.b & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_B1);
     };
-    if bot.r !=0 {
+    if bot.r & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_R2);
     };
-    if bot.g !=0 {
+    if bot.g & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_G2);
     };
-    if bot.b !=0 {
+    if bot.b & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_B2);
     };
     out
@@ -745,8 +745,7 @@ pub fn main() {
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
         for row_loop in 0 .. (ROWS/2){
-            //for b in 0..COLOR_DEPTH{
-              	let b = 7;
+            for b in 0..COLOR_DEPTH{
 		for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
@@ -768,12 +767,13 @@ pub fn main() {
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
-                //timer.nanosleep(gpio.bitplane_timings[b]);
+                timer.nanosleep(gpio.bitplane_timings[b]);
                 gpio.set_bits(GPIO_BIT!(PIN_OE));
 
-           // }
+            }
         }
     }
+    gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
         println!("Received CTRL-C");
