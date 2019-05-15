@@ -295,17 +295,14 @@ impl GPIO {
                         GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
 
                     row_mask = GPIO_BIT!(PIN_A);
-                    match ROWS /SUB_PANELS_ {
-                        d if d > 2 => row_mask |= GPIO_BIT!(PIN_B),
-                        d if d > 4 => row_mask |= GPIO_BIT!(PIN_C),
-                        d if d > 8 => row_mask |= GPIO_BIT!(PIN_D),
-                        d if d > 16 => row_mask |= GPIO_BIT!(PIN_E),
-                        _ => {}
-                    }
-
-
+                    let mut d = ROWS /SUB_PANELS_; 
+                    if d > 2 {row_mask |= GPIO_BIT!(PIN_B);}
+                    if d > 4 {row_mask |= GPIO_BIT!(PIN_C);}
+                    if d > 8 {row_mask |= GPIO_BIT!(PIN_D);}
+                    if d > 16 {row_mask |= GPIO_BIT!(PIN_E);}
+                         
                     all_used_bits |= row_mask;
-
+		    io.row_mask = row_mask;
                     let result = io.init_outputs(all_used_bits);
                     assert!(result == all_used_bits);
                 }
@@ -330,28 +327,32 @@ impl GPIO {
     fn get_row_bits(self: &GPIO, double_row: u8) -> u32 {
         // TODO: Implement this yourself.
         let mut row_address: u32;
-        match (double_row & 0x01)!=0 {
-            True=> row_address = GPIO_BIT!(PIN_A),
-            False=> row_address = 0,
+        match (double_row & 1)!=0 {
+            true=> row_address = GPIO_BIT!(PIN_A),
+            false=> row_address = 0,
         };
-        match (double_row & 0x02)!=0 {
-            True=> row_address |= GPIO_BIT!(PIN_B),
-            False=> row_address = 0,
+
+        match (double_row & 2)!=0 {
+            true=> row_address |= GPIO_BIT!(PIN_B),
+            false=> row_address |= 0,
+	};
+
+        match (double_row & 4)!=0 {
+            true=> row_address |= GPIO_BIT!(PIN_C),
+            false=> row_address |= 0,
         };
-        match (double_row & 0x04)!=0 {
-            True=> row_address |= GPIO_BIT!(PIN_C),
-            False=> row_address = 0,
+
+        match (double_row & 8)!=0 {
+            true=> row_address |= GPIO_BIT!(PIN_D),
+            false=> row_address |= 0,
         };
-        match (double_row & 0x08)!=0 {
-            True=> row_address |= GPIO_BIT!(PIN_D),
-            False=> row_address = 0,
-        };
-        match (double_row & 0x10)!=0 {
-            True=> row_address |= GPIO_BIT!(PIN_E),
-            False=> row_address = 0,
+
+        match (double_row & 10)!=0 {
+            true=> row_address |= GPIO_BIT!(PIN_E),
+            false=> row_address |= 0,
         };
         unsafe {
-            return row_address as u32 & row_mask;
+            return row_address as u32 & self.row_mask;
         }
     }
 }
@@ -663,22 +664,22 @@ impl Image {
 
 fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     let mut out: u32 = 0;
-    if top.r & ( 1 << plane)!=0 {
+    if top.r & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_R1);
     };
-    if top.g & ( 1 << plane)!=0 {
+    if top.g & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_G1);
     };
-    if top.b & ( 1 << plane)!=0 {
+    if top.b & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_B1);
     };
-    if bot.r & ( 1 << plane)!=0 {
+    if bot.r & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_R2);
     };
-    if bot.g & ( 1 << plane)!=0 {
+    if bot.g & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_G2);
     };
-    if bot.b & ( 1 << plane)!=0 {
+    if bot.b & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_B2);
     };
     out
@@ -744,21 +745,24 @@ pub fn main() {
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
         for row_loop in 0 .. (ROWS/2){
-            //for b in 0..COLOR_DEPTH{
-                let mut b = 0;
-                for col in 0 .. 32 {
+            for b in 0..COLOR_DEPTH{
+		        for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
-
+		            //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
                     gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
-                    gpio.set_bits(GPIO_BIT!(PIN_CLK));
+                    //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
+		            gpio.set_bits(GPIO_BIT!(PIN_CLK));
 
                 }
                 gpio.clear_bits(color_clk_mask);
 
                 unsafe {
                     let row_bits = gpio.get_row_bits(row_loop as u8);
-                    gpio.write_masked_bits(row_bits, row_mask);
+                    //println!("row number: {:#034b}",row_loop);
+                    //println!("row bits: {:#034b}",row_bits);
+                    //println!("row mask: {:#034b}",row_mask);
+		            gpio.write_masked_bits(row_bits, row_mask);
                 };
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
@@ -766,9 +770,10 @@ pub fn main() {
                 timer.nanosleep(gpio.bitplane_timings[b]);
                 gpio.set_bits(GPIO_BIT!(PIN_OE));
 
-            //}
+            }
         }
     }
+    gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
         println!("Received CTRL-C");
