@@ -432,7 +432,7 @@ impl Frame {
 impl Image {
 
     fn RawColorToFullColor(raw: u8) -> Result<u16, Box<std::error::Error>> {
-        return raw * ((1 << COLOR_DEPTH) - 1) / 255;
+        OK(raw * ((1 << COLOR_DEPTH) - 1) / 255)
     }
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
