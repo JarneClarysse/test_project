@@ -238,7 +238,6 @@ impl GPIO {
         unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
 
         for i in 0..self.slowdown_ {
-            self.gpio_clr_bits_ = value as *mut u32;
             unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
         }
     }
@@ -330,7 +329,7 @@ impl GPIO {
     // Calculates the pins we must activate to push the address of the specified double_row
     fn get_row_bits(self: &GPIO, double_row: u8) -> u32 {
         // TODO: Implement this yourself.
-        let mut row_address: u8;
+        let mut row_address: u32;
         match (double_row & 0x01)!=0 {
             True=> row_address = GPIO_BIT!(PIN_A),
             False=> row_address = 0,
@@ -435,7 +434,7 @@ impl Frame {
             let mut kolom: Vec<Pixel> = vec![];
 
                 for col in 0 .. COLUMNS {
-                    v.push(image.pixels[row][col]);
+                    kolom.push(image.pixels[row as usize][col as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
