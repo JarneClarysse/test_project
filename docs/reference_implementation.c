@@ -85,6 +85,7 @@ struct Pixel {
 
 struct Pixel Frame[ROWS][COLUMNS];
 
+
 // A raw pixel in a PPM file.
 struct PPMPixel {
   uint8_t R, G, B;
@@ -458,12 +459,12 @@ int main(int argc, char *argv[]) {
 
     for (uint8_t row_loop = 0; row_loop < ROWS / 2; ++row_loop) {
       for (unsigned b = 0; b < COLOR_DEPTH; ++b) {
-	for (unsigned col = 0; col < 32; ++col) {
-	  struct Pixel* top = &Frame[row_loop][col];
-	  struct Pixel* bot = &Frame[ROWS / 2 + row_loop][col];
-	  GPIO_WriteMaskedBits(io, GetPlaneBits(top, bot, b), color_clk_mask);  // col + reset clock
-	  GPIO_SetBits(io, PIN_CLK);               // Rising edge: clock color in.
-	}
+        for (unsigned col = 0; col < 32; ++col) {
+          struct Pixel* top = &Frame[row_loop][col];
+          struct Pixel* bot = &Frame[ROWS / 2 + row_loop][col];
+          GPIO_WriteMaskedBits(io, GetPlaneBits(top, bot, b), color_clk_mask);  // col + reset clock
+          GPIO_SetBits(io, PIN_CLK);               // Rising edge: clock color in.
+        }
 	GPIO_ClearBits(io, color_clk_mask);    // clock back to normal.
       
 	// Setting address and strobing needs to happen in dark time.

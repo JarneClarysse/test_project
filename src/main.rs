@@ -424,6 +424,25 @@ impl Frame {
 
 }
 
+fn nextFrame() {
+    for row in 0..ROWS {
+        for col in 0 .. COLUMNS {
+            struct Pixel*pix = &Frame[row][col];
+
+            // select the image column to show in this position
+            int pos = (current_position + col) % image_width;
+            struct PPMPixel*raw = &image[pos + row * image_width];
+
+            pix -> R = RawColorToFullColor(raw -> R);
+            pix -> G = RawColorToFullColor(raw -> G);
+            pix -> B = RawColorToFullColor(raw -> B);
+        }
+    }
+
+    if ( + + current_position >= image_width)
+    current_position = 0;
+}
+
 // TODO: Add your PPM parser here
 // NOTE/WARNING: Please make sure that your implementation can handle comments in the PPM file
 // You do not need to add support for any formats other than P6
@@ -432,7 +451,8 @@ impl Frame {
 impl Image {
 
     fn RawColorToFullColor(raw: u8) -> Result<u16, Box<std::error::Error>> {
-        return raw * ((1 << COLOR_DEPTH) - 1) / 255;
+        let number: u16 = raw as u16 ;
+        Ok(number)
     }
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
