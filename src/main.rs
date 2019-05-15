@@ -593,7 +593,9 @@ impl Image {
             for y in 0..w {
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
+                println!("y is : {}",y);
             }
+            println!("x is : {}",x);
             allePix.insert(0, hoogte_pix)
         }
         println!("Klaar2");
