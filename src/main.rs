@@ -427,37 +427,38 @@ impl Timer {
 // on the LED board. In most cases, the Frame will have less pixels
 // than the input Image!
 impl Frame {
-    fn new(pos: usize, pixels: Vec<Vec<Pixel>>) -> Frame {
+
+
+    fn nextFrame(pos: usize, image: Image) -> Frame {
+
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        for row in 0..ROWS {
+            let mut kolom: Vec<Pixel> = vec![];
+
+                for col in 0 .. COLUMNS {
+                    v.push(image.pixels[row][col]);
+
+                        /*
+                    struct Pixel*pix = &Frame[row][col];
+
+                    // select the image column to show in this position
+                    int pos = (current_position + col) % image_width;
+                    struct PPMPixel*raw = &image[pos + row * image_width];
+
+                    pix -> R = RawColorToFullColor(raw -> R);
+                    pix -> G = RawColorToFullColor(raw -> G);
+                    pix -> B = RawColorToFullColor(raw -> B);*/
+                }
+            v.push(kolom);
+        }
+
         let mut frame: Frame = Frame{
             pos: pos,
-            pixels: pixels
+            pixels: v
         };
 
         frame
-    }
 
-    fn nextFrame(image: Image) {
-
-        let mut v: Vec<Vec<Pixel>> = vec![];
-	for row in 0..ROWS {
-  	    let mut kolom: Vec<Pixel> = vec![];
-
-            for col in 0 .. COLUMNS {
-                v.push(image.pixels[row][col]);
-                
-                    /*
-                struct Pixel*pix = &Frame[row][col];
-
-                // select the image column to show in this position
-                int pos = (current_position + col) % image_width;
-                struct PPMPixel*raw = &image[pos + row * image_width];
-
-                pix -> R = RawColorToFullColor(raw -> R);
-                pix -> G = RawColorToFullColor(raw -> G);
-                pix -> B = RawColorToFullColor(raw -> B);*/
-            }
-	    v.push(kolom);
-        }
 
 
 
@@ -727,7 +728,8 @@ pub fn main() {
     let mut timer = Timer::new();
     println!("timer made");
 
-    let mut frame = Frame::new(1, image.pixels);
+    let mut frame: Frame = Frame::nextFrame(0, image);
+    
     println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
