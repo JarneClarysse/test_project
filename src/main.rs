@@ -438,7 +438,8 @@ impl Frame {
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             for col in 0 .. COLUMNS {
-                v.push(image.pixels[row[col]])
+                v.push(image.pixels[row][col]);
+                
                     /*
                 struct Pixel*pix = &Frame[row][col];
 
@@ -469,9 +470,9 @@ impl Frame {
 // to safely reject files with other max_color values
 impl Image {
 
-    fn RawColorToFullColor(raw: u8) -> Result<u16, Box<std::error::Error>> {
+    fn RawColorToFullColor(raw: u8) -> u16 {
         let number: u16 = raw as u16 ;
-        Ok(number)
+        number
     }
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
