@@ -33,9 +33,9 @@ use byteorder::{LittleEndian, ReadBytesExt};
 
 #[derive(Copy, Clone)]
 struct Pixel {
-    r: u16,
-    g: u16,
-    b: u16,
+    r: u8,
+    g: u8,
+    b: u8,
 }
 
 struct GPIO {
@@ -433,9 +433,9 @@ impl Image {
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
 
-        let mut re:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut gr:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut bl:u16 = cursor.read_u16::<LittleEndian>()?;
+        let mut re:u8 = cursor.read_u8()?;
+        let mut gr:u8 = cursor.read_u8()?;
+        let mut bl:u8 = cursor.read_u8()?;
 
         let pixel = Pixel{r:re,g:gr,b:bl};
 
@@ -597,6 +597,7 @@ impl Image {
             }
             println!("x is : {}",x);
             allePix.insert(0, hoogte_pix)
+
         }
         println!("Klaar2");
         image.width=w;
