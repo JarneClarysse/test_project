@@ -484,7 +484,7 @@ impl Image {
         let mut re:u8 = cursor.read_u8()?;
         let mut gr:u8 = cursor.read_u8()?;
         let mut bl:u8 = cursor.read_u8()?;
-        let pixel = Pixel{r:RawColorToFullColor(re),g:RawColorToFullColor(gr),b:RawColorToFullColor(bl)};
+        let pixel = Pixel{r:Image::RawColorToFullColor(re),g:Image::RawColorToFullColor(gr),b:Image::RawColorToFullColor(bl)};
 
 
         Ok(pixel)
@@ -661,22 +661,22 @@ impl Image {
 
 fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     let mut out: u32 = 0;
-    if top.r & ( 1 << plane) {
+    if top.r & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_R1);
     };
-    if top.g & ( 1 << plane) {
+    if top.g & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_G1);
     };
-    if top.b & ( 1 << plane) {
+    if top.b & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_B1);
     };
-    if bot.r & ( 1 << plane) {
+    if bot.r & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_R2);
     };
-    if bot.g & ( 1 << plane) {
+    if bot.g & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_G2);
     };
-    if bot.b & ( 1 << plane) {
+    if bot.b & ( 1 << plane)!=0 {
         out |= GPIO_BIT!(PIN_B2);
     };
     out
@@ -717,15 +717,10 @@ pub fn main() {
     };
     // TODO: Initialize the GPIO struct and the Timer struct
 
-    let mut gpio = match GPIO::new(1){
-        Ok(gpio) => gpio,
-        Err(why)=> panic!("GPIO could not be constructed - Desc: {}", why.description()),
-    };
+    let mut gpio =  GPIO::new(1);
 
-    let mut timer = match Timer::new(){
-        Ok(time)=> time,
-        Err(why)=> panic!("Timer could not be constructed - Desc: {}",why.description()),
-    };
+
+    let mut timer = Timer::new();
 
 
     // This code sets up a CTRL-C handler that writes "true" to the 
@@ -743,22 +738,23 @@ pub fn main() {
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
                 for col in 0 .. 32 {
-                    let mut top:Pixel = image.pixels[row_loop][col];
-                    let mut bot:Pixel = image.pixels[ROWS/2 + row_loop][col];
+                    let mut top:Pixel = image.pixels[row_loop as usize][col as usize];
+                    let mut bot:Pixel = image.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 
-                    GPIO::write_masked_bits(gpio,getPlaneBits(top,bot,b as u8), color_clk_mask);
-                    GPIO::set_bits(gpio,GPIO_BIT!(PIN_CLK));
+                    gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                    gpio.set_bits(GPIO_BIT!(PIN_CLK));
+
                 }
-                GPIO::clear_bits(gpio, color_clk_mask);
+                gpio.clear_bits(color_clk_mask);
+
                 unsafe {
-                    GPIO::write_masked_bits(gpio, GPIO::get_row_bits(gpio, row_loop as u8),row_mask);
-
-                }
-                GPIO::set_bits(gpio, GPIO_BIT!(PIN_LAT));
-                GPIO::clear_bits(gpio, GPIO_BIT!(PIN_LAT));
-                GPIO::clear_bits(gpio, GPIO_BIT!(PIN_OE));
-                Timer::nanosleep(timer, gpio.bitplane_timings[b]);
-                GPIO::set_bits(gpio, GPIO_BIT!(PIN_OE));
+                    gpio.write_masked_bits(gpio.get_row_bits(row_loop as u8), row_mask);
+                };
+                gpio.set_bits(GPIO_BIT!(PIN_LAT));
+                gpio.clear_bits(GPIO_BIT!(PIN_LAT));
+                gpio.clear_bits(GPIO_BIT!(PIN_OE));
+                timer.nanosleep(gpio.bitplane_timings[b]);
+                gpio.set_bits(GPIO_BIT!(PIN_OE));
 
             }
         }
