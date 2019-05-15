@@ -465,17 +465,17 @@ int main(int argc, char *argv[]) {
           GPIO_WriteMaskedBits(io, GetPlaneBits(top, bot, b), color_clk_mask);  // col + reset clock
           GPIO_SetBits(io, PIN_CLK);               // Rising edge: clock color in.
         }
-	GPIO_ClearBits(io, color_clk_mask);    // clock back to normal.
-      
-	// Setting address and strobing needs to happen in dark time.
-	GPIO_WriteMaskedBits(io, GetRowBits(row_loop), row_mask);
-      
-	GPIO_SetBits(io, PIN_LAT);   // Strobe in the previously clocked in row.
-	GPIO_ClearBits(io, PIN_LAT);
-	
-	GPIO_ClearBits(io, PIN_OE);
-	Timer_NanoSleep(bitplane_timings[b]);
-	GPIO_SetBits(io, PIN_OE);       
+        GPIO_ClearBits(io, color_clk_mask);    // clock back to normal.
+
+        // Setting address and strobing needs to happen in dark time.
+        GPIO_WriteMaskedBits(io, GetRowBits(row_loop), row_mask);
+
+        GPIO_SetBits(io, PIN_LAT);   // Strobe in the previously clocked in row.
+        GPIO_ClearBits(io, PIN_LAT);
+
+        GPIO_ClearBits(io, PIN_OE);
+        Timer_NanoSleep(bitplane_timings[b]);
+        GPIO_SetBits(io, PIN_OE);
       }
     }
 

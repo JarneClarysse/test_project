@@ -82,6 +82,9 @@ const COLOR_DEPTH: usize = 8;
 const ROWS: u32 = 16;
 const SUB_PANELS_ :u32 = 2;
 
+//Tijdelijk
+const COLUMNS :u32 = 32;
+
 const PIN_OE  : u64 = 4;
 const PIN_CLK : u64 = 17;
 const PIN_LAT : u64 = 21;
@@ -421,27 +424,43 @@ impl Timer {
 // on the LED board. In most cases, the Frame will have less pixels
 // than the input Image!
 impl Frame {
+    fn new(pos: usize, pixels: Vec<Vec<Pixel>>) -> Frame {
+        let mut frame: Frame = Frame{
+            pos: pos,
+            pixels: pixels
+        };
 
-}
-
-fn nextFrame() {
-    for row in 0..ROWS {
-        for col in 0 .. COLUMNS {
-            struct Pixel*pix = &Frame[row][col];
-
-            // select the image column to show in this position
-            int pos = (current_position + col) % image_width;
-            struct PPMPixel*raw = &image[pos + row * image_width];
-
-            pix -> R = RawColorToFullColor(raw -> R);
-            pix -> G = RawColorToFullColor(raw -> G);
-            pix -> B = RawColorToFullColor(raw -> B);
-        }
+        frame
     }
 
-    if ( + + current_position >= image_width)
-    current_position = 0;
+    fn nextFrame(image: Image) {
+
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        for row in 0..ROWS {
+            for col in 0 .. COLUMNS {
+                v.push(image.pixels[row[col]])
+                    /*
+                struct Pixel*pix = &Frame[row][col];
+
+                // select the image column to show in this position
+                int pos = (current_position + col) % image_width;
+                struct PPMPixel*raw = &image[pos + row * image_width];
+
+                pix -> R = RawColorToFullColor(raw -> R);
+                pix -> G = RawColorToFullColor(raw -> G);
+                pix -> B = RawColorToFullColor(raw -> B);*/
+            }
+        }
+
+
+
+/*
+        if ( + + current_position >= image_width)
+        current_position = 0;*/
+    }
 }
+
+
 
 // TODO: Add your PPM parser here
 // NOTE/WARNING: Please make sure that your implementation can handle comments in the PPM file
@@ -640,6 +659,29 @@ impl Image {
 
 }
 
+fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
+    let mut out: u32 = 0;
+    if top.r & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_R1);
+    };
+    if top.g & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_G1);
+    };
+    if top.b & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_B1);
+    };
+    if bot.r & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_R2);
+    };
+    if bot.g & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_G2);
+    };
+    if bot.b & ( 1 << plane) {
+        out |= GPIO_BIT!(PIN_B2);
+    };
+    out
+}
+
 pub fn main() {
     let args : Vec<String> = std::env::args().collect();
     let interrupt_received = Arc::new(AtomicBool::new(false));
@@ -674,7 +716,18 @@ pub fn main() {
         Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
     };
     // TODO: Initialize the GPIO struct and the Timer struct
-    
+
+    let mut gpio = match GPIO::new(1){
+        Ok(gpio) => gpio,
+        Err(why)=> panic!("GPIO could not be constructed - Desc: {}", why.description()),
+    };
+
+    let mut timer = match Timer::new(){
+        Ok(time)=> time,
+        Err(why)=> panic!("Timer could not be constructed - Desc: {}",why.description()),
+    };
+
+
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
     let int_recv = interrupt_received.clone();
@@ -684,6 +737,31 @@ pub fn main() {
     
     while interrupt_received.load(Ordering::SeqCst) == false {
         // TODO: Implement your rendering loop here
+        let mut color_clk_mask:u32 = 0;
+        color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
+
+        for row_loop in 0 .. (ROWS/2){
+            for b in 0..COLOR_DEPTH{
+                for col in 0 .. 32 {
+                    let mut top:Pixel = image.pixels[row_loop][col];
+                    let mut bot:Pixel = image.pixels[ROWS/2 + row_loop][col];
+
+                    GPIO::write_masked_bits(gpio,getPlaneBits(top,bot,b as u8), color_clk_mask);
+                    GPIO::set_bits(gpio,GPIO_BIT!(PIN_CLK));
+                }
+                GPIO::clear_bits(gpio, color_clk_mask);
+                unsafe {
+                    GPIO::write_masked_bits(gpio, GPIO::get_row_bits(gpio, row_loop as u8),row_mask);
+
+                }
+                GPIO::set_bits(gpio, GPIO_BIT!(PIN_LAT));
+                GPIO::clear_bits(gpio, GPIO_BIT!(PIN_LAT));
+                GPIO::clear_bits(gpio, GPIO_BIT!(PIN_OE));
+                Timer::nanosleep(timer, gpio.bitplane_timings[b]);
+                GPIO::set_bits(gpio, GPIO_BIT!(PIN_OE));
+
+            }
+        }
     }
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
