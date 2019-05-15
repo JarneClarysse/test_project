@@ -103,7 +103,7 @@ const PIN_B2  : u64 = 23;
 // Convenience macro for creating bitmasks. See comment above "impl GPIO" below
 macro_rules! GPIO_BIT {
     ($bit:expr) => {
-        1 << $bit
+       ( 1 << $bit )
     };
 }
 
@@ -328,7 +328,7 @@ impl GPIO {
     // Calculates the pins we must activate to push the address of the specified double_row
     fn get_row_bits(self: &GPIO, double_row: u8) -> u32 {
         // TODO: Implement this yourself.
-        let mut row_address: u8;
+        let mut row_address: u32;
         match (double_row & 0x01)!=0 {
             True=> row_address = GPIO_BIT!(PIN_A),
             False=> row_address = 0,
@@ -436,9 +436,11 @@ impl Frame {
     fn nextFrame(image: Image) {
 
         let mut v: Vec<Vec<Pixel>> = vec![];
-        for row in 0..ROWS {
+	for row in 0..ROWS {
+  	    let mut kolom: Vec<Pixel> = vec![];
+
             for col in 0 .. COLUMNS {
-                v.push(image.pixels[row][col]);
+                kolom.push(image.pixels[row as usize][col as usize]);
                 
                     /*
                 struct Pixel*pix = &Frame[row][col];
@@ -451,6 +453,7 @@ impl Frame {
                 pix -> G = RawColorToFullColor(raw -> G);
                 pix -> B = RawColorToFullColor(raw -> B);*/
             }
+	    v.push(kolom);
         }
 
 
@@ -633,22 +636,18 @@ impl Image {
                 _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
             };
         };
-        println!("Klaar3");
         for x in 0..h {
 	    println!("hoogte_pix crashes te game");
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
             for y in 0..w {
-		println!("y is :{}",y);
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
                 //println!("y is : {}",y);
             }
-            println!("x is : {}",x);
             allePix.insert(0, hoogte_pix)
 
         }
-        println!("Klaar2");
         image.width=w;
         image.height=h;
         image.pixels=allePix;
@@ -720,11 +719,13 @@ pub fn main() {
     // TODO: Initialize the GPIO struct and the Timer struct
 
     let mut gpio =  GPIO::new(1);
-
+    println!("gpio made");
 
     let mut timer = Timer::new();
+    println!("timer made");
 
-
+    let mut frame = Frame::new(1, image.pixels);
+    println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
     let int_recv = interrupt_received.clone();
@@ -736,21 +737,21 @@ pub fn main() {
         // TODO: Implement your rendering loop here
         let mut color_clk_mask:u32 = 0;
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
-
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
                 for col in 0 .. 32 {
-                    let mut top:Pixel = image.pixels[row_loop as usize][col as usize];
-                    let mut bot:Pixel = image.pixels[(ROWS/2 + row_loop )as usize][col as usize];
+                    let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
+                    let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 
                     gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
                     gpio.set_bits(GPIO_BIT!(PIN_CLK));
-
+			
                 }
                 gpio.clear_bits(color_clk_mask);
 
                 unsafe {
-                    gpio.write_masked_bits(gpio.get_row_bits(row_loop as u8), row_mask);
+		    let row_bits = gpio.get_row_bits(row_loop as u8);
+                    gpio.write_masked_bits(row_bits, row_mask);
                 };
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
