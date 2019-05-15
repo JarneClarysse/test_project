@@ -461,7 +461,6 @@ impl Frame {
 
 
 
-
 /*
         if ( + + current_position >= image_width)
         current_position = 0;*/
@@ -729,7 +728,7 @@ pub fn main() {
     println!("timer made");
 
     let mut frame: Frame = Frame::nextFrame(0, image);
-    
+
     println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
