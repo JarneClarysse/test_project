@@ -306,7 +306,6 @@ impl GPIO {
 
                     let result = io.init_outputs(all_used_bits);
                     assert!(result == all_used_bits);
-
                 }
                 // TODO: Implement this yourself.
 
