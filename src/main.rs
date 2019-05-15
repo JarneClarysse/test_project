@@ -736,37 +736,37 @@ pub fn main() {
     }).unwrap();
 
 
-    let mut color_clk_mask:u32 = 0;
-    color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
-    for row_loop in 0 .. (ROWS/2){
-        for b in 0..COLOR_DEPTH{
-            for col in 0 .. 32 {
-                let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
-                let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
-
-                gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
-                gpio.set_bits(GPIO_BIT!(PIN_CLK));
-
-            }
-            gpio.clear_bits(color_clk_mask);
-
-            unsafe {
-                let row_bits = gpio.get_row_bits(row_loop as u8);
-                gpio.write_masked_bits(row_bits, row_mask);
-            };
-            gpio.set_bits(GPIO_BIT!(PIN_LAT));
-            gpio.clear_bits(GPIO_BIT!(PIN_LAT));
-            gpio.clear_bits(GPIO_BIT!(PIN_OE));
-            timer.nanosleep(gpio.bitplane_timings[b]);
-            gpio.set_bits(GPIO_BIT!(PIN_OE));
-
-        }
-    }
 
     while interrupt_received.load(Ordering::SeqCst) == false {
         // TODO: Implement your rendering loop here
+        let mut color_clk_mask:u32 = 0;
+        color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
+        for row_loop in 0 .. (ROWS/2){
+            for b in 0..COLOR_DEPTH{
+                for col in 0 .. 32 {
+                    let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
+                    let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
+
+                    gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                    gpio.set_bits(GPIO_BIT!(PIN_CLK));
+
+                }
+                gpio.clear_bits(color_clk_mask);
+
+                unsafe {
+                    let row_bits = gpio.get_row_bits(row_loop as u8);
+                    gpio.write_masked_bits(row_bits, row_mask);
+                };
+                gpio.set_bits(GPIO_BIT!(PIN_LAT));
+                gpio.clear_bits(GPIO_BIT!(PIN_LAT));
+                gpio.clear_bits(GPIO_BIT!(PIN_OE));
+                timer.nanosleep(gpio.bitplane_timings[b]);
+                gpio.set_bits(GPIO_BIT!(PIN_OE));
+
+            }
+        }
     }
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
