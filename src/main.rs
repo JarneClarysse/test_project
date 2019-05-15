@@ -744,7 +744,8 @@ pub fn main() {
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
         for row_loop in 0 .. (ROWS/2){
-            for b in 0..COLOR_DEPTH{
+            //for b in 0..COLOR_DEPTH{
+                let mut b = 0;
                 for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
@@ -765,7 +766,7 @@ pub fn main() {
                 timer.nanosleep(gpio.bitplane_timings[b]);
                 gpio.set_bits(GPIO_BIT!(PIN_OE));
 
-            }
+            //}
         }
     }
     println!("Exiting.");
