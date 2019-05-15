@@ -432,13 +432,15 @@ impl Frame {
 impl Image {
 
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
-
+	println!("red");
         let mut re:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut gr:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut bl:u16 = cursor.read_u16::<LittleEndian>()?;
-
+        println!("green");
+	let mut gr:u16 = cursor.read_u16::<LittleEndian>()?;
+        println!("blue");
+	let mut bl:u16 = cursor.read_u16::<LittleEndian>()?;
+	println!("pixel");
         let pixel = Pixel{r:re,g:gr,b:bl};
-
+	println!("wtf");
 
         Ok(pixel)
 
@@ -588,15 +590,18 @@ impl Image {
         };
         println!("Klaar3");
         for x in 0..h {
+	    println!("hoogte_pix crashes te game");
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
             for y in 0..w {
+		println!("y is :{}",y);
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
-                println!("y is : {}",y);
+                //println!("y is : {}",y);
             }
             println!("x is : {}",x);
-            allePix.insert(0, hoogte_pix)
+            allePix.insert(0, hoogte_pix);
+	    println!("adding pix is a prob {}",x);
         }
         println!("Klaar2");
         image.width=w;
