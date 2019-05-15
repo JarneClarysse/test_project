@@ -225,18 +225,21 @@ impl GPIO {
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
 
-        self.gpio_set_bits_ = value as *mut u32;
+        unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
         for i in 0..self.slowdown_ {
-            self.gpio_set_bits_ = value as *mut u32;
+
+            unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
         }
     }
 
     fn clear_bits(self: &mut GPIO, value: u32) {        
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
-        self.gpio_clr_bits_ = value as *mut u32;
+        unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
+
         for i in 0..self.slowdown_ {
             self.gpio_clr_bits_ = value as *mut u32;
+            unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
         }
     }
 
@@ -436,10 +439,12 @@ impl Frame {
     fn nextFrame(image: Image) {
 
         let mut v: Vec<Vec<Pixel>> = vec![];
-        for row in 0..ROWS {
-            for col in 0 .. COLUMNS {
-                v.push(image.pixels[row as usize][col as uzise]);
+	for row in 0..ROWS {
+  	    let mut kolom: Vec<Pixel> = vec![];
 
+            for col in 0 .. COLUMNS {
+                v.push(image.pixels[row][col]);
+                
                     /*
                 struct Pixel*pix = &Frame[row][col];
 
@@ -451,6 +456,7 @@ impl Frame {
                 pix -> G = RawColorToFullColor(raw -> G);
                 pix -> B = RawColorToFullColor(raw -> B);*/
             }
+	    v.push(kolom);
         }
 
 
@@ -634,20 +640,17 @@ impl Image {
                 _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
             };
         };
-        println!("Klaar3");
         for x in 0..h {
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
             for y in 0..w {
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
-                println!("y is : {}",y);
+                //println!("y is : {}",y);
             }
-            println!("x is : {}",x);
             allePix.insert(0, hoogte_pix)
 
         }
-        println!("Klaar2");
         image.width=w;
         image.height=h;
         image.pixels=allePix;
@@ -719,12 +722,13 @@ pub fn main() {
     // TODO: Initialize the GPIO struct and the Timer struct
 
     let mut gpio =  GPIO::new(1);
-
+    println!("gpio made");
 
     let mut timer = Timer::new();
+    println!("timer made");
 
-    let mut frame: Frame = Frame::new(1, image.pixels);
-
+    let mut frame = Frame::new(1, image.pixels);
+    println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
     let int_recv = interrupt_received.clone();
@@ -732,34 +736,38 @@ pub fn main() {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
-    while interrupt_received.load(Ordering::SeqCst) == false {
-        // TODO: Implement your rendering loop here
-        let mut color_clk_mask:u32 = 0;
-        color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
-        for row_loop in 0 .. (ROWS/2){
-            for b in 0..COLOR_DEPTH{
-                for col in 0 .. 32 {
-                    let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
-                    let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
+    let mut color_clk_mask:u32 = 0;
+    color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
-                    gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
-                    gpio.set_bits(GPIO_BIT!(PIN_CLK));
+    for row_loop in 0 .. (ROWS/2){
+        for b in 0..COLOR_DEPTH{
+            for col in 0 .. 32 {
+                let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
+                let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 
-                }
-                gpio.clear_bits(color_clk_mask);
-
-                unsafe {
-                    gpio.write_masked_bits(gpio.get_row_bits(row_loop as u8), row_mask);
-                };
-                gpio.set_bits(GPIO_BIT!(PIN_LAT));
-                gpio.clear_bits(GPIO_BIT!(PIN_LAT));
-                gpio.clear_bits(GPIO_BIT!(PIN_OE));
-                timer.nanosleep(gpio.bitplane_timings[b]);
-                gpio.set_bits(GPIO_BIT!(PIN_OE));
+                gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                gpio.set_bits(GPIO_BIT!(PIN_CLK));
 
             }
+            gpio.clear_bits(color_clk_mask);
+
+            unsafe {
+                let row_bits = gpio.get_row_bits(row_loop as u8);
+                gpio.write_masked_bits(row_bits, row_mask);
+            };
+            gpio.set_bits(GPIO_BIT!(PIN_LAT));
+            gpio.clear_bits(GPIO_BIT!(PIN_LAT));
+            gpio.clear_bits(GPIO_BIT!(PIN_OE));
+            timer.nanosleep(gpio.bitplane_timings[b]);
+            gpio.set_bits(GPIO_BIT!(PIN_OE));
+
         }
+    }
+
+    while interrupt_received.load(Ordering::SeqCst) == false {
+        // TODO: Implement your rendering loop here
+
     }
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
