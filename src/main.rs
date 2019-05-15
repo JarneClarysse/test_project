@@ -438,8 +438,8 @@ impl Frame {
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             for col in 0 .. COLUMNS {
-                v.push(image.pixels[row][col]);
-                
+                v.push(image.pixels[row as usize][col as uzise]);
+
                     /*
                 struct Pixel*pix = &Frame[row][col];
 
@@ -723,6 +723,7 @@ pub fn main() {
 
     let mut timer = Timer::new();
 
+    let mut frame: Frame = Frame::new(1, image.pixels);
 
     // This code sets up a CTRL-C handler that writes "true" to the 
     // interrupt_received bool.
@@ -730,7 +731,7 @@ pub fn main() {
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
-    
+
     while interrupt_received.load(Ordering::SeqCst) == false {
         // TODO: Implement your rendering loop here
         let mut color_clk_mask:u32 = 0;
@@ -739,8 +740,8 @@ pub fn main() {
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
                 for col in 0 .. 32 {
-                    let mut top:Pixel = image.pixels[row_loop as usize][col as usize];
-                    let mut bot:Pixel = image.pixels[(ROWS/2 + row_loop )as usize][col as usize];
+                    let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
+                    let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 
                     gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
                     gpio.set_bits(GPIO_BIT!(PIN_CLK));
