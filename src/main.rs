@@ -29,6 +29,7 @@ use mmap::{MemoryMap, MapOption};
 use std::mem::size_of;
 use std::io::{Read, Cursor};
 use byteorder::{LittleEndian, ReadBytesExt};
+use std::time::SystemTime;
 
 
 #[derive(Copy, Clone)]
@@ -742,6 +743,7 @@ pub fn main() {
     }).unwrap();
 
 
+    let mut prev_time = SystemTime::now();
 
 
     while interrupt_received.load(Ordering::SeqCst) == false {
@@ -777,12 +779,19 @@ pub fn main() {
 
             }
         }
-        timer.nanosleep(2000);
-
-        frame = Frame::nextFrame(frame.pos, &image);
-
     }
-    gpio.set_bits(GPIO_BIT!(PIN_OE));
+
+    let mut elap =prev_time.elapsed()?;
+    let mut sec =  elap.as_secs();
+
+    let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(sec);
+
+    if usec_since_prev_frame >= 40000 {
+        prev_time = SystemTime::now();
+        Frame::nextFrame(frame.pos,&image);
+    }
+
+    //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
         println!("Received CTRL-C");

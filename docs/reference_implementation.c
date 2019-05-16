@@ -139,7 +139,7 @@ uint32_t *mmap_bcm_register(off_t register_offset) {
 // Initialize outputs.
 // Returns the bits that were available and could be set for output.
 uint32_t GPIO_InitOutputs(struct GPIO* io, uint32_t outputs) {
-      
+
   if (!io || io->gpio_port_ == NULL) {
     fprintf(stderr, "Attempt to init outputs but not yet Init()-ialized.\n");
     return 0;
@@ -247,7 +247,7 @@ struct GPIO* GPIO_New(int slowdown, int rows) {
   for (int b = 0; b < COLOR_DEPTH; ++b) {
     bitplane_timings[b] = timing_ns;
     timing_ns *= 2;
-  } 
+  }
 
   return io;
 }
