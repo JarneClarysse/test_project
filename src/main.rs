@@ -482,12 +482,12 @@ impl Frame {
 
             for col in 0 .. COLUMNS {
                 let position = (pos as u32 + col)% image.width as u32 ;
-                if col >8 && col <sign && row == 7{
+                if col >8 && col < sign && row == 7{
                     println!(" sign {} ", sign);
 
                     kolom.push(Pixel{r:0,g:0,b:0});
                 } else{
-                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+                    kolom.push(image.pixels[row as usize][position as usize]);
 
                 };
 
@@ -511,9 +511,12 @@ impl Frame {
 
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
     let mut image2;
+    let mut frame;
     for x in 0..13{
-        let mut frame = Frame::render_water_frame(x, image);
+        frame = Frame::nextFrame(0, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
+        frame = Frame::render_water_frame(x,&image2);
+        image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
         scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false);
 
     }
