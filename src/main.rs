@@ -915,7 +915,6 @@ pub fn main() {
         }
 
     }
-
     for ind in 0..Image_list.len() {
         let mut image = Image_list[ind];
 
