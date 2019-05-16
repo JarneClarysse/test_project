@@ -30,6 +30,7 @@ use std::mem::size_of;
 use std::io::{Read, Cursor};
 use byteorder::{LittleEndian, ReadBytesExt};
 use std::time::SystemTime;
+use std::f64::INFINITY;
 
 
 #[derive(Copy, Clone)]
@@ -691,7 +692,7 @@ fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     out
 }
 
-fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, duration: u64, slowfactor: u64){
+fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64){
 
     let interrupt_received = Arc::new(AtomicBool::new(false));
 
@@ -702,11 +703,14 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, duration: u64,
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
+    if(duration == -1){
+        duration = INFINITY;
+    }
 
     let mut prev_time = SystemTime::now();
     let mut starttime= SystemTime::now();
 
-    let mut dur =  0 as u64;
+    let mut dur =  0 as f64;
 
     let int_recv = interrupt_received.clone();
     ctrlc::set_handler(move || {
@@ -774,7 +778,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, duration: u64,
             Ok(done) => done,
             Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
         };
-        dur = done.as_secs();
+        dur = done.as_secs() as f64;
     }
 
 }
@@ -821,7 +825,7 @@ pub fn main() {
     println!("timer made");
 
 
-    scroll_for(&mut gpio,&mut timer,&mut image, 10,10);
+    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,10);
 
 
 
