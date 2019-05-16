@@ -883,6 +883,9 @@ pub fn main() {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
+    scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,false,&interrupt_received);
+
+
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
