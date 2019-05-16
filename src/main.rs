@@ -54,6 +54,7 @@ struct GPIO {
 }
 
 // This is a representation of the "raw" image
+#[derive(Clone)]
 struct Image {
     width: usize,
     height: usize,
@@ -836,6 +837,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 pub fn main() {
     let args : Vec<String> = std::env::args().collect();
     let interrupt_received = Arc::new(AtomicBool::new(false));
+    let mut pad: String;
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
@@ -887,9 +889,10 @@ pub fn main() {
 
     //let mut Image_list: Vec<Image> = vec![];
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
-    let mut firstImage=image;
+
 
     let mut Image_names: Vec<&str> = vec!["Pokemon1","Pokemon2","Pokemon3","Pokemon4","Pokemon5","Pokemon6","Pokemon7","Pokemon8","Pokemon9","Pokemon10","Pokemon11","Pokemon12","Pokemon13","Pokemon14","Pokemon15","Pokemon16","Pokemon17"];
+    let mut firstImage=image.clone();
     for index in 1..18 {
 
         path = Path::new(&Image_names[index].clone());
@@ -914,18 +917,18 @@ pub fn main() {
 
 
         if index == 1{
-            firstImage=image;
+            firstImage=image.clone();
         }
 
-        Image_list.push(image);
+        Image_list.push(image.clone());
         if(index == 3) || (index == 6){
-            Image_list.push(firstImage);
+            Image_list.push(firstImage.clone());
         }
 
     }
 
     for ind in 0..Image_list.len() {
-        let mut image1 = &Image_list[ind];
+        let mut image1 = Image_list[ind].clone();
 
 
         if(ind == 0) || (ind==3) || (ind == 7){
