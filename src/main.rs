@@ -843,14 +843,17 @@ pub fn main() {
     if nix::unistd::Uid::current().is_root() == false {
         eprintln!("Must run as root to be able to access /dev/mem\nPrepend \'sudo\' to the command");
         std::process::exit(1);
-    } else if args.len() < 2 {
-        eprintln!("Syntax: {:?} [image]", args[0]);
+    } else if args.len() < 3 {
+        eprintln!("Syntax: {:?} [image] [0: normal, otherNumber:killer]", args[0]);
         std::process::exit(1);
     }
 
     // TODO: Read the PPM file here. You can find its name in args[1]
     let mut path = Path::new(&args[1]);
     let mut display = path.display();
+
+    let choice = &args[2] as u8;
+    let choice_int = choice.parse::<i32>().unwrap();
 
     let mut file = match File::open(&path)    {
         Err(why) => panic!("Could not open file: {} (Reason: {})",
@@ -883,8 +886,9 @@ pub fn main() {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
-//    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
-
+    if(choice_int == 0){
+    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+    }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
 
