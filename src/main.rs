@@ -437,7 +437,7 @@ impl Frame {
 
                 for col in 0 .. COLUMNS {
                     let position = (pos as u32 + col)% image.width as u32 ;
-                    kolom.push(image.pixels[row as usize][pos as usize]);
+                    kolom.push(image.pixels[row as usize][position as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
@@ -795,7 +795,8 @@ pub fn main() {
 
     if usec_since_prev_frame >= 40000 {
         prev_time = SystemTime::now();
-        Frame::nextFrame(frame.pos,&image);
+       
+	frame = Frame::nextFrame(frame.pos,&image);
     }
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
