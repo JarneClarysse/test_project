@@ -901,15 +901,16 @@ pub fn main() {
     let mut timer = Timer::new();
     println!("timer made");
 
+    render_water(&mut gpio, &mut timer, &mut image);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
 
 
     for index in 1..18 {
 
-    }
+    };
 
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
