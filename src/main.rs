@@ -229,7 +229,7 @@ impl GPIO {
         // This function expects a bitmask as the @value argument
 
         unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
-        for i in 0..self.slowdown_ {
+        for _i in 0..self.slowdown_ {
 
             unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
         }
@@ -240,7 +240,7 @@ impl GPIO {
         // This function expects a bitmask as the @value argument
         unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
 
-        for i in 0..self.slowdown_ {
+        for _i in 0..self.slowdown_ {
             unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
         }
     }
@@ -401,12 +401,12 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let mut kJitterAllowanceNanos: u32 = 60*150;
+        let kJitterAllowanceNanos: u32 = 60*150;
         if nanos > kJitterAllowanceNanos + 5000 {
             let before = unsafe {self.read() };
             let difference = nanos - kJitterAllowanceNanos;
             match sleep(std::time::Duration::new(0, difference)){
-                Some(reamin) => {
+                Some(_reamin) => {
                     let after = unsafe {self.read()} ;
                     let nanoseconds_passed: u32 = 1000* (after-before) as u32;
                     nanos -= nanoseconds_passed;
@@ -417,9 +417,10 @@ impl Timer {
             }
         }
         if nanos <20 {return }
-        let mut nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
-        for x in nanoseconds_left..0 {
-            unsafe{self.read()};
+        let nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
+        for _x in nanoseconds_left..0 {
+            //unsafe{self.read()};
+            println!("");
         }
     }
 }
@@ -431,27 +432,16 @@ impl Timer {
 impl Frame {
 
 
-    fn nextFrame(mut pos: usize, image: &Image) -> Frame {
+    fn nextFrame(pos: usize, image: &Image) -> Frame {
 
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
 
-                for col in 0 .. COLUMNS {
-                    let position = (pos as u32 + col)% image.width as u32 ;
-                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
-
-                        /*
-                    struct Pixel*pix = &Frame[row][col];
-
-                     // select the image column to show in this position
-                    int pos = (current_position + col) % image_width;
-                    struct PPMPixel*raw = &image[pos + row * image_width];
-
-                    pix -> R = RawColorToFullColor(raw -> R);
-                    pix -> G = RawColorToFullColor(raw -> G);
-                    pix -> B = RawColorToFullColor(raw -> B);*/
-                }
+            for col in 0 .. COLUMNS {
+                let position = (pos as u32 + col) % image.width as u32;
+                kolom.push(image.pixels[(ROWS - 1 - row) as usize][position as usize]);
+            }
             v.push(kolom);
         }
         let mut pos2 = pos+1;
@@ -466,43 +456,23 @@ impl Frame {
 
         frame
 
-
-
-/*
-        if ( + + current_position >= image_width)
-        current_position = 0;*/
     }
 
-    fn render_water_frame(pos: u32, image: &Image) -> Frame{
+    fn render_water_frame(pos: usize, image: &Image) -> Frame{
         let mut v: Vec<Vec<Pixel>> = vec![];
-        let sign = pos;
-//        println!("sign {}", sign);
-
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
-
             for col in 0 .. COLUMNS {
-//                let position = (pos as u32 + col)% image.width as u32 ;
-                if col > 7 && col <(23-pos) && row == 8{
-  //                  println!(" sign {} ", sign);
-
-                    kolom.push(Pixel{r:0,g:0,b:0});
-                } else{
-                    kolom.push(image.pixels[(ROWS-1- row) as usize][col as usize]);
-
+                match col >7 && col< (22-pos) && row == 7 {
+                    true => kolom.push(Pixel{r:0,g:0,b:0}),
+                    false=>  kolom.push(image.pixels[row as usize][col as usize]),
                 };
-
 
             };
             v.push(kolom);
         };
-        let mut pos2 = (pos+1) as usize;
-        if pos2 >= image.width{
-            pos2 = 0;
-        };
-
         let mut frame: Frame = Frame{
-            pos: pos2,
+            pos: pos,
             pixels: v
         };
 
@@ -514,8 +484,6 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_rece
     let mut image2;
     let mut frame;
     for x in 0..14{
-        frame = Frame::nextFrame(0, image);
-        image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
         frame = Frame::render_water_frame(x,&image2);
         image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
         scroll_for(gpio, timer, &mut image2, 100000 as f64,1,false,interrupt_received);
@@ -531,23 +499,14 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_rece
 // to safely reject files with other max_color values
 impl Image {
 
-    fn RawColorToFullColor(raw: u8) -> u16 {
-        let number: u16 = raw as u16 ;
-        number
-    }
-
     fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
 
-        /*
-        let mut re:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut gr:u16 = cursor.read_u16::<LittleEndian>()?;
-        let mut bl:u16 = cursor.read_u16::<LittleEndian>()?;*/
+
 
         let mut re:u8 = cursor.read_u8()?;
         let mut gr:u8 = cursor.read_u8()?;
         let mut bl:u8 = cursor.read_u8()?;
-        let pixel = Pixel{r:Image::RawColorToFullColor(re),g:Image::RawColorToFullColor(gr),b:Image::RawColorToFullColor(bl)};
-
+        let pixel = Pixel{r:re as u16,g:gr as u16,b:bl as u16};
 
         Ok(pixel)
 
@@ -556,8 +515,6 @@ impl Image {
     fn read_num(cursor: &mut Cursor<Vec<u8>>) -> Result<usize, Box<std::error::Error>> {
         let mut v: Vec<u8> = vec![];
         let mut c:[u8; 1] = [0];
-
-
 
 
         //consume whitespace
@@ -569,7 +526,6 @@ impl Image {
             };
         };
 
-
         //read number
         loop{
             cursor.read(&mut c)?;
@@ -580,15 +536,10 @@ impl Image {
             };
         };
 
-
-
         let num_str = std::str::from_utf8(&v)?;
         let num = num_str.parse::<usize>()?;
 
-
-
         Ok(num)
-
     }
 
     fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>) -> Result<Image, Box<std::error::Error>> {
@@ -597,8 +548,6 @@ impl Image {
             height: 0,
             pixels: vec![]
         };
-        //let mut buf2 = vec![];
-
         let mut header: [u8;2] = [0,2];
         cursor.read(&mut header);
 
@@ -626,7 +575,6 @@ impl Image {
         };
 
         let w = Image::read_num(cursor)?;
-
 
         loop{
             cursor.read(&mut c)?;
@@ -681,10 +629,10 @@ impl Image {
                 _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
             };
         };
-
+        /*
         println!("{}", h);
         println!("{}", w);
-        println!("{}",max);
+        println!("{}",max);*/
 
         let mut allePix: Vec<Vec<Pixel>> = vec![];
 
@@ -695,13 +643,12 @@ impl Image {
                 _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
             };
         };
-        for x in 0..h {
+        for _x in 0..h {
             let mut hoogte_pix: Vec<Pixel> = vec![];
 
-            for y in 0..w {
+            for _y in 0..w {
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
-                //println!("y is : {}",y);
             }
             allePix.insert(0, hoogte_pix)
 
@@ -711,34 +658,10 @@ impl Image {
         image.pixels=allePix;
 
         Ok(image)
-
     }
 
 
 
-}
-
-fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
-    let mut out: u32 = 0;
-    if top.r & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_R1);
-    };
-    if top.g & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_G1);
-    };
-    if top.b & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_B1);
-    };
-    if bot.r & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_R2);
-    };
-    if bot.g & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_G2);
-    };
-    if bot.b & (1 << plane) !=0 {
-        out |= GPIO_BIT!(PIN_B2);
-    };
-    out
 }
 
 fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64,scrollable: bool,interrupt_received: &Arc<AtomicBool>){
@@ -750,7 +673,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
-    if(duration == -1.0){
+    if duration == -1.0{
         duration = INFINITY;
     }
 
@@ -780,9 +703,6 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
                 unsafe {
                     let row_bits = gpio.get_row_bits(row_loop as u8);
-                    //println!("row number: {:#034b}",row_loop);
-                    //println!("row bits: {:#034b}",row_bits);
-                    //println!("row mask: {:#034b}",row_mask);
                     gpio.write_masked_bits(row_bits, row_mask);
                 };
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
@@ -792,15 +712,13 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
                 gpio.set_bits(GPIO_BIT!(PIN_OE));
 
             }
-            //gpio.set_bits(GPIO_BIT!(PIN_OE));
         }
 
 
         let mut current_time = SystemTime::now();
 
-        if(scrollable){
+        if scrollable{
             //NEXT FRAME LOGIC
-
 
             let mut elap = match current_time.duration_since(prev_time) {
                 Ok(elap) => elap,
@@ -827,10 +745,29 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
         };
         dur = done.as_micros() as f64;
     }
+}
 
-
-
-
+fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
+    let mut out: u32;
+    if top.r & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_R1);
+    };
+    if top.g & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_G1);
+    };
+    if top.b & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_B1);
+    };
+    if bot.r & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_R2);
+    };
+    if bot.g & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_G2);
+    };
+    if bot.b & (1 << plane) !=0 {
+        out |= GPIO_BIT!(PIN_B2);
+    };
+    out
 }
 
 pub fn main() {
@@ -842,6 +779,7 @@ pub fn main() {
     if nix::unistd::Uid::current().is_root() == false {
         eprintln!("Must run as root to be able to access /dev/mem\nPrepend \'sudo\' to the command");
         std::process::exit(1);
+
     } else if args.len() < 3 {
         eprintln!("Syntax: {:?} [image] [0: normal, otherNumber:killer]", args[0]);
         std::process::exit(1);
@@ -873,20 +811,20 @@ pub fn main() {
     // TODO: Initialize the GPIO struct and the Timer struct
 
     let mut gpio =  GPIO::new(1);
-    println!("gpio made");
+    //println!("gpio made");
 
     let mut timer = Timer::new();
-    println!("timer made");
+    //println!("timer made");
 
-    let interrupt_received = Arc::new(AtomicBool::new(false));
+    //let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = interrupt_received.clone();
+    let int_recv = Arc::new(AtomicBool::new(false));;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
-    if(choice_int == 0){
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+    if choice_int == 0{
+        scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -894,14 +832,14 @@ pub fn main() {
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
 
     //let mut Image_list: Vec<Image> = vec![];
-    let mut Image_list: Vec<Image> = Vec::with_capacity(19);
+    let mut image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let mut Image_names: Vec<&str> = vec!["figures/Pokemon1.ppm","figures/Pokemon2.ppm","figures/Pokemon3.ppm","figures/Pokemon4.ppm","figures/Pokemon5.ppm","figures/Pokemon6.ppm","figures/Pokemon7.ppm","figures/Pokemon8.ppm","figures/Pokemon9.ppm","figures/Pokemon10.ppm","figures/Pokemon11.ppm","figures/Pokemon12.ppm","figures/Pokemon13.ppm","figures/Pokemon14.ppm","figures/Pokemon15.ppm","figures/Pokemon16.ppm","figures/Pokemon17.ppm"];
-    let mut firstImage=image.clone();
+    let mut image_names: Vec<&str> = vec!["figures/Pokemon1.ppm","figures/Pokemon2.ppm","figures/Pokemon3.ppm","figures/Pokemon4.ppm","figures/Pokemon5.ppm","figures/Pokemon6.ppm","figures/Pokemon7.ppm","figures/Pokemon8.ppm","figures/Pokemon9.ppm","figures/Pokemon10.ppm","figures/Pokemon11.ppm","figures/Pokemon12.ppm","figures/Pokemon13.ppm","figures/Pokemon14.ppm","figures/Pokemon15.ppm","figures/Pokemon16.ppm","figures/Pokemon17.ppm"];
+    let mut first_image= image.clone();
     for index in 0..17 {
-	let pad = Image_names[index].clone();
-        path = Path::new(pad);
+	    //let pad = image_names[index].clone();
+        path = Path::new(image_names[index].clone());
         display = path.display();
 
         file = match File::open(&path)    {
@@ -926,24 +864,24 @@ pub fn main() {
             firstImage=image.clone();
         }
 
-        Image_list.push(image.clone());
+        image_list.push(image.clone());
         if(index == 2) || (index == 5){
             Image_list.push(firstImage.clone());
         }
 
     }
-    for ind in 0..Image_list.len() {
+    for ind in 0..image_list.len() {
         let mut image1 = Image_list[ind].clone();
 
 
-        if(ind == 0) || (ind==3) || (ind == 7){
+        if (ind == 0) || (ind==3) || (ind == 7){
             scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,false,&interrupt_received);
 
-        } else if (ind == 18) {
+        } else if ind == 18 {
             scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,true,&interrupt_received);
         } else if (ind == 1) || (ind == 2){
             scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,true,&interrupt_received);
-        } else if (ind == 4){
+        } else if ind == 4{
             render_water(&mut gpio, &mut timer,&mut image1,&interrupt_received);
         } else{
             scroll_for(&mut gpio,&mut timer,&mut image1, 800000 as f64,10,false,&interrupt_received);
