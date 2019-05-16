@@ -509,12 +509,12 @@ impl Frame {
     }
 }
 
-fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
+fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
     let mut image2;
     for x in 0..13{
         let mut frame = Frame::render_water_frame(x, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
-        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false);
+        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false,interrupt_received);
 
     }
 }
