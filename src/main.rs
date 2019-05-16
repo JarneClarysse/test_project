@@ -889,8 +889,6 @@ pub fn main() {
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
     let mut firstImage=image;
 
-    let mut first:bool = true;
-
     for index in 1..18 {
 
 
