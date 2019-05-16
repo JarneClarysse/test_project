@@ -779,25 +779,29 @@ pub fn main() {
 
             }
         }
+
+        //NEXT FRAME LOGIC
+        let mut elap =prev_time.elapsed();
+
+        let mut elap = match prev_time.elapsed() {
+            Ok(elap) => elap,
+            Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
+        };
+
+
+        let mut sec =  elap.as_secs();
+
+        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(sec);
+
+        if usec_since_prev_frame >= 40000 {
+            prev_time = SystemTime::now();
+
+            frame = Frame::nextFrame(frame.pos,&image);
+        }
+
     }
 
-    let mut elap =prev_time.elapsed();
 
-    let mut elap = match prev_time.elapsed() {
-        Ok(elap) => elap,
-        Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
-    };
-
-    
-    let mut sec =  elap.as_secs();
-
-    let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(sec);
-
-    if usec_since_prev_frame >= 40000 {
-        prev_time = SystemTime::now();
-       
-	frame = Frame::nextFrame(frame.pos,&image);
-    }
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
