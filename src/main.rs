@@ -30,6 +30,7 @@ use std::mem::size_of;
 use std::io::{Read, Cursor};
 use byteorder::{LittleEndian, ReadBytesExt};
 use std::time::SystemTime;
+use std::f64::INFINITY;
 
 
 #[derive(Copy, Clone)]
@@ -439,6 +440,16 @@ impl Frame {
                     let position = (pos as u32 + col)% image.width as u32 ;
                     kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
 
+                        /*
+                    struct Pixel*pix = &Frame[row][col];
+
+                     // select the image column to show in this position
+                    int pos = (current_position + col) % image_width;
+                    struct PPMPixel*raw = &image[pos + row * image_width];
+
+                    pix -> R = RawColorToFullColor(raw -> R);
+                    pix -> G = RawColorToFullColor(raw -> G);
+                    pix -> B = RawColorToFullColor(raw -> B);*/
                 }
             v.push(kolom);
         }
@@ -766,10 +777,8 @@ pub fn main() {
     } else if args.len() < 2 {
         eprintln!("Syntax: {:?} [image]", args[0]);
         std::process::exit(1);
-    }
-
-    prinln!("{}",args[1]);
-
+    } 
+    
     // TODO: Read the PPM file here. You can find its name in args[1]
     let path = Path::new(&args[1]);
     let display = path.display();
@@ -779,7 +788,6 @@ pub fn main() {
                            display, why.description()),
         Ok(file) => file
     };
-
 
     // read the full file into memory. panic on failure
     let mut raw_file = Vec::new();
@@ -820,7 +828,7 @@ pub fn main() {
 
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
-		        for col in 0 .. 32 {
+		 for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 		            //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
@@ -828,7 +836,7 @@ pub fn main() {
                     //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
 		            gpio.set_bits(GPIO_BIT!(PIN_CLK));
 
-                };
+                }
                 gpio.clear_bits(color_clk_mask);
 
                 unsafe {
@@ -841,12 +849,12 @@ pub fn main() {
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
- 		        timer.nanosleep(gpio.bitplane_timings[b]);
-		        gpio.set_bits(GPIO_BIT!(PIN_OE));
+ 		timer.nanosleep(gpio.bitplane_timings[b]);            	
+		gpio.set_bits(GPIO_BIT!(PIN_OE));
 
-            };
+            }
 	    //gpio.set_bits(GPIO_BIT!(PIN_OE));
-        };
+        }
 
         //NEXT FRAME LOGIC
         let mut current_time = SystemTime::now();
@@ -867,9 +875,9 @@ pub fn main() {
 
 
             frame = Frame::nextFrame(frame.pos,&image);
-        };
+        }
 
-    };
+    }
 
 
 
