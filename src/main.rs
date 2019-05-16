@@ -398,10 +398,10 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let kJitterAllowanceNanos: u32 = 60 * 150;
-        if nanos > kJitterAllowanceNanos + 5000 {
+        let k_jitter_allowance_nanos: u32 = 60 * 150;
+        if nanos > k_jitter_allowance_nanos + 5000 {
             let before = unsafe { self.read() };
-            let difference = nanos - kJitterAllowanceNanos;
+            let difference = nanos - k_jitter_allowance_nanos;
             match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
                     let after = unsafe { self.read() };
@@ -510,7 +510,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -524,7 +524,7 @@ impl Image {
                 b'0'...b'9' => { v.push(c[0]); }
                 b' ' | b'\t' | b'\n' => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -545,7 +545,9 @@ impl Image {
             pixels: vec![],
         };
         let mut header: [u8; 2] = [0, 2];
-        cursor.read(&mut header);
+        match cursor.read(&mut header){
+            Err(why)=> panic!("something happened while parsing header - {}", why.description()),
+        };
 
 
         match &header {
@@ -570,7 +572,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -594,7 +596,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -619,7 +621,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -647,7 +649,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -658,7 +660,7 @@ impl Image {
         println!("{}", w);
         println!("{}",max);*/
 
-        let mut allePix: Vec<Vec<Pixel>> = vec![];
+        let mut alle_pix: Vec<Vec<Pixel>> = vec![];
 
         loop {
             cursor.read(&mut c)?;
@@ -666,7 +668,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok(res) => break,
+                        Ok(_res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
