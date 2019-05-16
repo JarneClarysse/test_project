@@ -825,7 +825,7 @@ pub fn main() {
     println!("timer made");
 
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,10);
+    scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10);
 
 
 
