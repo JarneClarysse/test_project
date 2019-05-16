@@ -912,7 +912,7 @@ pub fn main() {
             if (ind == 0) || (ind == 3) || (ind == 8) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
             } else if ind == 21 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1000000000 as f64, 1, true, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received);
             } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 9) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
             } else if ind == 5 {
