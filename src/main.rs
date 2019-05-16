@@ -691,7 +691,7 @@ fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     out
 }
 
-fn scroll_for(gpio:&GPIO,timer:&Timer,image:&Image,duration: u64){
+fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, duration: u64){
 
     let interrupt_received = Arc::new(AtomicBool::new(false));
 
@@ -821,7 +821,7 @@ pub fn main() {
     println!("timer made");
 
 
-    scroll_for(&gpio,&timer,&image, 10);
+    scroll_for(&mut gpio,&mut timer,&mut image, 10);
 
 
 
