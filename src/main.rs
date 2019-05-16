@@ -399,7 +399,7 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let mut kJitterAllowanceNanos: u32 = 60*1000;
+        let mut kJitterAllowanceNanos: u32 = 60*150;
         if nanos > kJitterAllowanceNanos + 5000 {
             let before = unsafe {self.read() };
             let difference = nanos - kJitterAllowanceNanos;
