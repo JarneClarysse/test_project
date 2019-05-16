@@ -437,7 +437,7 @@ impl Frame {
 
                 for col in 0 .. COLUMNS {
                     let position = (pos as u32 + col)% image.width as u32 ;
-                    kolom.push(image.pixels[(ROWS -row-1) as usize][position as usize]);
+                    kolom.push(image.pixels[row as usize][position as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
@@ -452,14 +452,13 @@ impl Frame {
                 }
             v.push(kolom);
         }
-        let mut pos2 = pos + 1 ;
-        if pos2 >= image.width{
-	    println!("pos2 {}",pos2);
+        pos += pos;
+        if pos >= image.width{
             pos = 0;
         }
 
         let mut frame: Frame = Frame{
-            pos: pos2,
+            pos: pos,
             pixels: v
         };
 
@@ -727,7 +726,7 @@ pub fn main() {
     };
     // TODO: Initialize the GPIO struct and the Timer struct
 
-    let mut gpio =  GPIO::new(5);
+    let mut gpio =  GPIO::new(1);
     println!("gpio made");
 
     let mut timer = Timer::new();
@@ -754,13 +753,13 @@ pub fn main() {
 
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
-	        for col in 0 .. 32 {
+		        for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 		            //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
                     gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
                     //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
-	            gpio.set_bits(GPIO_BIT!(PIN_CLK));
+		            gpio.set_bits(GPIO_BIT!(PIN_CLK));
 
                 }
                 gpio.clear_bits(color_clk_mask);
@@ -770,36 +769,36 @@ pub fn main() {
                     //println!("row number: {:#034b}",row_loop);
                     //println!("row bits: {:#034b}",row_bits);
                     //println!("row mask: {:#034b}",row_mask);
-	            gpio.write_masked_bits(row_bits, row_mask);
+		            gpio.write_masked_bits(row_bits, row_mask);
                 };
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
-                //timer.nanosleep(gpio.bitplane_timings[b]);
-//                gpio.set_bits(GPIO_BIT!(PIN_OE));
+                timer.nanosleep(gpio.bitplane_timings[b]);
+                gpio.set_bits(GPIO_BIT!(PIN_OE));
 
             }
-	    gpio.set_bits(GPIO_BIT!(PIN_OE));
         }
-	
-        //NEXT FRAME LOGIC
 
-        let mut elap = match prev_time.elapsed() {
+        //NEXT FRAME LOGIC
+        let mut current_time = SystemTime::now();
+
+        let mut elap = match current_time.duration_since(prev_time) {
             Ok(elap) => elap,
             Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
         };
 
-	let mut sec = elap.as_secs();
-        let mut usec =  elap.as_micros();
-	println!("elapsed time {}", sec);
 
-        let mut usec_since_prev_frame = (sec) * 1000* 1000+(usec) as u64;
-	println!("use since {}", usec_since_prev_frame);
-        if usec_since_prev_frame >= 40000{
-            prev_time = SystemTime::now();
-	    
+        let mut sec =  elap.as_secs();
+        let mut usec =  elap.as_micros();
+
+        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec);
+
+        if usec_since_prev_frame >= 40000 {
+            prev_time = current_time;
+
+
             frame = Frame::nextFrame(frame.pos,&image);
-	    println!("frame pos {}",frame.pos);
         }
 
     }
