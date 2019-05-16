@@ -474,16 +474,16 @@ impl Frame {
 
     fn render_water_frame(pos: u32, image: &Image) -> Frame{
         let mut v: Vec<Vec<Pixel>> = vec![];
-        let sign = 13-pos;
-        println!("sign {}", sign);
+        let sign = pos;
+//        println!("sign {}", sign);
 
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
 
             for col in 0 .. COLUMNS {
 //                let position = (pos as u32 + col)% image.width as u32 ;
-                if col >8 && col <(22-sign) && row == 8{
-                    println!(" sign {} ", sign);
+                if col > 7 && col <(23-pos) && row == 8{
+  //                  println!(" sign {} ", sign);
 
                     kolom.push(Pixel{r:0,g:0,b:0});
                 } else{
@@ -512,12 +512,12 @@ impl Frame {
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
     let mut image2;
     let mut frame;
-    for x in 0..13{
+    for x in 0..14{
         frame = Frame::nextFrame(0, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
         frame = Frame::render_water_frame(x,&image2);
         image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
-        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false,interrupt_received);
+        scroll_for(gpio, timer, &mut image2, 0.00001 as f64,1,false,interrupt_received);
 
     }
 }
@@ -745,7 +745,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
     let mut frame: Frame = Frame::nextFrame(0, &image);
 
-    println!("frame made");
+//    println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
@@ -887,7 +887,7 @@ pub fn main() {
 
     //let mut Image_list: Vec<Image> = vec![];
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
-
+/*
 
     for index in 1..18 {
 
@@ -940,7 +940,7 @@ pub fn main() {
         }
 
     }
-
+*/
     render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
