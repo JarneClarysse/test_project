@@ -766,7 +766,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, duration: u64)
             prev_time = current_time;
 
 
-       //     frame = Frame::nextFrame(frame.pos,&image);
+            frame = Frame::nextFrame(frame.pos,&image);
         }
 
 
