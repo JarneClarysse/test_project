@@ -692,7 +692,7 @@ fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     out
 }
 
-fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64){
+fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64,scrollable: bool){
 
     let interrupt_received = Arc::new(AtomicBool::new(false));
 
@@ -752,6 +752,8 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
             //gpio.set_bits(GPIO_BIT!(PIN_OE));
         }
 
+
+        if(scrollable){
         //NEXT FRAME LOGIC
         let mut current_time = SystemTime::now();
 
@@ -772,7 +774,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
             frame = Frame::nextFrame(frame.pos,&image);
         }
-
+        }
 
         let mut done = match current_time.duration_since(starttime) {
             Ok(done) => done,
@@ -825,11 +827,14 @@ pub fn main() {
     println!("timer made");
 
 
-    scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10);
+    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
+
+    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
 
 
+    for index in 1..18 {
 
-
+    }
 
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
