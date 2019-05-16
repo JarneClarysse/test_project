@@ -510,53 +510,12 @@ impl Frame {
 }
 
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
+    let mut image2;
     for x in 0..13{
-        let mut prev_time = SystemTime::now();
-        let mut starttime= SystemTime::now();
+        let mut frame = Frame::render_water_frame(x, image);
+        image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
+        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false);
 
-        let mut dur =  0 as f64;
-
-
-        while (dur < 0.5){
-            println!("oh boy");
-            let mut frame = Frame::render_water_frame(x, image);
-            let mut color_clk_mask: u32 = 0;
-            color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
-            for row_loop in 0..(ROWS / 2) {
-                for b in 0..COLOR_DEPTH {
-                    for col in 0..32 {
-                        let mut top: Pixel = frame.pixels[row_loop as usize][col as usize];
-                        let mut bot: Pixel = frame.pixels[(ROWS / 2 + row_loop) as usize][col as usize];
-                        //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
-                        gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
-                        //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
-                        gpio.set_bits(GPIO_BIT!(PIN_CLK));
-                    };
-                    gpio.clear_bits(color_clk_mask);
-
-                    unsafe {
-                        let row_bits = gpio.get_row_bits(row_loop as u8);
-                        //println!("row number: {:#034b}",row_loop);
-                        //println!("row bits: {:#034b}",row_bits);
-                        //println!("row mask: {:#034b}",row_mask);
-                        gpio.write_masked_bits(row_bits, row_mask);
-                    };
-                    gpio.set_bits(GPIO_BIT!(PIN_LAT));
-                    gpio.clear_bits(GPIO_BIT!(PIN_LAT));
-                    gpio.clear_bits(GPIO_BIT!(PIN_OE));
-                    timer.nanosleep(gpio.bitplane_timings[b]);
-                    gpio.set_bits(GPIO_BIT!(PIN_OE));
-                };
-                //gpio.set_bits(GPIO_BIT!(PIN_OE));
-            };
-            let mut current_time = SystemTime::now();
-
-            let mut done = match current_time.duration_since(starttime) {
-                Ok(done) => done,
-                Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
-            };
-            dur = done.as_secs() as f64;
-        }
     }
 }
 
