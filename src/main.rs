@@ -509,8 +509,10 @@ impl Image {
             match &c {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    cursor.seek(std::io::SeekFrom::Current(-1));
-                    break;
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok(res) => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
                 }
             };
         };
@@ -521,8 +523,10 @@ impl Image {
             match c[0] {
                 b'0'...b'9' => { v.push(c[0]); }
                 b' ' | b'\t' | b'\n' => {
-                    cursor.seek(std::io::SeekFrom::Current(-1));
-                    break;
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok(res) => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
                 }
                 _ => { bail!("Parse error"); }
             };
@@ -566,7 +570,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok() => break,
+                        Ok(res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -590,7 +594,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok() => break,
+                        Ok(res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -615,7 +619,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok() => break,
+                        Ok(res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -643,7 +647,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok() => break,
+                        Ok(res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
@@ -662,7 +666,7 @@ impl Image {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
                     match cursor.seek(std::io::SeekFrom::Current(-1)){
-                        Ok() => break,
+                        Ok(res) => break,
                         Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
                     };
                 }
