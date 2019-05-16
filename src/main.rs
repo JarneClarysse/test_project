@@ -9,7 +9,8 @@
 extern crate libc;
 extern crate time;
 extern crate ctrlc;
-#[macro_use] extern crate simple_error;
+#[macro_use]
+extern crate simple_error;
 extern crate shuteye;
 extern crate mmap;
 extern crate nix;
@@ -28,7 +29,7 @@ use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
 //use std::mem::size_of;
 use std::io::{Read, Cursor};
-use byteorder::{ReadBytesExt};
+use byteorder::ReadBytesExt;
 use std::time::SystemTime;
 use std::f64::INFINITY;
 
@@ -44,13 +45,18 @@ struct GPIO {
     gpio_map_: Option<MemoryMap>,
     output_bits_: u32,
     input_bits_: u32,
-    slowdown_: u32,                         // Please refer to the GPIO_SetBits and GPIO_ClearBits functions in the reference implementation to see how this is used.
-    gpio_port_: *mut u32,                   // A raw pointer that points to the base of the GPIO register file
-    gpio_set_bits_: *mut u32,               // A raw pointer that points to the pin output register (see section 2.1 in the assignment)
-    gpio_clr_bits_: *mut u32,               // A raw pointer that points to the pin output clear register (see section 2.1)
-    gpio_read_bits_: *mut u32,              // A raw pointer that points to the pin level register (see section 2.1)
-    row_mask: u32,                      
-    bitplane_timings: [u32; COLOR_DEPTH]    
+    slowdown_: u32,
+    // Please refer to the GPIO_SetBits and GPIO_ClearBits functions in the reference implementation to see how this is used.
+    gpio_port_: *mut u32,
+    // A raw pointer that points to the base of the GPIO register file
+    gpio_set_bits_: *mut u32,
+    // A raw pointer that points to the pin output register (see section 2.1 in the assignment)
+    gpio_clr_bits_: *mut u32,
+    // A raw pointer that points to the pin output clear register (see section 2.1)
+    gpio_read_bits_: *mut u32,
+    // A raw pointer that points to the pin level register (see section 2.1)
+    row_mask: u32,
+    bitplane_timings: [u32; COLOR_DEPTH],
 }
 
 // This is a representation of the "raw" image
@@ -58,19 +64,19 @@ struct GPIO {
 struct Image {
     width: usize,
     height: usize,
-    pixels: Vec<Vec<Pixel>>
+    pixels: Vec<Vec<Pixel>>,
 }
 
 // This is a representation of the frame we're currently rendering
 struct Frame {
     pos: usize,
-    pixels: Vec<Vec<Pixel>>
+    pixels: Vec<Vec<Pixel>>,
 }
 
 // Use this struct to implement high-precision nanosleeps
 struct Timer {
     _timemap: Option<MemoryMap>,
-    timereg: *mut u32 // a raw pointer to the 1Mhz timer register (see section 2.5 in the assignment)
+    timereg: *mut u32, // a raw pointer to the 1Mhz timer register (see section 2.5 in the assignment)
 }
 
 // ============================================================================
@@ -83,25 +89,25 @@ const TIMER_REGISTER_OFFSET: u64 = 0x3000;
 const REGISTER_BLOCK_SIZE: u64 = 4096;
 const COLOR_DEPTH: usize = 8;
 const ROWS: u32 = 16;
-const SUB_PANELS_ :u32 = 2;
+const SUB_PANELS_: u32 = 2;
 
 //Tijdelijk
-const COLUMNS :u32 = 32;
+const COLUMNS: u32 = 32;
 
-const PIN_OE  : u64 = 4;
-const PIN_CLK : u64 = 17;
-const PIN_LAT : u64 = 21;
-const PIN_A   : u64 = 22;
-const PIN_B   : u64 = 26;
-const PIN_C   : u64 = 27;
-const PIN_D   : u64 = 20;
-const PIN_E   : u64 = 24;
-const PIN_R1  : u64 = 5;
-const PIN_G1  : u64 = 13;
-const PIN_B1  : u64 = 6;
-const PIN_R2  : u64 = 12;
-const PIN_G2  : u64 = 16;
-const PIN_B2  : u64 = 23;
+const PIN_OE: u64 = 4;
+const PIN_CLK: u64 = 17;
+const PIN_LAT: u64 = 21;
+const PIN_A: u64 = 22;
+const PIN_B: u64 = 26;
+const PIN_C: u64 = 27;
+const PIN_D: u64 = 20;
+const PIN_E: u64 = 24;
+const PIN_R1: u64 = 5;
+const PIN_G1: u64 = 13;
+const PIN_B1: u64 = 6;
+const PIN_R2: u64 = 12;
+const PIN_G2: u64 = 16;
+const PIN_B2: u64 = 23;
 
 // Convenience macro for creating bitmasks. See comment above "impl GPIO" below
 macro_rules! GPIO_BIT {
@@ -112,25 +118,24 @@ macro_rules! GPIO_BIT {
 
 // Use this bitmask for sanity checks
 const VALID_BITS: u64 = GPIO_BIT!(PIN_OE) | GPIO_BIT!(PIN_CLK) | GPIO_BIT!(PIN_LAT) |
-    GPIO_BIT!(PIN_A)  | GPIO_BIT!(PIN_B)  | GPIO_BIT!(PIN_C)   | GPIO_BIT!(PIN_D)   | GPIO_BIT!(PIN_E) |
-    GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1)  |
+    GPIO_BIT!(PIN_A) | GPIO_BIT!(PIN_B) | GPIO_BIT!(PIN_C) | GPIO_BIT!(PIN_D) | GPIO_BIT!(PIN_E) |
+    GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) |
     GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
 
 // ============================================================================
 // mmap_bcm_register - convenience function used to map the GPIO register block
 // ============================================================================
 
-static mut row_mask: u32 = 0;
+static mut ROW_MASK: u32 = 0;
 
 
 fn mmap_bcm_register(register_offset: usize) -> Option<MemoryMap> {
-
-    let mem_file = 
+    let mem_file =
         match OpenOptions::new()
-        .read(true)
-        .write(true)
-        .custom_flags(libc::O_SYNC)
-        .open("/dev/mem") {
+            .read(true)
+            .write(true)
+            .custom_flags(libc::O_SYNC)
+            .open("/dev/mem") {
             Err(why) => panic!("couldn't open /dev/mem: {}", why.description()),
             Ok(file) => file
         };
@@ -140,8 +145,8 @@ fn mmap_bcm_register(register_offset: usize) -> Option<MemoryMap> {
         MapOption::MapReadable,
         MapOption::MapWritable,
         MapOption::MapFd(mem_file.as_raw_fd()),
-        MapOption::MapOffset(BCM2709_PERI_BASE as usize + register_offset as usize)       
-    ];    
+        MapOption::MapOffset(BCM2709_PERI_BASE as usize + register_offset as usize)
+    ];
 
     let result = MemoryMap::new(REGISTER_BLOCK_SIZE as usize, mmap_options).unwrap();
 
@@ -150,10 +155,10 @@ fn mmap_bcm_register(register_offset: usize) -> Option<MemoryMap> {
             eprintln!("mmap error: {}", std::io::Error::last_os_error());
             eprintln!("Pi3: MMapping from base 0x{:X}, offset 0x{:X}", BCM2709_PERI_BASE, register_offset);
             None
-        },
+        }
         false => Some(result)
     };
-    
+
     // NOTE/WARNING: When a MemoryMap struct is dropped, the mapped 
     // memory region is automatically unmapped!
 }
@@ -170,7 +175,6 @@ fn mmap_bcm_register(register_offset: usize) -> Option<MemoryMap> {
 //     io.set_bits(pin_mask);
 //
 impl GPIO {
-
     //
     // configures pin number @pin_num as an output pin by writing to the 
     // appropriate Function Select register (see section 2.1).
@@ -196,7 +200,7 @@ impl GPIO {
         let current_val = unsafe { std::ptr::read_volatile(register_ref) };
         // the bit range within the register is [(pin_num % 10) * 3 .. (pin_num % 10) * 3 + 2]
         // we need to set these bits to 001
-        let new_val = (current_val & !(7 << ((pin_num % 10)*3))) | (1 << ((pin_num % 10)*3));
+        let new_val = (current_val & !(7 << ((pin_num % 10) * 3))) | (1 << ((pin_num % 10) * 3));
         // NOTE/WARNING: When reading from or writing to MMIO memory regions, you MUST 
         // use the std::ptr::read_volatile and std::ptr::write_volatile functions
         unsafe { std::ptr::write_volatile(register_ref, new_val) };
@@ -209,11 +213,11 @@ impl GPIO {
 
         // indien er output en input bits gekend zijn dan gaan we deze uit de geldige output bits filteren dus enkel al de ongebruikte bits gaan dan
         // is dit de eerste keer dat init_outputs opgeroepen wordt dan zal ouputbits en inputbits op 0 staan
-        outputs &= !(self.output_bits_ | self.input_bits_ );
+        outputs &= !(self.output_bits_ | self.input_bits_);
 
         // alle 28 bits overlopen en controleren of deze op 1 staan indien zo dan worden ze geconfigureerd als output bits
         for b in 0..28 {
-            if outputs & (1<<b) !=0 {
+            if outputs & (1 << b) != 0 {
                 self.configure_output_pin(b as u64);
             }
         }
@@ -230,12 +234,11 @@ impl GPIO {
 
         unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
         for _i in 0..self.slowdown_ {
-
             unsafe { std::ptr::write_volatile(self.gpio_set_bits_, value) };
         }
     }
 
-    fn clear_bits(self: &mut GPIO, value: u32) {        
+    fn clear_bits(self: &mut GPIO, value: u32) {
         // TODO: Implement this yourself. Remember to take the slowdown_ value into account!
         // This function expects a bitmask as the @value argument
         unsafe { std::ptr::write_volatile(self.gpio_clr_bits_, value) };
@@ -247,24 +250,23 @@ impl GPIO {
 
     // Write all the bits of @value that also appear in @mask. Leave the rest untouched.
     // @value and @mask are bitmasks
-    fn write_masked_bits( 
+    fn write_masked_bits(
         self: &mut GPIO,
         value: u32,
-        mask: u32
+        mask: u32,
     ) {
 
         // TODO: Implement this yourself.
 
         self.clear_bits(!value & mask);
         self.set_bits(value & mask);
-
     }
 
     fn new(slowdown: u32) -> GPIO {
 
         // Map the GPIO register file. See section 2.1 in the assignment for details
         let map = mmap_bcm_register(GPIO_REGISTER_OFFSET as usize);
-        
+
         // Initialize the GPIO struct with default values
         let mut io: GPIO = GPIO {
             gpio_map_: None,
@@ -276,7 +278,7 @@ impl GPIO {
             gpio_clr_bits_: 0 as *mut u32,
             gpio_read_bits_: 0 as *mut u32,
             row_mask: 0,
-            bitplane_timings: [0; COLOR_DEPTH]  
+            bitplane_timings: [0; COLOR_DEPTH],
         };
 
         match &map {
@@ -292,20 +294,20 @@ impl GPIO {
                     io.gpio_clr_bits_ = io.gpio_port_.offset(10);
                     io.gpio_read_bits_ = io.gpio_port_.offset(13);
 
-                    let mut all_used_bits : u32 = 0;
+                    let mut all_used_bits: u32 = 0;
                     all_used_bits |= GPIO_BIT!(PIN_OE) | GPIO_BIT!(PIN_CLK) | GPIO_BIT!(PIN_LAT) |
-                        GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1)  |
+                        GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) |
                         GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2);
 
-                    row_mask = GPIO_BIT!(PIN_A);
-                    let mut d = ROWS /SUB_PANELS_; 
-                    if d > 2 {row_mask |= GPIO_BIT!(PIN_B);}
-                    if d > 4 {row_mask |= GPIO_BIT!(PIN_C);}
-                    if d > 8 {row_mask |= GPIO_BIT!(PIN_D);}
-                    if d > 16 {row_mask |= GPIO_BIT!(PIN_E);}
-                         
-                    all_used_bits |= row_mask;
-		    io.row_mask = row_mask;
+                    ROW_MASK = GPIO_BIT!(PIN_A);
+                    let mut d = ROWS / SUB_PANELS_;
+                    if d > 2 { ROW_MASK |= GPIO_BIT!(PIN_B); }
+                    if d > 4 { ROW_MASK |= GPIO_BIT!(PIN_C); }
+                    if d > 8 { ROW_MASK |= GPIO_BIT!(PIN_D); }
+                    if d > 16 { ROW_MASK |= GPIO_BIT!(PIN_E); }
+
+                    all_used_bits |= ROW_MASK;
+                    io.row_mask = ROW_MASK;
                     let result = io.init_outputs(all_used_bits);
                     assert!(result == all_used_bits);
                 }
@@ -313,11 +315,11 @@ impl GPIO {
 
 
                 let mut timing_ns: u32 = 200;
-                for  b in 0..COLOR_DEPTH {
+                for b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
                     timing_ns *= 2;
                 }
-            },
+            }
             None => {}
         }
 
@@ -325,38 +327,37 @@ impl GPIO {
         io.gpio_map_ = map;
         io
     }
-    
+
     // Calculates the pins we must activate to push the address of the specified double_row
     fn get_row_bits(self: &GPIO, double_row: u8) -> u32 {
         // TODO: Implement this yourself.
         let mut row_address: u32;
-        match (double_row & 1)!=0 {
-            true=> row_address = GPIO_BIT!(PIN_A),
-            false=> row_address = 0,
+        match (double_row & 1) != 0 {
+            true => row_address = GPIO_BIT!(PIN_A),
+            false => row_address = 0,
         };
 
-        match (double_row & 2)!=0 {
-            true=> row_address |= GPIO_BIT!(PIN_B),
-            false=> row_address |= 0,
-	};
-
-        match (double_row & 4)!=0 {
-            true=> row_address |= GPIO_BIT!(PIN_C),
-            false=> row_address |= 0,
+        match (double_row & 2) != 0 {
+            true => row_address |= GPIO_BIT!(PIN_B),
+            false => row_address |= 0,
         };
 
-        match (double_row & 8)!=0 {
-            true=> row_address |= GPIO_BIT!(PIN_D),
-            false=> row_address |= 0,
+        match (double_row & 4) != 0 {
+            true => row_address |= GPIO_BIT!(PIN_C),
+            false => row_address |= 0,
         };
 
-        match (double_row & 10)!=0 {
-            true=> row_address |= GPIO_BIT!(PIN_E),
-            false=> row_address |= 0,
+        match (double_row & 8) != 0 {
+            true => row_address |= GPIO_BIT!(PIN_D),
+            false => row_address |= 0,
         };
-        unsafe {
-            return row_address as u32 & self.row_mask;
-        }
+
+        match (double_row & 10) != 0 {
+            true => row_address |= GPIO_BIT!(PIN_E),
+            false => row_address |= 0,
+        };
+
+        return row_address as u32 & self.row_mask;
     }
 }
 
@@ -364,8 +365,7 @@ impl Timer {
     // Reads from the 1Mhz timer register (see Section 2.5 in the assignment)
     unsafe fn read(self: &Timer) -> u32 {
         // TODO: Implement this yourself.
-        unsafe { std::ptr::read_volatile(self.timereg) }
-
+        std::ptr::read_volatile(self.timereg)
     }
 
     fn new() -> Timer {
@@ -375,23 +375,20 @@ impl Timer {
 
         let mut timer: Timer = Timer {
             _timemap: None,
-            timereg: 0 as *mut u32
+            timereg: 0 as *mut u32,
         };
 
         match &map {
-            Some(map) =>{
+            Some(map) => {
                 unsafe {
-                    timer.timereg = map.data() as * mut u32;
+                    timer.timereg = map.data() as *mut u32;
                     timer.timereg.offset(1);
                 }
-            },
+            }
             None => {}
-
         };
 
         timer
-
-
     }
 
     // High-precision sleep function (see section 2.5 in the assignment)
@@ -401,22 +398,22 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let kJitterAllowanceNanos: u32 = 60*150;
+        let kJitterAllowanceNanos: u32 = 60 * 150;
         if nanos > kJitterAllowanceNanos + 5000 {
-            let before = unsafe {self.read() };
+            let before = unsafe { self.read() };
             let difference = nanos - kJitterAllowanceNanos;
-            match sleep(std::time::Duration::new(0, difference)){
+            match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
-                    let after = unsafe {self.read()} ;
-                    let nanoseconds_passed: u32 = 1000* (after-before) as u32;
+                    let after = unsafe { self.read() };
+                    let nanoseconds_passed: u32 = 1000 * (after - before) as u32;
                     nanos -= nanoseconds_passed;
                 }
                 None => {
-                    return
+                    return;
                 }
             }
         }
-        if nanos <20 {return }
+        if nanos < 20 { return; }
         let nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
         for _x in nanoseconds_left..0 {
             //unsafe{self.read()};
@@ -430,64 +427,58 @@ impl Timer {
 // on the LED board. In most cases, the Frame will have less pixels
 // than the input Image!
 impl Frame {
-
-
-    fn nextFrame(pos: usize, image: &Image) -> Frame {
-
+    fn next_frame(pos: usize, image: &Image) -> Frame {
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
 
-            for col in 0 .. COLUMNS {
+            for col in 0..COLUMNS {
                 let position = (pos as u32 + col) % image.width as u32;
                 kolom.push(image.pixels[(ROWS - 1 - row) as usize][position as usize]);
             }
             v.push(kolom);
         }
-        let mut pos2 = pos+1;
-        if pos2 >= image.width{
+        let mut pos2 = pos + 1;
+        if pos2 >= image.width {
             pos2 = 0;
         }
 
-        let mut frame: Frame = Frame{
+        let frame: Frame = Frame {
             pos: pos2,
-            pixels: v
+            pixels: v,
         };
 
         frame
-
     }
 
-    fn render_water_frame(pos: usize, image: &Image) -> Frame{
+    fn render_water_frame(pos: usize, image: &Image) -> Frame {
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
-            for col in 0 .. COLUMNS {
-                match col >7 && col< (22-pos) as u32 && row == 7 {
-                    true => kolom.push(Pixel{r:0,g:0,b:0}),
-                    false=>  kolom.push(image.pixels[row as usize][col as usize]),
+            for col in 0..COLUMNS {
+                match col > 7 && col < (22 - pos) as u32 && row == 7 {
+                    true => kolom.push(Pixel { r: 0, g: 0, b: 0 }),
+                    false => kolom.push(image.pixels[row as usize][col as usize]),
                 };
-
             };
             v.push(kolom);
         };
-        let mut frame: Frame = Frame{
+        let frame: Frame = Frame {
             pos: pos,
-            pixels: v
+            pixels: v,
         };
 
         frame
     }
 }
 
-fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
+fn render_water(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, interrupt_received: &Arc<AtomicBool>) {
     let mut image2;
     let mut frame;
-    for x in 0..14{
-        frame = Frame::render_water_frame(x,&image);
-        image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
-        scroll_for(gpio, timer, &mut image2, 100000 as f64,1,false,interrupt_received);
-
+    for x in 0..14 {
+        frame = Frame::render_water_frame(x, &image);
+        image2 = Image { height: image.height, width: image.width, pixels: frame.pixels };
+        scroll_for(gpio, timer, &mut image2, 100000 as f64, 1, false, interrupt_received);
     }
 }
 
@@ -498,41 +489,42 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_rece
 // You may assume that the max_color value is always 255, but you should add sanity checks
 // to safely reject files with other max_color values
 impl Image {
-
-    fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>>{
-
-
-
-        let mut re:u8 = cursor.read_u8()?;
-        let mut gr:u8 = cursor.read_u8()?;
-        let mut bl:u8 = cursor.read_u8()?;
-        let pixel = Pixel{r:re as u16,g:gr as u16,b:bl as u16};
+    fn read_pixel(cursor: &mut Cursor<Vec<u8>>) -> Result<Pixel, Box<std::error::Error>> {
+        let re: u8 = cursor.read_u8()?;
+        let gr: u8 = cursor.read_u8()?;
+        let bl: u8 = cursor.read_u8()?;
+        let pixel = Pixel { r: re as u16, g: gr as u16, b: bl as u16 };
 
         Ok(pixel)
-
     }
 
     fn read_num(cursor: &mut Cursor<Vec<u8>>) -> Result<usize, Box<std::error::Error>> {
         let mut v: Vec<u8> = vec![];
-        let mut c:[u8; 1] = [0];
+        let mut c: [u8; 1] = [0];
 
 
         //consume whitespace
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b" " | b"\t" | b"\n" => {},
-                _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    cursor.seek(std::io::SeekFrom::Current(-1));
+                    break;
+                }
             };
         };
 
         //read number
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match c[0] {
-                b'0' ... b'9' => { v.push(c[0]);},
-                b' '| b'\t' | b'\n' => { cursor.seek(std::io::SeekFrom::Current(-1)); break;}
-                _ => {bail!("Parse error");}
+                b'0'...b'9' => { v.push(c[0]); }
+                b' ' | b'\t' | b'\n' => {
+                    cursor.seek(std::io::SeekFrom::Current(-1));
+                    break;
+                }
+                _ => { bail!("Parse error"); }
             };
         };
 
@@ -546,87 +538,115 @@ impl Image {
         let mut image = Image {
             width: 0,
             height: 0,
-            pixels: vec![]
+            pixels: vec![],
         };
-        let mut header: [u8;2] = [0,2];
+        let mut header: [u8; 2] = [0, 2];
         cursor.read(&mut header);
 
 
         match &header {
-            b"P6" => {println!("Header match"); },
-            _ => {bail!("header mismatch"); }
+            b"P6" => { println!("Header match"); }
+            _ => { bail!("header mismatch"); }
         }
 
 
-        let mut c:[u8; 1] = [0];
-        loop{
+        let mut c: [u8; 1] = [0];
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b"#" => {loop{
-                    cursor.read(&mut c)?;
-                    match &c {
-                        b"\n" => {break;},
-                        _ => {}
+                b"#" => {
+                    loop {
+                        cursor.read(&mut c)?;
+                        match &c {
+                            b"\n" => { break; }
+                            _ => {}
+                        };
                     };
-                };},
-                b" " | b"\t" | b"\n" => {},
-                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok() => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
+                }
             };
         };
 
         let w = Image::read_num(cursor)?;
 
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b"#" => {loop{
-                    cursor.read(&mut c)?;
-                    match &c {
-                        b"\n" => {break;},
-                        _ => {}
+                b"#" => {
+                    loop {
+                        cursor.read(&mut c)?;
+                        match &c {
+                            b"\n" => { break; }
+                            _ => {}
+                        };
                     };
-                };},
-                b" " | b"\t" | b"\n" => {},
-                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok() => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
+                }
             };
         };
 
 
         let h = Image::read_num(cursor)?;
 
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b"#" => {loop{
-                    cursor.read(&mut c)?;
-                    match &c {
-                        b"\n" => {break;},
-                        _ => {}
+                b"#" => {
+                    loop {
+                        cursor.read(&mut c)?;
+                        match &c {
+                            b"\n" => { break; }
+                            _ => {}
+                        };
                     };
-                };},
-                b" " | b"\t" | b"\n" => {},
-                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok() => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
+                }
             };
         };
 
         let max = Image::read_num(cursor)?;
 
-        if max != 255{
+        if max != 255 {
             panic!("Max Value too damn high!");
         }
 
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b"#" => {loop{
-                    cursor.read(&mut c)?;
-                    match &c {
-                        b"\n" => {break;},
-                        _ => {}
+                b"#" => {
+                    loop {
+                        cursor.read(&mut c)?;
+                        match &c {
+                            b"\n" => { break; }
+                            _ => {}
+                        };
                     };
-                };},
-                b" " | b"\t" | b"\n" => {},
-                _ => {cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok() => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
+                }
             };
         };
         /*
@@ -636,11 +656,16 @@ impl Image {
 
         let mut allePix: Vec<Vec<Pixel>> = vec![];
 
-        loop{
+        loop {
             cursor.read(&mut c)?;
             match &c {
-                b" " | b"\t" | b"\n" => {},
-                _ => { cursor.seek(std::io::SeekFrom::Current(-1)); break; }
+                b" " | b"\t" | b"\n" => {}
+                _ => {
+                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                        Ok() => break,
+                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                    };
+                }
             };
         };
         for _x in 0..h {
@@ -651,95 +676,86 @@ impl Image {
                 hoogte_pix.push(pixel);
             }
             allePix.insert(0, hoogte_pix)
-
         }
-        image.width=w;
-        image.height=h;
-        image.pixels=allePix;
+        image.width = w;
+        image.height = h;
+        image.pixels = allePix;
 
         Ok(image)
     }
-
-
-
 }
 
-fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64,scrollable: bool,interrupt_received: &Arc<AtomicBool>){
-
-
-    let mut frame: Frame = Frame::nextFrame(0, &image);
+fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>) {
+    let mut frame: Frame = Frame::next_frame(0, &image);
 
 //    println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
-    if duration == -1.0{
+    if duration == -1.0 {
         duration = INFINITY;
     }
 
     let mut prev_time = SystemTime::now();
-    let mut starttime= SystemTime::now();
+    let mut starttime = SystemTime::now();
 
-    let mut dur =  0 as f64;
-
+    let mut dur = 0 as f64;
 
 
     while (interrupt_received.load(Ordering::SeqCst) == false) && (dur < duration) {
-        let mut color_clk_mask:u32 = 0;
+        let mut color_clk_mask: u32;
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
-        for row_loop in 0 .. (ROWS/2){
-            for b in 0..COLOR_DEPTH{
-                for col in 0 .. 32 {
-                    let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
-                    let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
+        for row_loop in 0..(ROWS / 2) {
+            for b in 0..COLOR_DEPTH {
+                for col in 0..32 {
+                    let mut top: Pixel = frame.pixels[row_loop as usize][col as usize];
+                    let mut bot: Pixel = frame.pixels[(ROWS / 2 + row_loop) as usize][col as usize];
                     //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
-                    gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                    gpio.write_masked_bits(get_plane_bits(top, bot, b as u8), color_clk_mask);
                     //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
                     gpio.set_bits(GPIO_BIT!(PIN_CLK));
-
                 }
                 gpio.clear_bits(color_clk_mask);
 
                 unsafe {
                     let row_bits = gpio.get_row_bits(row_loop as u8);
-                    gpio.write_masked_bits(row_bits, row_mask);
+                    gpio.write_masked_bits(row_bits, ROW_MASK);
                 };
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
                 timer.nanosleep(gpio.bitplane_timings[b]);
                 gpio.set_bits(GPIO_BIT!(PIN_OE));
-
             }
         }
 
 
         let mut current_time = SystemTime::now();
 
-        if scrollable{
+        if scrollable {
             //NEXT FRAME LOGIC
 
-            let mut elap = match current_time.duration_since(prev_time) {
+            let elap = match current_time.duration_since(prev_time) {
                 Ok(elap) => elap,
                 Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
             };
 
 
-            let mut sec =  elap.as_secs();
-            let mut usec =  elap.as_micros();
+            let sec = elap.as_secs();
+            let usec = elap.as_micros();
 
-            let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
+            let usec_since_prev_frame = (sec) * 1000 * 1000 + (usec) as u64;
 
-            if usec_since_prev_frame >= (40000*slowfactor) {
+            if usec_since_prev_frame >= (40000 * slowfactor) {
                 prev_time = current_time;
 
 
-                frame = Frame::nextFrame(frame.pos,&image);
+                frame = Frame::next_frame(frame.pos, &image);
             }
         }
 
-        let mut done = match current_time.duration_since(starttime) {
+        let done = match current_time.duration_since(starttime) {
             Ok(done) => done,
             Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
         };
@@ -747,39 +763,37 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
     }
 }
 
-fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
+fn get_plane_bits(top: Pixel, bot: Pixel, plane: u8) -> u32 {
     let mut out: u32 = 0;
-    if top.r & (1 << plane) !=0 {
+    if top.r & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_R1);
     };
-    if top.g & (1 << plane) !=0 {
+    if top.g & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_G1);
     };
-    if top.b & (1 << plane) !=0 {
+    if top.b & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_B1);
     };
-    if bot.r & (1 << plane) !=0 {
+    if bot.r & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_R2);
     };
-    if bot.g & (1 << plane) !=0 {
+    if bot.g & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_G2);
     };
-    if bot.b & (1 << plane) !=0 {
+    if bot.b & (1 << plane) != 0 {
         out |= GPIO_BIT!(PIN_B2);
     };
     out
 }
 
 pub fn main() {
-    let args : Vec<String> = std::env::args().collect();
+    let args: Vec<String> = std::env::args().collect();
     let interrupt_received = Arc::new(AtomicBool::new(false));
-    let mut pad: String;
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
         eprintln!("Must run as root to be able to access /dev/mem\nPrepend \'sudo\' to the command");
         std::process::exit(1);
-
     } else if args.len() < 3 {
         eprintln!("Syntax: {:?} [image] [0: normal, otherNumber:killer]", args[0]);
         std::process::exit(1);
@@ -792,7 +806,7 @@ pub fn main() {
     let choice = &args[2];
     let choice_int = choice.parse::<i32>().unwrap();
 
-    let mut file = match File::open(&path)    {
+    let mut file = match File::open(&path) {
         Err(why) => panic!("Could not open file: {} (Reason: {})",
                            display, why.description()),
         Ok(file) => file
@@ -810,7 +824,7 @@ pub fn main() {
     };
     // TODO: Initialize the GPIO struct and the Timer struct
 
-    let mut gpio =  GPIO::new(1);
+    let mut gpio = GPIO::new(1);
     //println!("gpio made");
 
     let mut timer = Timer::new();
@@ -818,13 +832,14 @@ pub fn main() {
 
     //let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = Arc::new(AtomicBool::new(false));;
+    let int_recv = Arc::new(AtomicBool::new(false));
+    ;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
-    if choice_int == 0{
-        scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+    if choice_int == 0 {
+        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -835,14 +850,14 @@ pub fn main() {
     let mut image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let mut image_names: Vec<&str> = vec!["figures/Pokemon1.ppm","figures/Pokemon2.ppm","figures/Pokemon3.ppm","figures/Pokemon4.ppm","figures/Pokemon5.ppm","figures/Pokemon6.ppm","figures/Pokemon7.ppm","figures/Pokemon8.ppm","figures/Pokemon9.ppm","figures/Pokemon10.ppm","figures/Pokemon11.ppm","figures/Pokemon12.ppm","figures/Pokemon13.ppm","figures/Pokemon14.ppm","figures/Pokemon15.ppm","figures/Pokemon16.ppm","figures/Pokemon17.ppm"];
-    let mut first_image= image.clone();
+    let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm", "figures/Pokemon15.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
+    let mut first_image = image.clone();
     for index in 0..17 {
-	    //let pad = image_names[index].clone();
+        //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
 
-        file = match File::open(&path)    {
+        file = match File::open(&path) {
             Err(why) => panic!("Could not open file: {} (Reason: {})",
                                display, why.description()),
             Ok(file) => file
@@ -860,33 +875,30 @@ pub fn main() {
         };
 
 
-        if index == 0{
-            first_image=image.clone();
+        if index == 0 {
+            first_image = image.clone();
         }
 
         image_list.push(image.clone());
-        if(index == 2) || (index == 5){
+        if (index == 2) || (index == 5) {
             image_list.push(first_image.clone());
         }
-
     }
     for ind in 0..image_list.len() {
         let mut image1 = image_list[ind].clone();
 
 
-        if (ind == 0) || (ind==3) || (ind == 7){
-            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,false,&interrupt_received);
-
+        if (ind == 0) || (ind == 3) || (ind == 7) {
+            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
         } else if ind == 18 {
-            scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,true,&interrupt_received);
-        } else if (ind == 1) || (ind == 2){
-            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,true,&interrupt_received);
-        } else if ind == 4{
-            render_water(&mut gpio, &mut timer,&mut image1,&interrupt_received);
-        } else{
-            scroll_for(&mut gpio,&mut timer,&mut image1, 800000 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &interrupt_received);
+        } else if (ind == 1) || (ind == 2) {
+            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
+        } else if ind == 4 {
+            render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
+        } else {
+            scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
         }
-
     }
 
 
@@ -897,6 +909,6 @@ pub fn main() {
     } else {
         println!("Timeout reached");
     }
-    
+
     // TODO: You may want to reset the board here (i.e., disable all LEDs)
 }
