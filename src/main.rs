@@ -891,9 +891,9 @@ pub fn main() {
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let mut Image_names: Vec<&str> = vec!["Pokemon1.ppm","Pokemon2.ppm","Pokemon3.ppm","Pokemon4.ppm","Pokemon5.ppm","Pokemon6.ppm","Pokemon7.ppm","Pokemon8.ppm","Pokemon9.ppm","Pokemon10.ppm","Pokemon11.ppm","Pokemon12.ppm","Pokemon13.ppm","Pokemon14.ppm","Pokemon15.ppm","Pokemon16.ppm","Pokemon17.ppm"];
+    let mut Image_names: Vec<&str> = vec!["figures/Pokemon1.ppm","figures/Pokemon2.ppm","figures/Pokemon3.ppm","figures/Pokemon4.ppm","figures/Pokemon5.ppm","figures/Pokemon6.ppm","figures/Pokemon7.ppm","figures/Pokemon8.ppm","figures/Pokemon9.ppm","figures/Pokemon10.ppm","figures/Pokemon11.ppm","figures/Pokemon12.ppm","figures/Pokemon13.ppm","figures/Pokemon14.ppm","figures/Pokemon15.ppm","figures/Pokemon16.ppm","figures/Pokemon17.ppm"];
     let mut firstImage=image.clone();
-    for index in 1..18 {
+    for index in 0..17 {
 	let pad = Image_names[index].clone();
         path = Path::new(pad);
         display = path.display();
