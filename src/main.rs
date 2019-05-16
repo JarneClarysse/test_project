@@ -471,8 +471,82 @@ impl Frame {
         if ( + + current_position >= image_width)
         current_position = 0;*/
     }
+
+    fn render_water_frame(pos: u32, image: &Image) -> Frame{
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        let sign = 13-pos;
+
+        for row in 0..ROWS {
+            let mut kolom: Vec<Pixel> = vec![];
+
+            for col in 0 .. COLUMNS {
+                let position = (pos as u32 + col)% image.width as u32 ;
+                if col >=8 && col <sign && row == 7{
+                    kolom.push(Pixel{r:0,g:0,b:0});
+                } else{
+                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+
+                }
+
+
+            }
+            v.push(kolom);
+        }
+        let mut pos2 = (pos+1) as usize;
+        if pos2 >= image.width{
+            pos2 = 0;
+        }
+
+        let mut frame: Frame = Frame{
+            pos: pos2,
+            pixels: v
+        };
+
+        frame
+    }
 }
 
+fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
+    for x in 0..13{
+        while (dur < 0.5){
+            let mut frame = Frame::render_water_frame(x, image);
+            let mut color_clk_mask: u32 = 0;
+            color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
+            for row_loop in 0..(ROWS / 2) {
+                for b in 0..COLOR_DEPTH {
+                    for col in 0..32 {
+                        let mut top: Pixel = frame.pixels[row_loop as usize][col as usize];
+                        let mut bot: Pixel = frame.pixels[(ROWS / 2 + row_loop) as usize][col as usize];
+                        //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
+                        gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                        //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
+                        gpio.set_bits(GPIO_BIT!(PIN_CLK));
+                    };
+                    gpio.clear_bits(color_clk_mask);
+
+                    unsafe {
+                        let row_bits = gpio.get_row_bits(row_loop as u8);
+                        //println!("row number: {:#034b}",row_loop);
+                        //println!("row bits: {:#034b}",row_bits);
+                        //println!("row mask: {:#034b}",row_mask);
+                        gpio.write_masked_bits(row_bits, row_mask);
+                    };
+                    gpio.set_bits(GPIO_BIT!(PIN_LAT));
+                    gpio.clear_bits(GPIO_BIT!(PIN_LAT));
+                    gpio.clear_bits(GPIO_BIT!(PIN_OE));
+                    timer.nanosleep(gpio.bitplane_timings[b]);
+                    gpio.set_bits(GPIO_BIT!(PIN_OE));
+                };
+                //gpio.set_bits(GPIO_BIT!(PIN_OE));
+            };
+            let mut done = match current_time.duration_since(starttime) {
+                Ok(done) => done,
+                Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
+            };
+            dur = done.as_secs() as f64;
+        }
+    }
+}
 
 
 // TODO: Add your PPM parser here
@@ -691,7 +765,6 @@ fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     };
     out
 }
-
 fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: f64, slowfactor: u64,scrollable: bool){
 
     let interrupt_received = Arc::new(AtomicBool::new(false));
@@ -756,26 +829,26 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
         let mut current_time = SystemTime::now();
 
         if(scrollable){
-        //NEXT FRAME LOGIC
+            //NEXT FRAME LOGIC
 
 
-        let mut elap = match current_time.duration_since(prev_time) {
-            Ok(elap) => elap,
-            Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
-        };
+            let mut elap = match current_time.duration_since(prev_time) {
+                Ok(elap) => elap,
+                Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
+            };
 
 
-        let mut sec =  elap.as_secs();
-        let mut usec =  elap.as_micros();
+            let mut sec =  elap.as_secs();
+            let mut usec =  elap.as_micros();
 
-        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
+            let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
 
-        if usec_since_prev_frame >= (40000*slowfactor) {
-            prev_time = current_time;
+            if usec_since_prev_frame >= (40000*slowfactor) {
+                prev_time = current_time;
 
 
-            frame = Frame::nextFrame(frame.pos,&image);
-        }
+                frame = Frame::nextFrame(frame.pos,&image);
+            }
         }
 
         let mut done = match current_time.duration_since(starttime) {
@@ -798,8 +871,8 @@ pub fn main() {
     } else if args.len() < 2 {
         eprintln!("Syntax: {:?} [image]", args[0]);
         std::process::exit(1);
-    } 
-    
+    }
+
     // TODO: Read the PPM file here. You can find its name in args[1]
     let path = Path::new(&args[1]);
     let display = path.display();
@@ -828,15 +901,16 @@ pub fn main() {
     let mut timer = Timer::new();
     println!("timer made");
 
+    render_water(&mut gpio, &mut timer, &mut image);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
 
 
     for index in 1..18 {
 
-    }
+    };
 
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
