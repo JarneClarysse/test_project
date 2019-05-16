@@ -935,16 +935,18 @@ pub fn main() {
             scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,false,&interrupt_received);
 
         } else if (ind == 18) {
-            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,1,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,true,&interrupt_received);
         } else if (ind == 1) || (ind == 2){
             scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,true,&interrupt_received);
+        } else if (ind == 4){
+            render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
         } else{
             scroll_for(&mut gpio,&mut timer,&mut image1, 0.8 as f64,10,false,&interrupt_received);
         }
 
     }
 
-    render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
+
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
