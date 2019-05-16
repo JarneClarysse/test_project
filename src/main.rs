@@ -481,13 +481,13 @@ impl Frame {
             let mut kolom: Vec<Pixel> = vec![];
 
             for col in 0 .. COLUMNS {
-                let position = (pos as u32 + col)% image.width as u32 ;
-                if col >8 && col <sign && row == 7{
+//                let position = (pos as u32 + col)% image.width as u32 ;
+                if col >8 && col <(22-sign) && row == 8{
                     println!(" sign {} ", sign);
 
                     kolom.push(Pixel{r:0,g:0,b:0});
                 } else{
-                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+                    kolom.push(image.pixels[(ROWS-1- row) as usize][col as usize]);
 
                 };
 
@@ -511,6 +511,7 @@ impl Frame {
 
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
     let mut image2;
+    let mut frame;
     for x in 0..13{
         frame = Frame::nextFrame(0, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
@@ -880,9 +881,9 @@ pub fn main() {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
 
     //let mut Image_list: Vec<Image> = vec![];
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
@@ -938,8 +939,8 @@ pub fn main() {
         }
 
     }
-
-
+*/
+    render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
     if interrupt_received.load(Ordering::SeqCst) == true {
