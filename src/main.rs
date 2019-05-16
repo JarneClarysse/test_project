@@ -889,10 +889,10 @@ pub fn main() {
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
     let mut firstImage=image;
 
+    let mut Image_names: Vec<&str> = vec!["Pokemon1","Pokemon2","Pokemon3","Pokemon4","Pokemon5","Pokemon6","Pokemon7","Pokemon8","Pokemon9","Pokemon10","Pokemon11","Pokemon12","Pokemon13","Pokemon14","Pokemon15","Pokemon16","Pokemon17"];
     for index in 1..18 {
 
-
-        path = Path::new(&format!("{}{}", "Pokemon", index));
+        path = Path::new(&Image_names[index].clone());
         display = path.display();
 
         file = match File::open(&path)    {
