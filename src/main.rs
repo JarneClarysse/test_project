@@ -746,7 +746,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
-    if(duration == -1){
+    if(duration == -1.0){
         duration = INFINITY;
     }
 
