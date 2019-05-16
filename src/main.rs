@@ -23,12 +23,12 @@ use std::os::unix::io::AsRawFd;
 use std::path::Path;
 use std::io::prelude::*;
 use std::fs::File;
-use std::time::Duration;
+//use std::time::Duration;
 use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
-use std::mem::size_of;
+//use std::mem::size_of;
 use std::io::{Read, Cursor};
-use byteorder::{LittleEndian, ReadBytesExt};
+use byteorder::{ReadBytesExt};
 use std::time::SystemTime;
 use std::f64::INFINITY;
 
@@ -518,7 +518,7 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_rece
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
         frame = Frame::render_water_frame(x,&image2);
         image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
-        scroll_for(gpio, timer, &mut image2, 0.00001 as f64,1,false,interrupt_received);
+        scroll_for(gpio, timer, &mut image2, 100000 as f64,1,false,interrupt_received);
 
     }
 }
@@ -762,7 +762,6 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
 
     while (interrupt_received.load(Ordering::SeqCst) == false) && (dur < duration) {
-
         let mut color_clk_mask:u32 = 0;
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
@@ -826,7 +825,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
             Ok(done) => done,
             Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
         };
-        dur = done.as_secs() as f64;
+        dur = done.as_micros() as f64;
     }
 
 
@@ -939,16 +938,16 @@ pub fn main() {
 
 
         if(ind == 0) || (ind==3) || (ind == 7){
-            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,false,&interrupt_received);
 
         } else if (ind == 18) {
             scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,true,&interrupt_received);
         } else if (ind == 1) || (ind == 2){
-            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,true,&interrupt_received);
         } else if (ind == 4){
             render_water(&mut gpio, &mut timer,&mut image1,&interrupt_received);
         } else{
-            scroll_for(&mut gpio,&mut timer,&mut image1, 0.8 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 800000 as f64,10,false,&interrupt_received);
         }
 
     }
