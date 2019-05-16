@@ -894,8 +894,8 @@ pub fn main() {
     let mut Image_names: Vec<&str> = vec!["Pokemon1.ppm","Pokemon2.ppm","Pokemon3.ppm","Pokemon4.ppm","Pokemon5.ppm","Pokemon6.ppm","Pokemon7.ppm","Pokemon8.ppm","Pokemon9.ppm","Pokemon10.ppm","Pokemon11.ppm","Pokemon12.ppm","Pokemon13.ppm","Pokemon14.ppm","Pokemon15.ppm","Pokemon16.ppm","Pokemon17.ppm"];
     let mut firstImage=image.clone();
     for index in 1..18 {
-
-        path = Path::new(&Image_names[index].clone());
+	let pad = Image_names[index].clone();
+        path = Path::new(pad);
         display = path.display();
 
         file = match File::open(&path)    {
