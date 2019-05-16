@@ -463,7 +463,7 @@ impl Frame {
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
             for col in 0 .. COLUMNS {
-                match col >7 && col< (22-pos) && row == 7 {
+                match col >7 && col< (22-pos) as u32 && row == 7 {
                     true => kolom.push(Pixel{r:0,g:0,b:0}),
                     false=>  kolom.push(image.pixels[row as usize][col as usize]),
                 };
@@ -748,7 +748,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 }
 
 fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
-    let mut out: u32;
+    let mut out: u32 = 0;
     if top.r & (1 << plane) !=0 {
         out |= GPIO_BIT!(PIN_R1);
     };
@@ -861,12 +861,12 @@ pub fn main() {
 
 
         if index == 0{
-            firstImage=image.clone();
+            first_image=image.clone();
         }
 
         image_list.push(image.clone());
         if(index == 2) || (index == 5){
-            Image_list.push(firstImage.clone());
+            image_list.push(first_image.clone());
         }
 
     }
