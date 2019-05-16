@@ -872,9 +872,9 @@ pub fn main() {
     let mut timer = Timer::new();
     println!("timer made");
 
-   // render_water(&mut gpio, &mut timer, &mut image);
+    render_water(&mut gpio, &mut timer, &mut image);
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
+   // scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true);
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false);
 
