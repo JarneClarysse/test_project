@@ -456,7 +456,7 @@ impl Frame {
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
             for col in 0..COLUMNS {
-                match col > 7 && col < (22 - pos) as u32 && row == 7 {
+                match col > 7 && col < (22 - pos) as u32 && row == 8 {
                     true => kolom.push(Pixel { r: 0, g: 0, b: 0 }),
                     false => kolom.push(image.pixels[row as usize][col as usize]),
                 };
@@ -795,7 +795,6 @@ fn get_plane_bits(top: Pixel, bot: Pixel, plane: u8) -> u32 {
 
 pub fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let interrupt_received = Arc::new(AtomicBool::new(false));
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
@@ -837,16 +836,16 @@ pub fn main() {
     let mut timer = Timer::new();
     //println!("timer made");
 
-    //let interrupt_received = Arc::new(AtomicBool::new(false));
+    let _interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = Arc::new(AtomicBool::new(false)).clone();
+    let int_recv = _interrupt_received.clone();
     ;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
     if choice_int == 0 {
-        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received);
+        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &_interrupt_received);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -896,22 +895,22 @@ pub fn main() {
 
 
         if (ind == 0) || (ind == 3) || (ind == 7) {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
+            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &_interrupt_received);
         } else if ind == 18 {
-            scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &interrupt_received);
+            scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &_interrupt_received);
         } else if (ind == 1) || (ind == 2) {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
+            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &_interrupt_received);
         } else if ind == 4 {
-            render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
+            render_water(&mut gpio, &mut timer, &mut image1, &_interrupt_received);
         } else {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
+            scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &_interrupt_received);
         }
     }
 
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
-    if interrupt_received.load(Ordering::SeqCst) == true {
+    if _interrupt_received.load(Ordering::SeqCst) == true {
         println!("Received CTRL-C");
     } else {
         println!("Timeout reached");
