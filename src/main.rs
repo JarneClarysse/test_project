@@ -512,8 +512,10 @@ impl Frame {
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
     let mut image2;
     for x in 0..13{
-        let mut frame = Frame::render_water_frame(x, image);
+        frame = Frame::nextFrame(0, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
+        frame = Frame::render_water_frame(x,&image2);
+        image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
         scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false,interrupt_received);
 
     }
@@ -894,7 +896,7 @@ pub fn main() {
 
     for index in 1..18 {
 
-       
+
         path = Path::new(Image_names[index]);
         display = path.display();
 
