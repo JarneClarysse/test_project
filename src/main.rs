@@ -839,7 +839,7 @@ pub fn main() {
 
     //let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = Arc::new(AtomicBool::new(false));
+    let int_recv = Arc::new(AtomicBool::new(false)).clone();
     ;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
