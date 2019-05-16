@@ -439,16 +439,6 @@ impl Frame {
                     let position = (pos as u32 + col)% image.width as u32 ;
                     kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
 
-                        /*
-                    struct Pixel*pix = &Frame[row][col];
-
-                     // select the image column to show in this position
-                    int pos = (current_position + col) % image_width;
-                    struct PPMPixel*raw = &image[pos + row * image_width];
-
-                    pix -> R = RawColorToFullColor(raw -> R);
-                    pix -> G = RawColorToFullColor(raw -> G);
-                    pix -> B = RawColorToFullColor(raw -> B);*/
                 }
             v.push(kolom);
         }
@@ -470,8 +460,82 @@ impl Frame {
         if ( + + current_position >= image_width)
         current_position = 0;*/
     }
+
+    fn render_water_frame(pos: u32, image: &Image) -> Frame{
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        let sign = 13-pos;
+
+        for row in 0..ROWS {
+            let mut kolom: Vec<Pixel> = vec![];
+
+            for col in 0 .. COLUMNS {
+                let position = (pos as u32 + col)% image.width as u32 ;
+                if col >=8 && col <sign && row == 7{
+                    kolom.push(Pixel{r:0,g:0,b:0});
+                } else{
+                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+
+                }
+
+
+            }
+            v.push(kolom);
+        }
+        let mut pos2 = (pos+1) as usize;
+        if pos2 >= image.width{
+            pos2 = 0;
+        }
+
+        let mut frame: Frame = Frame{
+            pos: pos2,
+            pixels: v
+        };
+
+        frame
+    }
 }
 
+fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
+    for x in 0..13{
+        while (dur < 0.5){
+            let mut frame = Frame::render_water_frame(x, image);
+            let mut color_clk_mask: u32 = 0;
+            color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
+            for row_loop in 0..(ROWS / 2) {
+                for b in 0..COLOR_DEPTH {
+                    for col in 0..32 {
+                        let mut top: Pixel = frame.pixels[row_loop as usize][col as usize];
+                        let mut bot: Pixel = frame.pixels[(ROWS / 2 + row_loop) as usize][col as usize];
+                        //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
+                        gpio.write_masked_bits(getPlaneBits(top, bot, b as u8), color_clk_mask);
+                        //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
+                        gpio.set_bits(GPIO_BIT!(PIN_CLK));
+                    };
+                    gpio.clear_bits(color_clk_mask);
+
+                    unsafe {
+                        let row_bits = gpio.get_row_bits(row_loop as u8);
+                        //println!("row number: {:#034b}",row_loop);
+                        //println!("row bits: {:#034b}",row_bits);
+                        //println!("row mask: {:#034b}",row_mask);
+                        gpio.write_masked_bits(row_bits, row_mask);
+                    };
+                    gpio.set_bits(GPIO_BIT!(PIN_LAT));
+                    gpio.clear_bits(GPIO_BIT!(PIN_LAT));
+                    gpio.clear_bits(GPIO_BIT!(PIN_OE));
+                    timer.nanosleep(gpio.bitplane_timings[b]);
+                    gpio.set_bits(GPIO_BIT!(PIN_OE));
+                };
+                //gpio.set_bits(GPIO_BIT!(PIN_OE));
+            };
+            let mut done = match current_time.duration_since(starttime) {
+                Ok(done) => done,
+                Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
+            };
+            dur = done.as_secs() as f64;
+        }
+    }
+}
 
 
 // TODO: Add your PPM parser here
@@ -702,8 +766,10 @@ pub fn main() {
     } else if args.len() < 2 {
         eprintln!("Syntax: {:?} [image]", args[0]);
         std::process::exit(1);
-    } 
-    
+    }
+
+    prinln!("{}",args[1]);
+
     // TODO: Read the PPM file here. You can find its name in args[1]
     let path = Path::new(&args[1]);
     let display = path.display();
@@ -713,6 +779,7 @@ pub fn main() {
                            display, why.description()),
         Ok(file) => file
     };
+
 
     // read the full file into memory. panic on failure
     let mut raw_file = Vec::new();
@@ -753,7 +820,7 @@ pub fn main() {
 
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
-		 for col in 0 .. 32 {
+		        for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 		            //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
@@ -761,7 +828,7 @@ pub fn main() {
                     //println!("{:#034b}",getPlaneBits(top, bot,b as u8));
 		            gpio.set_bits(GPIO_BIT!(PIN_CLK));
 
-                }
+                };
                 gpio.clear_bits(color_clk_mask);
 
                 unsafe {
@@ -774,12 +841,12 @@ pub fn main() {
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
- 		timer.nanosleep(gpio.bitplane_timings[b]);            	
-		gpio.set_bits(GPIO_BIT!(PIN_OE));
+ 		        timer.nanosleep(gpio.bitplane_timings[b]);
+		        gpio.set_bits(GPIO_BIT!(PIN_OE));
 
-            }
+            };
 	    //gpio.set_bits(GPIO_BIT!(PIN_OE));
-        }
+        };
 
         //NEXT FRAME LOGIC
         let mut current_time = SystemTime::now();
@@ -800,9 +867,9 @@ pub fn main() {
 
 
             frame = Frame::nextFrame(frame.pos,&image);
-        }
+        };
 
-    }
+    };
 
 
 
