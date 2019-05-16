@@ -428,14 +428,15 @@ impl Timer {
 impl Frame {
 
 
-    fn nextFrame(pos: usize, image: Image) -> Frame {
+    fn nextFrame(mut pos: usize, image: &Image) -> Frame {
 
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
 
                 for col in 0 .. COLUMNS {
-                    kolom.push(image.pixels[row as usize][col as usize]);
+                    let position = (pos + col)%image.width;
+                    kolom.push(image.pixels[row as usize][pos as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
@@ -449,6 +450,10 @@ impl Frame {
                     pix -> B = RawColorToFullColor(raw -> B);*/
                 }
             v.push(kolom);
+        }
+        pos += pos;
+        if pos >= image.width{
+            pos = 0;
         }
 
         let mut frame: Frame = Frame{
@@ -726,7 +731,7 @@ pub fn main() {
     let mut timer = Timer::new();
     println!("timer made");
 
-    let mut frame: Frame = Frame::nextFrame(0, image);
+    let mut frame: Frame = Frame::nextFrame(0, &image);
 
     println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the 
@@ -772,6 +777,10 @@ pub fn main() {
 
             }
         }
+        timer.nanosleep(2000);
+
+        frame = Frame::nextFrame(frame.pos, &image);
+
     }
     gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
