@@ -691,7 +691,10 @@ fn getPlaneBits(top: Pixel, bot: Pixel, plane: u8) ->  u32{
     out
 }
 
-fn scroll_for(gpio:&GPIO,timer:&Timer,image:&Image,duration: u8){
+fn scroll_for(gpio:&GPIO,timer:&Timer,image:&Image,duration: u64){
+
+    let interrupt_received = Arc::new(AtomicBool::new(false));
+
 
     let mut frame: Frame = Frame::nextFrame(0, &image);
 
@@ -778,7 +781,6 @@ fn scroll_for(gpio:&GPIO,timer:&Timer,image:&Image,duration: u8){
 
 pub fn main() {
     let args : Vec<String> = std::env::args().collect();
-    let interrupt_received = Arc::new(AtomicBool::new(false));
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
