@@ -481,7 +481,9 @@ impl Frame {
 
             for col in 0 .. COLUMNS {
                 let position = (pos as u32 + col)% image.width as u32 ;
-                if col >=8 && col <sign && row == 7{
+                if col >8 && col <sign && row == 7{
+                    println!(" sign {} ", sign);
+                    
                     kolom.push(Pixel{r:0,g:0,b:0});
                 } else{
                     kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
@@ -515,8 +517,6 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
 
 
         while (dur < 0.5){
-
-
             let mut frame = Frame::render_water_frame(x, image);
             let mut color_clk_mask: u32 = 0;
             color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
