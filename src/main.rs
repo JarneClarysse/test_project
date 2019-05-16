@@ -886,9 +886,8 @@ pub fn main() {
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
     for index in 1..18 {
 
-        let mut s: String = index.to_string();
-
-        path = Path::new("Pokemon"+s);
+        let mut padnaam = format!("{}{}", "Pokemon", index);
+        path = Path::new(padnaam);
         display = path.display();
 
         file = match File::open(&path)    {
