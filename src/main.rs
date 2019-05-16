@@ -860,7 +860,6 @@ pub fn main() {
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
-    let mut squirt_died_image = image.clone();
     for index in 0..18 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
@@ -911,7 +910,7 @@ pub fn main() {
 
         if (ind == 0) || (ind == 3) || (ind == 8) {
             scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
-        } else if ind == 20 {
+        } else if ind == 21 {
             scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &interrupt_received);
         } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 9){
             scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
