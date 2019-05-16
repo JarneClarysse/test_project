@@ -484,8 +484,8 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_rece
     let mut image2;
     let mut frame;
     for x in 0..14{
-        frame = Frame::render_water_frame(x,&image2);
-        image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
+        frame = Frame::render_water_frame(x,&image);
+        image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
         scroll_for(gpio, timer, &mut image2, 100000 as f64,1,false,interrupt_received);
 
     }
