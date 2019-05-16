@@ -916,5 +916,8 @@ pub fn main() {
         println!("Timeout reached");
     }
 
+    gpio.set_bits(GPIO_BIT!(PIN_OE));
+
+
     // TODO: You may want to reset the board here (i.e., disable all LEDs)
 }
