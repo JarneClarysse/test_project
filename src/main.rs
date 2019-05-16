@@ -753,9 +753,11 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
         }
 
 
+        let mut current_time = SystemTime::now();
+
         if(scrollable){
         //NEXT FRAME LOGIC
-        let mut current_time = SystemTime::now();
+
 
         let mut elap = match current_time.duration_since(prev_time) {
             Ok(elap) => elap,
