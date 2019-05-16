@@ -839,8 +839,8 @@ pub fn main() {
 
     //let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = Arc::new(AtomicBool::new(false)).clone();
-    ;
+    let int_recv = Arc::new(AtomicBool::new(false));
+
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
@@ -916,6 +916,7 @@ pub fn main() {
     } else {
         println!("Timeout reached");
     }
+    
 
     // TODO: You may want to reset the board here (i.e., disable all LEDs)
 }
