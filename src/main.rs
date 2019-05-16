@@ -781,6 +781,7 @@ fn scroll_for(gpio:&GPIO,timer:&Timer,image:&Image,duration: u64){
 
 pub fn main() {
     let args : Vec<String> = std::env::args().collect();
+    let interrupt_received = Arc::new(AtomicBool::new(false));
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
