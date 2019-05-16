@@ -884,10 +884,18 @@ pub fn main() {
 
     //let mut Image_list: Vec<Image> = vec![];
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
+
+
+    let mut Image_names: Vec<String> = Vec::with_capacity(17);
+    for ix in 1..18 {
+        let mut naam = format!("{}{}", "Pokemon", ix);
+        Image_names.push(naam);
+    }
+
     for index in 1..18 {
 
-        let mut padnaam = format!("{}{}", "Pokemon", index);
-        path = Path::new(padnaam);
+       
+        path = Path::new(Image_names[index]);
         display = path.display();
 
         file = match File::open(&path)    {
