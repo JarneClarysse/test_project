@@ -704,13 +704,13 @@ fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duratio
     }
 
     let mut prev_time = SystemTime::now();
-    let mut starttime = SystemTime::now();
+    let starttime = SystemTime::now();
 
     let mut dur = 0 as f64;
 
 
     while (interrupt_received.load(Ordering::SeqCst) == false) && (dur < duration) {
-        let mut color_clk_mask: u32;
+        let color_clk_mask: u32;
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
         for row_loop in 0..(ROWS / 2) {
@@ -738,7 +738,7 @@ fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duratio
         }
 
 
-        let mut current_time = SystemTime::now();
+        let current_time = SystemTime::now();
 
         if scrollable {
             //NEXT FRAME LOGIC
