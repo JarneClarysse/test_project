@@ -799,7 +799,7 @@ pub fn main() {
             prev_time = current_time;
 
 
-            frame = Frame::nextFrame(frame.pos,&image);
+       //     frame = Frame::nextFrame(frame.pos,&image);
         }
 
     }
