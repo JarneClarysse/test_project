@@ -546,6 +546,7 @@ impl Image {
         };
         let mut header: [u8; 2] = [0, 2];
         match cursor.read(&mut header){
+            Ok(_res)=> _res,
             Err(why)=> panic!("something happened while parsing header - {}", why.description()),
         };
 
@@ -681,11 +682,11 @@ impl Image {
                 let pixel = Image::read_pixel(cursor)?;
                 hoogte_pix.push(pixel);
             }
-            allePix.insert(0, hoogte_pix)
+            alle_pix.insert(0, hoogte_pix)
         }
         image.width = w;
         image.height = h;
-        image.pixels = allePix;
+        image.pixels = alle_pix;
 
         Ok(image)
     }
