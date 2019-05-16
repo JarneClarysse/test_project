@@ -456,7 +456,7 @@ impl Frame {
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
             for col in 0..COLUMNS {
-                match col > 7 && col < (22 - pos) as u32 && row == 7 {
+                match col > 7 && col < (22 - pos) as u32 && row == 8 {
                     true => kolom.push(Pixel { r: 0, g: 0, b: 0 }),
                     false => kolom.push(image.pixels[row as usize][col as usize]),
                 };
@@ -795,7 +795,6 @@ fn get_plane_bits(top: Pixel, bot: Pixel, plane: u8) -> u32 {
 
 pub fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let interrupt_received = Arc::new(AtomicBool::new(false));
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
@@ -837,10 +836,10 @@ pub fn main() {
     let mut timer = Timer::new();
     //println!("timer made");
 
-    //let interrupt_received = Arc::new(AtomicBool::new(false));
+    let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = Arc::new(AtomicBool::new(false));
-
+    let int_recv = interrupt_received.clone();
+    ;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
@@ -916,7 +915,6 @@ pub fn main() {
     } else {
         println!("Timeout reached");
     }
-    
 
     // TODO: You may want to reset the board here (i.e., disable all LEDs)
 }
