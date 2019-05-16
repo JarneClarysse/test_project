@@ -871,7 +871,7 @@ pub fn main() {
 
     }
     for ind in 0..image_list.len() {
-        let mut image1 = Image_list[ind].clone();
+        let mut image1 = image_list[ind].clone();
 
 
         if (ind == 0) || (ind==3) || (ind == 7){
