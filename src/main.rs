@@ -858,6 +858,8 @@ pub fn main() {
 
     let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm", "figures/Pokemon15.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
     let mut first_image = image.clone();
+    let mut pika_image;
+    let mut squirt_image;
     for index in 0..17 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
@@ -884,23 +886,35 @@ pub fn main() {
         if index == 0 {
             first_image = image.clone();
         }
+        if index == 1 {
+            pika_image = image.clone();
+        }
+        if index == 2{
+            squirt_image = image.clone();
+        }
 
         image_list.push(image.clone());
         if (index == 2) || (index == 5) {
             image_list.push(first_image.clone());
+        }
+        if index == 2 {
+            image_list.push(squirt_image);
+        }
+        if index == 5 {
+            image_list.push(pika_image);
         }
     }
     for ind in 0..image_list.len() {
         let mut image1 = image_list[ind].clone();
 
 
-        if (ind == 0) || (ind == 3) || (ind == 7) {
+        if (ind == 0) || (ind == 3) || (ind == 9) {
             scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
-        } else if ind == 18 {
+        } else if ind == 20 {
             scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &interrupt_received);
-        } else if (ind == 1) || (ind == 2) {
+        } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 8){
             scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
-        } else if ind == 4 {
+        } else if ind == 5 {
             render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
         } else {
             scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
