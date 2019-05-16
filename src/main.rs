@@ -916,7 +916,7 @@ pub fn main() {
         };
 
 
-        if index == 1{
+        if index == 0{
             firstImage=image.clone();
         }
 
@@ -939,7 +939,7 @@ pub fn main() {
         } else if (ind == 1) || (ind == 2){
             scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,true,&interrupt_received);
         } else if (ind == 4){
-            render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
+            render_water(&mut gpio, &mut timer,&mut image1,&interrupt_received);
         } else{
             scroll_for(&mut gpio,&mut timer,&mut image1, 0.8 as f64,10,false,&interrupt_received);
         }
