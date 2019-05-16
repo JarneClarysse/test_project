@@ -508,7 +508,15 @@ impl Frame {
 
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
     for x in 0..13{
+        let mut prev_time = SystemTime::now();
+        let mut starttime= SystemTime::now();
+
+        let mut dur =  0 as f64;
+
+
         while (dur < 0.5){
+
+
             let mut frame = Frame::render_water_frame(x, image);
             let mut color_clk_mask: u32 = 0;
             color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
@@ -539,6 +547,8 @@ fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
                 };
                 //gpio.set_bits(GPIO_BIT!(PIN_OE));
             };
+            let mut current_time = SystemTime::now();
+
             let mut done = match current_time.duration_since(starttime) {
                 Ok(done) => done,
                 Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
