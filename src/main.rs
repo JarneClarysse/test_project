@@ -435,13 +435,13 @@ impl Frame {
             let mut kolom: Vec<Pixel> = vec![];
 
                 for col in 0 .. COLUMNS {
-                    let position = (pos + col)%image.width;
+                    let position = (pos as u32 + col)% image.width as u32 ;
                     kolom.push(image.pixels[row as usize][pos as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
 
-                    // select the image column to show in this position
+                     // select the image column to show in this position
                     int pos = (current_position + col) % image_width;
                     struct PPMPixel*raw = &image[pos + row * image_width];
 
