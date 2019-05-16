@@ -23,12 +23,12 @@ use std::os::unix::io::AsRawFd;
 use std::path::Path;
 use std::io::prelude::*;
 use std::fs::File;
-use std::time::Duration;
+//use std::time::Duration;
 use shuteye::sleep;
 use mmap::{MemoryMap, MapOption};
-use std::mem::size_of;
+//use std::mem::size_of;
 use std::io::{Read, Cursor};
-use byteorder::{LittleEndian, ReadBytesExt};
+use byteorder::{ReadBytesExt};
 use std::time::SystemTime;
 use std::f64::INFINITY;
 
@@ -54,6 +54,7 @@ struct GPIO {
 }
 
 // This is a representation of the "raw" image
+#[derive(Clone)]
 struct Image {
     width: usize,
     height: usize,
@@ -474,20 +475,20 @@ impl Frame {
 
     fn render_water_frame(pos: u32, image: &Image) -> Frame{
         let mut v: Vec<Vec<Pixel>> = vec![];
-        let sign = 13-pos;
-        println!("sign {}", sign);
+        let sign = pos;
+//        println!("sign {}", sign);
 
         for row in 0..ROWS {
             let mut kolom: Vec<Pixel> = vec![];
 
             for col in 0 .. COLUMNS {
-                let position = (pos as u32 + col)% image.width as u32 ;
-                if col >8 && col <sign && row == 7{
-                    println!(" sign {} ", sign);
+//                let position = (pos as u32 + col)% image.width as u32 ;
+                if col > 7 && col <(23-pos) && row == 8{
+  //                  println!(" sign {} ", sign);
 
                     kolom.push(Pixel{r:0,g:0,b:0});
                 } else{
-                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+                    kolom.push(image.pixels[(ROWS-1- row) as usize][col as usize]);
 
                 };
 
@@ -511,12 +512,13 @@ impl Frame {
 
 fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image,interrupt_received: &Arc<AtomicBool>){
     let mut image2;
-    for x in 0..13{
+    let mut frame;
+    for x in 0..14{
         frame = Frame::nextFrame(0, image);
         image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
         frame = Frame::render_water_frame(x,&image2);
         image2 = Image{height:image2.height,width:image.width,pixels:frame.pixels};
-        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false,interrupt_received);
+        scroll_for(gpio, timer, &mut image2, 100000 as f64,1,false,interrupt_received);
 
     }
 }
@@ -744,7 +746,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
     let mut frame: Frame = Frame::nextFrame(0, &image);
 
-    println!("frame made");
+//    println!("frame made");
     // This code sets up a CTRL-C handler that writes "true" to the
     // interrupt_received bool.
 
@@ -760,7 +762,6 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 
 
     while (interrupt_received.load(Ordering::SeqCst) == false) && (dur < duration) {
-
         let mut color_clk_mask:u32 = 0;
         color_clk_mask = GPIO_BIT!(PIN_R1) | GPIO_BIT!(PIN_G1) | GPIO_BIT!(PIN_B1) | GPIO_BIT!(PIN_R2) | GPIO_BIT!(PIN_G2) | GPIO_BIT!(PIN_B2) | GPIO_BIT!(PIN_CLK);
 
@@ -824,7 +825,7 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
             Ok(done) => done,
             Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
         };
-        dur = done.as_secs() as f64;
+        dur = done.as_micros() as f64;
     }
 
 
@@ -835,19 +836,23 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
 pub fn main() {
     let args : Vec<String> = std::env::args().collect();
     let interrupt_received = Arc::new(AtomicBool::new(false));
+    let mut pad: String;
 
     // sanity checks
     if nix::unistd::Uid::current().is_root() == false {
         eprintln!("Must run as root to be able to access /dev/mem\nPrepend \'sudo\' to the command");
         std::process::exit(1);
-    } else if args.len() < 2 {
-        eprintln!("Syntax: {:?} [image]", args[0]);
+    } else if args.len() < 3 {
+        eprintln!("Syntax: {:?} [image] [0: normal, otherNumber:killer]", args[0]);
         std::process::exit(1);
     }
 
     // TODO: Read the PPM file here. You can find its name in args[1]
     let mut path = Path::new(&args[1]);
     let mut display = path.display();
+
+    let choice = &args[2];
+    let choice_int = choice.parse::<i32>().unwrap();
 
     let mut file = match File::open(&path)    {
         Err(why) => panic!("Could not open file: {} (Reason: {})",
@@ -880,16 +885,23 @@ pub fn main() {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
+    if(choice_int == 0){
     scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+    }
 
-    scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
+
+    //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,false,&interrupt_received);
 
     //let mut Image_list: Vec<Image> = vec![];
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
-    for index in 1..18 {
 
-        let mut padnaam = format!("{}{}", "Pokemon", index);
-        path = Path::new(padnaam);
+
+    let mut Image_names: Vec<&str> = vec!["figures/Pokemon1.ppm","figures/Pokemon2.ppm","figures/Pokemon3.ppm","figures/Pokemon4.ppm","figures/Pokemon5.ppm","figures/Pokemon6.ppm","figures/Pokemon7.ppm","figures/Pokemon8.ppm","figures/Pokemon9.ppm","figures/Pokemon10.ppm","figures/Pokemon11.ppm","figures/Pokemon12.ppm","figures/Pokemon13.ppm","figures/Pokemon14.ppm","figures/Pokemon15.ppm","figures/Pokemon16.ppm","figures/Pokemon17.ppm"];
+    let mut firstImage=image.clone();
+    for index in 0..17 {
+	let pad = Image_names[index].clone();
+        path = Path::new(pad);
         display = path.display();
 
         file = match File::open(&path)    {
@@ -905,28 +917,36 @@ pub fn main() {
         // construct a cursor so we can seek in the raw buffer
         cursor = Cursor::new(raw_file);
         image = match Image::decode_ppm_image(&mut cursor) {
-            Ok(img) => img,
+            Ok(image) => image,
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
 
-        Image_list.push(image);
-        if(index == 3) || (index == 6){
-            Image_list.push(Image_list[0]);
+
+        if index == 0{
+            firstImage=image.clone();
+        }
+
+        Image_list.push(image.clone());
+        if(index == 2) || (index == 5){
+            Image_list.push(firstImage.clone());
         }
 
     }
     for ind in 0..Image_list.len() {
-        let mut image = Image_list[ind];
+        let mut image1 = Image_list[ind].clone();
+
 
         if(ind == 0) || (ind==3) || (ind == 7){
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,false,&interrupt_received);
 
         } else if (ind == 18) {
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,1,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, -1 as f64,1,true,&interrupt_received);
         } else if (ind == 1) || (ind == 2){
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1500000 as f64,10,true,&interrupt_received);
+        } else if (ind == 4){
+            render_water(&mut gpio, &mut timer,&mut image1,&interrupt_received);
         } else{
-            scroll_for(&mut gpio,&mut timer,&mut image, 0.8 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 800000 as f64,10,false,&interrupt_received);
         }
 
     }
