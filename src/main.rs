@@ -888,7 +888,7 @@ pub fn main() {
 
         let mut s: String = index.to_string();
 
-        path = Path::new("Pokemon"+s);
+        path = Path::new("Pokemon"+&s);
         display = path.display();
 
         file = match File::open(&path)    {
