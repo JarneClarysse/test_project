@@ -908,7 +908,7 @@ pub fn main() {
         // construct a cursor so we can seek in the raw buffer
         cursor = Cursor::new(raw_file);
         image = match Image::decode_ppm_image(&mut cursor) {
-            Ok(img) => img,
+            Ok(image) => image,
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
 
@@ -925,18 +925,18 @@ pub fn main() {
     }
 
     for ind in 0..Image_list.len() {
-        let mut image = &Image_list[ind];
+        let mut image1 = &Image_list[ind];
 
 
         if(ind == 0) || (ind==3) || (ind == 7){
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,false,&interrupt_received);
 
         } else if (ind == 18) {
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,1,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,1,true,&interrupt_received);
         } else if (ind == 1) || (ind == 2){
-            scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10,true,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 1.5 as f64,10,true,&interrupt_received);
         } else{
-            scroll_for(&mut gpio,&mut timer,&mut image, 0.8 as f64,10,false,&interrupt_received);
+            scroll_for(&mut gpio,&mut timer,&mut image1, 0.8 as f64,10,false,&interrupt_received);
         }
 
     }
