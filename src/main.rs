@@ -912,8 +912,9 @@ pub fn main() {
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
 
+        let mut firstImage;
         if index == 1 {
-            let mut firstImage=image;
+            firstImage=image;
         }
 
         Image_list.push(image);
@@ -939,7 +940,7 @@ pub fn main() {
         }
 
     }
-*/
+
     render_water(&mut gpio, &mut timer,&mut image,&interrupt_received);
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
