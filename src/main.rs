@@ -852,7 +852,7 @@ pub fn main() {
     let mut path = Path::new(&args[1]);
     let mut display = path.display();
 
-    let choice = &args[2] as u8;
+    let choice = &args[2];
     let choice_int = choice.parse::<i32>().unwrap();
 
     let mut file = match File::open(&path)    {
