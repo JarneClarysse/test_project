@@ -921,7 +921,7 @@ pub fn main() {
         }
 
         Image_list.push(image.clone());
-        if(index == 3) || (index == 6){
+        if(index == 2) || (index == 5){
             Image_list.push(firstImage.clone());
         }
 
