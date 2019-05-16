@@ -437,7 +437,7 @@ impl Frame {
 
                 for col in 0 .. COLUMNS {
                     let position = (pos as u32 + col)% image.width as u32 ;
-                    kolom.push(image.pixels[row as usize][position as usize]);
+                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
 
                         /*
                     struct Pixel*pix = &Frame[row][col];
@@ -452,13 +452,13 @@ impl Frame {
                 }
             v.push(kolom);
         }
-        pos += pos;
-        if pos >= image.width{
-            pos = 0;
+        let mut pos2 = pos+1;
+        if pos2 >= image.width{
+            pos2 = 0;
         }
 
         let mut frame: Frame = Frame{
-            pos: pos,
+            pos: pos2,
             pixels: v
         };
 
@@ -753,7 +753,7 @@ pub fn main() {
 
         for row_loop in 0 .. (ROWS/2){
             for b in 0..COLOR_DEPTH{
-		        for col in 0 .. 32 {
+		 for col in 0 .. 32 {
                     let mut top:Pixel = frame.pixels[row_loop as usize][col as usize];
                     let mut bot:Pixel = frame.pixels[(ROWS/2 + row_loop )as usize][col as usize];
 		            //println!("row: {} col: {} top.r: {} top.g: {} top.b: {} bot.r: {} bot.g: {} bot.b{}",row_loop,col,top.r,top.g,top.b,bot.r,bot.g,bot.b);
@@ -774,10 +774,11 @@ pub fn main() {
                 gpio.set_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_LAT));
                 gpio.clear_bits(GPIO_BIT!(PIN_OE));
-                timer.nanosleep(gpio.bitplane_timings[b]);
-                gpio.set_bits(GPIO_BIT!(PIN_OE));
+ 		timer.nanosleep(gpio.bitplane_timings[b]);            	
+		gpio.set_bits(GPIO_BIT!(PIN_OE));
 
             }
+	    //gpio.set_bits(GPIO_BIT!(PIN_OE));
         }
 
         //NEXT FRAME LOGIC
@@ -792,7 +793,7 @@ pub fn main() {
         let mut sec =  elap.as_secs();
         let mut usec =  elap.as_micros();
 
-        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec);
+        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
 
         if usec_since_prev_frame >= 40000 {
             prev_time = current_time;
