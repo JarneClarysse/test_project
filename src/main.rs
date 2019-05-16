@@ -888,16 +888,10 @@ pub fn main() {
     let mut Image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let mut Image_names: Vec<String> = Vec::with_capacity(17);
-    for ix in 1..18 {
-        let mut naam = format!("{}{}", "Pokemon", ix);
-        Image_names.push(naam);
-    }
-
     for index in 1..18 {
 
 
-        path = Path::new(Image_names[index]);
+        path = Path::new(&format!("{}{}", "Pokemon", index));
         display = path.display();
 
         file = match File::open(&path)    {
@@ -917,15 +911,20 @@ pub fn main() {
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
 
+        if index == 1 {
+            let mut firstImage=image;
+        }
+
         Image_list.push(image);
         if(index == 3) || (index == 6){
-            Image_list.push(Image_list[0]);
+            Image_list.push(firstImage);
         }
 
     }
 
     for ind in 0..Image_list.len() {
-        let mut image = Image_list[ind];
+        let mut image = &Image_list[ind];
+
 
         if(ind == 0) || (ind==3) || (ind == 7){
             scroll_for(&mut gpio,&mut timer,&mut image, 1.5 as f64,10,false,&interrupt_received);
