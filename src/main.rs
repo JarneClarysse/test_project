@@ -471,8 +471,53 @@ impl Frame {
         if ( + + current_position >= image_width)
         current_position = 0;*/
     }
+
+    fn render_water_frame(pos: u32, image: &Image) -> Frame{
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        let sign = 13-pos;
+        println!("sign {}", sign);
+
+        for row in 0..ROWS {
+            let mut kolom: Vec<Pixel> = vec![];
+
+            for col in 0 .. COLUMNS {
+                let position = (pos as u32 + col)% image.width as u32 ;
+                if col >8 && col <sign && row == 7{
+                    println!(" sign {} ", sign);
+
+                    kolom.push(Pixel{r:0,g:0,b:0});
+                } else{
+                    kolom.push(image.pixels[(ROWS -1 - row) as usize][position as usize]);
+
+                };
+
+
+            };
+            v.push(kolom);
+        };
+        let mut pos2 = (pos+1) as usize;
+        if pos2 >= image.width{
+            pos2 = 0;
+        };
+
+        let mut frame: Frame = Frame{
+            pos: pos2,
+            pixels: v
+        };
+
+        frame
+    }
 }
 
+fn render_water(gpio:&mut GPIO, timer:&mut Timer,image:&mut Image){
+    let mut image2;
+    for x in 0..13{
+        let mut frame = Frame::render_water_frame(x, image);
+        image2 = Image{height:image.height,width:image.width,pixels:frame.pixels};
+        scroll_for(gpio, timer, &mut image2, 0.5 as f64,1,false);
+
+    }
+}
 
 
 // TODO: Add your PPM parser here
@@ -751,26 +796,26 @@ fn scroll_for(gpio:&mut GPIO, timer:&mut Timer, image:&mut Image, mut duration: 
         let mut current_time = SystemTime::now();
 
         if(scrollable){
-        //NEXT FRAME LOGIC
+            //NEXT FRAME LOGIC
 
 
-        let mut elap = match current_time.duration_since(prev_time) {
-            Ok(elap) => elap,
-            Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
-        };
+            let mut elap = match current_time.duration_since(prev_time) {
+                Ok(elap) => elap,
+                Err(why) => panic!("Woops time did not elapse well: {}", why.description()),
+            };
 
 
-        let mut sec =  elap.as_secs();
-        let mut usec =  elap.as_micros();
+            let mut sec =  elap.as_secs();
+            let mut usec =  elap.as_micros();
 
-        let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
+            let mut usec_since_prev_frame = (sec) * 1000 * 1000 +(usec) as u64;
 
-        if usec_since_prev_frame >= (40000*slowfactor) {
-            prev_time = current_time;
+            if usec_since_prev_frame >= (40000*slowfactor) {
+                prev_time = current_time;
 
 
-            frame = Frame::nextFrame(frame.pos,&image);
-        }
+                frame = Frame::nextFrame(frame.pos,&image);
+            }
         }
 
         let mut done = match current_time.duration_since(starttime) {
@@ -796,8 +841,8 @@ pub fn main() {
     } else if args.len() < 2 {
         eprintln!("Syntax: {:?} [image]", args[0]);
         std::process::exit(1);
-    } 
-    
+    }
+
     // TODO: Read the PPM file here. You can find its name in args[1]
     let mut path = Path::new(&args[1]);
     let mut display = path.display();
