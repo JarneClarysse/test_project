@@ -888,7 +888,7 @@ pub fn main() {
 
 
         let mut padnaam = format!("{}{}", "Pokemon", index);
-        path = Path::new(padnaam);
+        path = Path::new(&padnaam);
         display = path.display();
 
         file = match File::open(&path)    {
