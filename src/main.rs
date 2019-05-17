@@ -728,7 +728,7 @@ impl Image {
             true => {
                 image.width = 32;
                 image.height = 16;
-                image.pixels = resize(allePix,w as u32,h as u32 ,32,16);;
+                image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
             }
             false => {
                 image.width = w;
