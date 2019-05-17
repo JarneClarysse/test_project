@@ -433,7 +433,7 @@ impl Timer {
         let nanoseconds_left = ((nanos - 20) * 100 / 36000) as i64;
 	    for _x in 0..nanoseconds_left {
             //unsafe{self.read()};
-            println!("");
+            print!("");
         }
     }
 }
