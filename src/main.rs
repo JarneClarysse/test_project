@@ -934,9 +934,11 @@ pub fn main() {
             } else if ind == 5 {
                 render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
             }else if ind >19 && ind < 27 {
-                if ind == 19{
-                    for i in 0..3{
-                        for offst in 0..8{
+                if ind == 20{
+                    let mut num = ind as u8;
+                    for _i in 0..3{
+                        for offst in 0..7{
+                            let mut number = num + (offst as u8);
                             let mut image1 = image_list[ind+offst].clone();
                             scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received);
                         }
