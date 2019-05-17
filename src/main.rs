@@ -696,10 +696,10 @@ impl Image {
                 }
             };
         };
-        /*
+        
         println!("{}", h);
         println!("{}", w);
-        println!("{}",max);*/
+        println!("{}",max);
 
         let mut alle_pix: Vec<Vec<Pixel>> = vec![];
 
@@ -754,6 +754,8 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
         let mut rij: Vec<Pixel> = vec![];
 
         for j in 0..targetWidth {
+	    println!("yratio {}", y_ratio);
+	    println!("source {} target {}",sourceHeight,targetHeight);
             x = (x_ratio * j);
             y = (y_ratio * i);
             x_diff = ((x_ratio * j) - x)as u16;
