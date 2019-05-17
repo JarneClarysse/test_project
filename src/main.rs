@@ -990,7 +990,7 @@ pub fn main() {
         if index == 3 {
             image_list.push(squirt_image.clone());
         }
-        if index == 8 {
+        if index == 7 {
             image_list.push(pika_image.clone());
         }
     }
@@ -1007,7 +1007,7 @@ pub fn main() {
             } else if (ind == 2) || (ind == 5) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,false);
             } else if (ind == 4) || (ind == 9) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 6000000 as f64, 2, true, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 6000000 as f64, 1, true, &interrupt_received,true);
             }else if (ind == 1)  || (ind == 11) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,true);
             } else if ind == 6 {
