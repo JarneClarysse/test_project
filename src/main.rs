@@ -578,7 +578,7 @@ impl Image {
         Ok(num)
     }
 
-    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>, &count_int: i32) -> Result<Image, Box<std::error::Error>> {
+    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>, count_int: i32) -> Result<Image, Box<std::error::Error>> {
         let mut image = Image {
             width: 0,
             height: 0,
