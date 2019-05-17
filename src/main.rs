@@ -990,7 +990,7 @@ pub fn main() {
         if (index == 2) {
             image_list.push(first_image.clone());
         }
-        if index == 2 {
+        if index == 4 {
             image_list.push(squirt_image.clone());
         }
         if index == 7 {
