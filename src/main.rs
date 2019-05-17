@@ -1004,9 +1004,9 @@ pub fn main() {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received,true);
             } else if ind == 34 {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received,true);
-            } else if (ind == 2) || (ind == 4) {
+            } else if (ind == 2) || (ind == 5) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,false);
-            } else if ind == 5 {
+            } else if ind == 4 {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 6000000 as f64, 1, true, &interrupt_received,true);
             }else if (ind == 1)  || (ind == 10) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,true);
