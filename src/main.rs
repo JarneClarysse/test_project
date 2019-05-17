@@ -904,7 +904,7 @@ pub fn main() {
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
-    for index in 0..18 {
+    for index in 0..30 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
@@ -950,6 +950,7 @@ pub fn main() {
     }
     while interrupt_received.load(Ordering::SeqCst) == false {
         for ind in 0..image_list.len() {
+	    println!("{}", image_list.len());
             let mut image1 = image_list[ind].clone();
 
 
@@ -965,10 +966,8 @@ pub fn main() {
                 render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
             }else if ind >19 && ind < 27 {
                 if ind == 20{
-                    let mut num = ind as u8;
                     for _i in 0..3{
                         for offst in 0..7{
-                            let mut number = num + (offst as u8);
                             let mut image1 = image_list[ind+offst].clone();
                             scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
                         }
