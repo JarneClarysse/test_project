@@ -108,7 +108,23 @@ const PIN_B1: u64 = 6;
 const PIN_R2: u64 = 12;
 const PIN_G2: u64 = 16;
 const PIN_B2: u64 = 23;
-
+const color_fix: [u16;256] = [
+0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
+1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
+2,  3,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
+5,  6,  6,  6,  6,  7,  7,  7,  7,  8,  8,  8,  9,  9,  9, 10,
+10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 15, 15, 16, 16,
+17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 24, 24, 25,
+25, 26, 27, 27, 28, 29, 29, 30, 31, 32, 32, 33, 34, 35, 35, 36,
+37, 38, 39, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50,
+51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68,
+69, 70, 72, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89,
+90, 92, 93, 95, 96, 98, 99,101,102,104,105,107,109,110,112,114,
+115,117,119,120,122,124,126,127,129,131,133,135,137,138,140,142,
+144,146,148,150,152,154,156,158,160,162,164,167,169,171,173,175,
+177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
+215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 ];
 // Convenience macro for creating bitmasks. See comment above "impl GPIO" below
 macro_rules! GPIO_BIT {
     ($bit:expr) => {
@@ -314,7 +330,7 @@ impl GPIO {
                 // TODO: Implement this yourself.
 
 
-                let mut timing_ns: u32 = 200;
+                let mut timing_ns: u32 = 150;
                 for b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
                     timing_ns *= 2;
@@ -398,11 +414,11 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let k_jitter_allowance_nanos: u32 = 60 * 150;
+        let k_jitter_allowance_nanos: u32 = 60*200;
         if nanos > k_jitter_allowance_nanos + 5000 {
             let before = unsafe { self.read() };
-            let difference = nanos - k_jitter_allowance_nanos;
-            match sleep(std::time::Duration::new(0, difference)) {
+	        let difference = nanos - k_jitter_allowance_nanos;
+	        match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
                     let after = unsafe { self.read() };
                     let nanoseconds_passed: u32 = 1000 * (after - before) as u32;
@@ -414,10 +430,10 @@ impl Timer {
             }
         }
         if nanos < 20 { return; }
-        let nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
-        for _x in nanoseconds_left..0 {
+        let nanoseconds_left = ((nanos - 20) * 100 / 36000) as i64;
+	    for _x in 0..nanoseconds_left {
             //unsafe{self.read()};
-            println!("");
+            print!("");
         }
     }
 }
@@ -493,7 +509,7 @@ impl Image {
         let re: u8 = cursor.read_u8()?;
         let gr: u8 = cursor.read_u8()?;
         let bl: u8 = cursor.read_u8()?;
-        let pixel = Pixel { r: re as u16, g: gr as u16, b: bl as u16 };
+        let pixel = Pixel { r: color_fix[re as usize] as u16, g: color_fix[gr as usize] as u16, b: color_fix[bl as usize] as u16 };
 
         Ok(pixel)
     }
@@ -836,16 +852,16 @@ pub fn main() {
     let mut timer = Timer::new();
     //println!("timer made");
 
-    let _interrupt_received = Arc::new(AtomicBool::new(false));
+    let interrupt_received = Arc::new(AtomicBool::new(false));
 
-    let int_recv = _interrupt_received.clone();
+    let int_recv = interrupt_received.clone();
     ;
     ctrlc::set_handler(move || {
         int_recv.store(true, Ordering::SeqCst);
     }).unwrap();
 
     if choice_int == 0 {
-        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &_interrupt_received);
+        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -856,9 +872,11 @@ pub fn main() {
     let mut image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm", "figures/Pokemon15.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
+    let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm","figures/Pokemon19.ppm", "figures/Pokemon15.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
     let mut first_image = image.clone();
-    for index in 0..17 {
+    let mut pika_image = image.clone();
+    let mut squirt_image = image.clone();
+    for index in 0..18 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
@@ -884,37 +902,54 @@ pub fn main() {
         if index == 0 {
             first_image = image.clone();
         }
+        if index == 1 {
+            pika_image = image.clone();
+        }
+        if index == 2{
+            squirt_image = image.clone();
+        }
 
         image_list.push(image.clone());
         if (index == 2) || (index == 5) {
             image_list.push(first_image.clone());
         }
+        if index == 2 {
+            image_list.push(squirt_image.clone());
+        }
+        if index == 5 {
+            image_list.push(pika_image.clone());
+        }
     }
-    for ind in 0..image_list.len() {
-        let mut image1 = image_list[ind].clone();
+    while interrupt_received.load(Ordering::SeqCst) == false {
+        for ind in 0..image_list.len() {
+            let mut image1 = image_list[ind].clone();
 
 
-        if (ind == 0) || (ind == 3) || (ind == 7) {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &_interrupt_received);
-        } else if ind == 18 {
-            scroll_for(&mut gpio, &mut timer, &mut image1, -1 as f64, 1, true, &_interrupt_received);
-        } else if (ind == 1) || (ind == 2) {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &_interrupt_received);
-        } else if ind == 4 {
-            render_water(&mut gpio, &mut timer, &mut image1, &_interrupt_received);
-        } else {
-            scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &_interrupt_received);
+            if (ind == 0) || (ind == 3) || (ind == 8) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
+            } else if ind == 21 {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received);
+            } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 9) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
+            } else if ind == 5 {
+                render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
+            } else {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
+            }
         }
     }
 
 
     //gpio.set_bits(GPIO_BIT!(PIN_OE));
     println!("Exiting.");
-    if _interrupt_received.load(Ordering::SeqCst) == true {
+    if interrupt_received.load(Ordering::SeqCst) == true {
         println!("Received CTRL-C");
     } else {
         println!("Timeout reached");
     }
+
+    gpio.set_bits(GPIO_BIT!(PIN_OE));
+
 
     // TODO: You may want to reset the board here (i.e., disable all LEDs)
 }
