@@ -976,7 +976,7 @@ pub fn main() {
 
                 }
 
-            } else if ind >26 && ind < 32 {
+            } else if (ind >26 && ind < 32) || (ind >9 && ind < 17) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
             } else {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received,true);
