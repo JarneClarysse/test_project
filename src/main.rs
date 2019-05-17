@@ -509,7 +509,7 @@ impl Image {
         let re: u8 = cursor.read_u8()?;
         let gr: u8 = cursor.read_u8()?;
         let bl: u8 = cursor.read_u8()?;
-        let pixel = Pixel { r: color_fix[re] as u16, g: color_fix[gr] as u16, b: color_fix[bl] as u16 };
+        let pixel = Pixel { r: color_fix[re as usize] as u16, g: color_fix[gr as usize] as u16, b: color_fix[bl as usize] as u16 };
 
         Ok(pixel)
     }
