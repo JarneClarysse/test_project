@@ -725,18 +725,20 @@ impl Image {
             alle_pix.insert(0, hoogte_pix)
 
         }
-        match count_int == 0 {
+	println!("count int {}", count_int);
+        /*match count_int == 0 {
             true => {
                 image.width = 32;
                 image.height = 16;
-                image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
-            }
-            false => {
-                image.width = w;
-                image.height = h;
-                image.pixels = alle_pix;
-            }
-        }
+               // image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
+            	
+		}
+            false => {  
+*/       image.width = w;
+         image.height = h;
+         image.pixels = alle_pix;
+           /* }
+        }*/
 
 
         Ok(image)
