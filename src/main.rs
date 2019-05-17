@@ -744,7 +744,7 @@ impl Image {
         Ok(image)
     }
 }
-
+/*
 fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWidth: u32, targetHeight: u32) -> Vec<Vec<Pixel>> {
     let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
     let x_ratio = (sourceWidth - 1) / targetWidth;
@@ -787,7 +787,7 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
     }
     output
 }
-
+*/
 fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left: bool) {
     let mut frame: Frame = Frame::next_frame(0, &image);
 
@@ -1001,7 +1001,7 @@ pub fn main() {
     }
     while interrupt_received.load(Ordering::SeqCst) == false {
         for ind in 0..image_list.len() {
-            println!("{}", image_list.len());
+//            println!("{}", image_list.len());
             let mut image1 = image_list[ind].clone();
 
 
