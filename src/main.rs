@@ -726,25 +726,25 @@ impl Image {
 
         }
 	println!("count int {}", count_int);
-        /*match count_int == 0 {
+        match count_int == 0 && image.height>16 {
             true => {
                 image.width = 32;
                 image.height = 16;
-               // image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
+                image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
             	
 		}
             false => {  
-*/       image.width = w;
-         image.height = h;
-         image.pixels = alle_pix;
-           /* }
-        }*/
+       		image.width = w;
+         	image.height = h;
+         	image.pixels = alle_pix;
+            }
+        }
 
 
         Ok(image)
     }
 }
-/*
+
 fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWidth: u32, targetHeight: u32) -> Vec<Vec<Pixel>> {
     let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
     let x_ratio = (sourceWidth - 1) / targetWidth;
@@ -787,7 +787,7 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
     }
     output
 }
-*/
+
 fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left: bool) {
     let mut frame: Frame = Frame::next_frame(0, &image);
 
@@ -955,7 +955,7 @@ pub fn main() {
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
-    for index in 0..33 {
+    for index in 0..32 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
