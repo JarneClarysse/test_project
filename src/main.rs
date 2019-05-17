@@ -108,7 +108,7 @@ const PIN_B1: u64 = 6;
 const PIN_R2: u64 = 12;
 const PIN_G2: u64 = 16;
 const PIN_B2: u64 = 23;
-const color_fix: Vec<u32> = vec![
+const color_fix: [u16;256] = [
 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
 1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
