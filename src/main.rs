@@ -954,7 +954,7 @@ pub fn main() {
             let mut image1 = image_list[ind].clone();
 
 
-            if (ind == 0) || (ind == 3) || (ind == 8) || (ind==18){
+            if (ind == 0) || (ind == 3) || (ind == 8) || (ind==18) || (ind == 31) || (ind==32){
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received,true);
             } else if ind == 33 {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received,true);
@@ -969,7 +969,7 @@ pub fn main() {
                     for _i in 0..3{
                         for offst in 0..7{
                             let mut image1 = image_list[ind+offst].clone();
-                            scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
+                            scroll_for(&mut gpio, &mut timer, &mut image1, 150000 as f64, 10, false, &interrupt_received,true);
                         }
                     }
 
