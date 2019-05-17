@@ -746,7 +746,7 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
     let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
     let x_ratio = (sourceWidth - 1) / targetWidth;
     let y_ratio = (sourceHeight - 1) / targetHeight;
-    let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u32, u32, u8, u8, u8);
+    let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u32, u32, u16, u16, u16);
     let mut offset: u32 = 0;
     let mut output: Vec<Vec<Pixel>> = vec![];
     for i in 0..targetHeight {
@@ -766,17 +766,17 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
             d = input[(y + 1) as usize][(x + 1) as usize].clone();
 
             // blue element
-            blue = a.B * (1 - x_diff) * (1 - y_diff) + b.B * (x_diff) * (1 - y_diff) +
-                c.B * (y_diff) * (1 - x_diff) + d.B * (x_diff * y_diff);
+            blue = a.b * (1 - x_diff) * (1 - y_diff) + b.b * (x_diff) * (1 - y_diff) +
+                c.b * (y_diff) * (1 - x_diff) + d.b * (x_diff * y_diff);
 
             // green element
-            green = a.G * (1 - x_diff) * (1 - y_diff) + b.G * (x_diff) * (1 - y_diff) +
-                c.G * (y_diff) * (1 - x_diff) + c.G * (x_diff * y_diff);
+            green = a.g * (1 - x_diff) * (1 - y_diff) + b.g * (x_diff) * (1 - y_diff) +
+                c.g * (y_diff) * (1 - x_diff) + c.g * (x_diff * y_diff);
 
             // red element
-            red = a.R * (1 - x_diff) * (1 - y_diff) + a.R * (x_diff) * (1 - y_diff) +
-                c.R * (y_diff) * (1 - x_diff) + d.R * (x_diff * y_diff);
-            rij.push(Pixel { r: red as u16, b: blue as u16, g: green as u16});
+            red = a.r * (1 - x_diff) * (1 - y_diff) + a.r * (x_diff) * (1 - y_diff) +
+                c.r * (y_diff) * (1 - x_diff) + d.r * (x_diff * y_diff);
+            rij.push(Pixel { r: red , b: blue, g: green });
         }
         output.push(rij);
     }
