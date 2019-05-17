@@ -398,7 +398,7 @@ impl Timer {
             Some(map) => {
                 unsafe {
                     timer.timereg = map.data() as *mut u32;
-                    timer.timereg.offset(1);
+                    timer.timereg.offset(2);
                 }
             }
             None => {}
