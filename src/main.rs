@@ -938,14 +938,14 @@ pub fn main() {
                     for i in 0..3{
                         for offst in 0..8{
                             let mut image1 = image_list[ind+offst].clone();
-                            scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &_interrupt_received);
+                            scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received);
                         }
                     }
 
                 }
 
             } else if ind >26 && ind < 32 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &_interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received);
             } else {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
             }
