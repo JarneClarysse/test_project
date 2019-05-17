@@ -746,7 +746,7 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
     let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
     let x_ratio = (sourceWidth - 1) / targetWidth;
     let y_ratio = (sourceHeight - 1) / targetHeight;
-    let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u32, u32, u16, u16, u16);
+    let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u16, u16, u16, u16, u16);
     let mut offset: u32 = 0;
     let mut output: Vec<Vec<Pixel>> = vec![];
     for i in 0..targetHeight {
@@ -755,8 +755,8 @@ fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWid
         for j in 0..targetWidth {
             x = (x_ratio * j);
             y = (y_ratio * i);
-            x_diff = (x_ratio * j) - x;
-            y_diff = (y_ratio * i) - y;
+            x_diff = ((x_ratio * j) - x)as u16;
+            y_diff = ((y_ratio * i) - y) as u16;
             index = (y * sourceWidth + x);
             println!("x: {}, y: {}", x, y);
 
