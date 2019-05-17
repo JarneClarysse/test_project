@@ -940,7 +940,7 @@ pub fn main() {
         if index == 2 {
             image_list.push(squirt_image.clone());
         }
-        if index == 5 {
+        if index == 6 {
             image_list.push(pika_image.clone());
         }
     }
