@@ -467,6 +467,30 @@ impl Frame {
         frame
     }
 
+    fn prev_frame(pos: usize, image: &Image) -> Frame {
+        let mut v: Vec<Vec<Pixel>> = vec![];
+        for row in 0..ROWS {
+            let mut kolom: Vec<Pixel> = vec![];
+
+            for col in 0..COLUMNS {
+                let position = (pos as u32 + col) % image.width as u32;
+                kolom.push(image.pixels[(ROWS - 1 - row) as usize][position as usize]);
+            }
+            v.push(kolom);
+        }
+        let mut pos2 = pos - 1;
+        if pos2 == 0 {
+            pos2 = image.width;
+        }
+
+        let frame: Frame = Frame {
+            pos: pos2,
+            pixels: v,
+        };
+
+        frame
+    }
+
     fn render_water_frame(pos: usize, image: &Image) -> Frame {
         let mut v: Vec<Vec<Pixel>> = vec![];
         for row in 0..ROWS {
@@ -494,7 +518,7 @@ fn render_water(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, interrupt
     for x in 0..14 {
         frame = Frame::render_water_frame(x, &image);
         image2 = Image { height: image.height, width: image.width, pixels: frame.pixels };
-        scroll_for(gpio, timer, &mut image2, 100000 as f64, 1, false, interrupt_received);
+        scroll_for(gpio, timer, &mut image2, 100000 as f64, 1, false, interrupt_received,true);
     }
 }
 
@@ -708,7 +732,7 @@ impl Image {
     }
 }
 
-fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>) {
+fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left:bool) {
     let mut frame: Frame = Frame::next_frame(0, &image);
 
 //    println!("frame made");
@@ -773,8 +797,12 @@ fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duratio
             if usec_since_prev_frame >= (40000 * slowfactor) {
                 prev_time = current_time;
 
+                if left{
+                    frame = Frame::next_frame(frame.pos, &image);
+                } else{
+                    frame = Frame::prev_frame(frame.pos, &image);
+                }
 
-                frame = Frame::next_frame(frame.pos, &image);
             }
         }
 
@@ -861,7 +889,7 @@ pub fn main() {
     }).unwrap();
 
     if choice_int == 0 {
-        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received);
+        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received,true);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -926,11 +954,13 @@ pub fn main() {
 
 
             if (ind == 0) || (ind == 3) || (ind == 8) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received,true);
             } else if ind == 33 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received);
-            } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 9) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received,true);
+            } else if (ind == 2) || (ind == 4) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,false);
+            } else if (ind == 1)  || (ind == 9) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,true);
             } else if ind == 5 {
                 render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
             }else if ind >19 && ind < 27 {
@@ -940,16 +970,16 @@ pub fn main() {
                         for offst in 0..7{
                             let mut number = num + (offst as u8);
                             let mut image1 = image_list[ind+offst].clone();
-                            scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received);
+                            scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
                         }
                     }
 
                 }
 
             } else if ind >26 && ind < 32 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
             } else {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received,true);
             }
         }
     }
