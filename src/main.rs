@@ -108,7 +108,23 @@ const PIN_B1: u64 = 6;
 const PIN_R2: u64 = 12;
 const PIN_G2: u64 = 16;
 const PIN_B2: u64 = 23;
-
+const color_fix: Vec<u32> = vec![
+0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
+1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
+2,  3,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
+5,  6,  6,  6,  6,  7,  7,  7,  7,  8,  8,  8,  9,  9,  9, 10,
+10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 15, 15, 16, 16,
+17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 24, 24, 25,
+25, 26, 27, 27, 28, 29, 29, 30, 31, 32, 32, 33, 34, 35, 35, 36,
+37, 38, 39, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50,
+51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68,
+69, 70, 72, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89,
+90, 92, 93, 95, 96, 98, 99,101,102,104,105,107,109,110,112,114,
+115,117,119,120,122,124,126,127,129,131,133,135,137,138,140,142,
+144,146,148,150,152,154,156,158,160,162,164,167,169,171,173,175,
+177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
+215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 ];
 // Convenience macro for creating bitmasks. See comment above "impl GPIO" below
 macro_rules! GPIO_BIT {
     ($bit:expr) => {
@@ -265,7 +281,7 @@ impl GPIO {
     fn new(slowdown: u32) -> GPIO {
 
         // Map the GPIO register file. See section 2.1 in the assignment for details
-        let map = mmap_bcm_register(BCM2709_PERI_BASE as usize);
+        let map = mmap_bcm_register(GPIO_REGISTER_OFFSET as usize);
 
         // Initialize the GPIO struct with default values
         let mut io: GPIO = GPIO {
@@ -314,7 +330,7 @@ impl GPIO {
                 // TODO: Implement this yourself.
 
 
-                let mut timing_ns: u32 = 200;
+                let mut timing_ns: u32 = 150;
                 for b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
                     timing_ns *= 2;
@@ -371,7 +387,7 @@ impl Timer {
     fn new() -> Timer {
         // TODO: Implement this yourself.
 
-        let map = mmap_bcm_register((BCM2709_PERI_BASE+TIMER_REGISTER_OFFSET) as usize);
+        let map = mmap_bcm_register(TIMER_REGISTER_OFFSET as usize);
 
         let mut timer: Timer = Timer {
             _timemap: None,
@@ -387,7 +403,7 @@ impl Timer {
             }
             None => {}
         };
-        println!("timereg: {:#034b}",timer.timereg);
+
         timer
     }
 
@@ -398,11 +414,11 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let k_jitter_allowance_nanos: u32 = 60 * 150;
+        let k_jitter_allowance_nanos: u32 = 60*200;
         if nanos > k_jitter_allowance_nanos + 5000 {
             let before = unsafe { self.read() };
-            let difference = nanos - k_jitter_allowance_nanos;
-            match sleep(std::time::Duration::new(0, difference)) {
+	        let difference = nanos - k_jitter_allowance_nanos;
+	        match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
                     let after = unsafe { self.read() };
                     let nanoseconds_passed: u32 = 1000 * (after - before) as u32;
@@ -414,8 +430,8 @@ impl Timer {
             }
         }
         if nanos < 20 { return; }
-        let nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
-        for _x in nanoseconds_left..0 {
+        let nanoseconds_left = ((nanos - 20) * 100 / 36000) as i64;
+	    for _x in 0..nanoseconds_left {
             //unsafe{self.read()};
             println!("");
         }
@@ -493,7 +509,7 @@ impl Image {
         let re: u8 = cursor.read_u8()?;
         let gr: u8 = cursor.read_u8()?;
         let bl: u8 = cursor.read_u8()?;
-        let pixel = Pixel { r: re as u16, g: gr as u16, b: bl as u16 };
+        let pixel = Pixel { r: color_fix[re] as u16, g: color_fix[gr] as u16, b: color_fix[bl] as u16 };
 
         Ok(pixel)
     }
