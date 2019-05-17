@@ -314,7 +314,7 @@ impl GPIO {
                 // TODO: Implement this yourself.
 
 
-                let mut timing_ns: u32 = 200;
+                let mut timing_ns: u32 = 150;
                 for b in 0..COLOR_DEPTH {
                     io.bitplane_timings[b] = timing_ns;
                     timing_ns *= 2;
@@ -364,8 +364,9 @@ impl GPIO {
 impl Timer {
     // Reads from the 1Mhz timer register (see Section 2.5 in the assignment)
     unsafe fn read(self: &Timer) -> u32 {
+
         // TODO: Implement this yourself.
-        std::ptr::read_volatile(self.timereg)
+	std::ptr::read_volatile(self.timereg)
     }
 
     fn new() -> Timer {
@@ -382,12 +383,11 @@ impl Timer {
             Some(map) => {
                 unsafe {
                     timer.timereg = map.data() as *mut u32;
-                    timer.timereg.offset(1);
+                    timer.timereg = timer.timereg.offset(2);
                 }
             }
             None => {}
         };
-
         timer
     }
 
@@ -397,12 +397,13 @@ impl Timer {
     // about how you can approximate the desired precision. Obviously, there is
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
+//	println!("nanos : {}",nanos);
         // TODO: Implement this yourself.
-        let k_jitter_allowance_nanos: u32 = 60 * 150;
+        let k_jitter_allowance_nanos: u32 = 60*200;
         if nanos > k_jitter_allowance_nanos + 5000 {
             let before = unsafe { self.read() };
-            let difference = nanos - k_jitter_allowance_nanos;
-            match sleep(std::time::Duration::new(0, difference)) {
+	    let difference = nanos - k_jitter_allowance_nanos;
+	    match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
                     let after = unsafe { self.read() };
                     let nanoseconds_passed: u32 = 1000 * (after - before) as u32;
@@ -411,13 +412,14 @@ impl Timer {
                 None => {
                     return;
                 }
-            }
-        }
+            }        
+	}
         if nanos < 20 { return; }
-        let nanoseconds_left = ((nanos - 20) * 100 / 110) as i64;
-        for _x in nanoseconds_left..0 {
+        let nanoseconds_left = ((nanos - 20) * 100 / 36000) as i64;
+	for _x in 0..nanoseconds_left {
             //unsafe{self.read()};
-            println!("");
+           // println!("test");
+	   // println!("right {}",_x);
         }
     }
 }
@@ -552,7 +554,9 @@ impl Image {
 
 
         match &header {
-            b"P6" => { println!("Header match"); }
+            b"P6" => {
+			// println!("Header match");
+			 }
             _ => { bail!("header mismatch"); }
         }
 
@@ -830,7 +834,7 @@ pub fn main() {
     };
     // TODO: Initialize the GPIO struct and the Timer struct
 
-    let mut gpio = GPIO::new(1);
+    let mut gpio = GPIO::new(5);
     //println!("gpio made");
 
     let mut timer = Timer::new();
@@ -912,7 +916,7 @@ pub fn main() {
             if (ind == 0) || (ind == 3) || (ind == 8) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received);
             } else if ind == 21 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 30000000 as f64, 1, true, &interrupt_received);
             } else if (ind == 1) || (ind == 2) || (ind == 4) || (ind == 9) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received);
             } else if ind == 5 {
