@@ -265,7 +265,7 @@ impl GPIO {
     fn new(slowdown: u32) -> GPIO {
 
         // Map the GPIO register file. See section 2.1 in the assignment for details
-        let map = mmap_bcm_register(GPIO_REGISTER_OFFSET as usize);
+        let map = mmap_bcm_register(BCM2709_PERI_BASE as usize);
 
         // Initialize the GPIO struct with default values
         let mut io: GPIO = GPIO {
@@ -371,7 +371,7 @@ impl Timer {
     fn new() -> Timer {
         // TODO: Implement this yourself.
 
-        let map = mmap_bcm_register(TIMER_REGISTER_OFFSET as usize);
+        let map = mmap_bcm_register((BCM2709_PERI_BASE+TIMER_REGISTER_OFFSET) as usize);
 
         let mut timer: Timer = Timer {
             _timemap: None,
@@ -387,7 +387,7 @@ impl Timer {
             }
             None => {}
         };
-
+        println!("timereg: {:#034b}",timer.timereg);
         timer
     }
 
