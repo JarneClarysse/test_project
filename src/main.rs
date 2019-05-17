@@ -723,6 +723,7 @@ impl Image {
                 hoogte_pix.push(pixel);
             }
             alle_pix.insert(0, hoogte_pix)
+
         }
         match count_int == 0 {
             true => {
