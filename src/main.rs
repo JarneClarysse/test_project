@@ -578,7 +578,7 @@ impl Image {
         Ok(num)
     }
 
-    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>, &count_int: i32) -> Result<Image, Box<std::error::Error>> {
+    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>, count_int: i32) -> Result<Image, Box<std::error::Error>> {
         let mut image = Image {
             width: 0,
             height: 0,
@@ -728,7 +728,7 @@ impl Image {
             true => {
                 image.width = 32;
                 image.height = 16;
-                image.pixels = resize(allePix,w as u32,h as u32 ,32,16);;
+                image.pixels = resize(alle_pix,w as u32,h as u32 ,32,16);;
             }
             false => {
                 image.width = w;
