@@ -967,7 +967,7 @@ pub fn main() {
 
         // construct a cursor so we can seek in the raw buffer
         cursor = Cursor::new(raw_file);
-        image = match Image::decode_ppm_image(&mut cursor,count_int.clone()) {
+        image = match Image::decode_ppm_image(&mut cursor,choice_int.clone()) {
             Ok(image) => image,
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
