@@ -1010,7 +1010,7 @@ pub fn main() {
             } else if (ind == 2) || (ind == 5) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,false);
             } else if ind == 4 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 6000000 as f64, 1, true, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 12000000 as f64, 1, true, &interrupt_received,true);
             }else if (ind == 1)  || (ind == 10) {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,true);
             } else if ind == 6 {
