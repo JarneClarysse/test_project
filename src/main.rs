@@ -950,7 +950,7 @@ pub fn main() {
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
-    for index in 0..32 {
+    for index in 0..33 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
