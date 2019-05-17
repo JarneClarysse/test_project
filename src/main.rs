@@ -735,10 +735,6 @@ impl Image {
 fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left:bool) {
     let mut frame: Frame = Frame::next_frame(0, &image);
 
-//    println!("frame made");
-    // This code sets up a CTRL-C handler that writes "true" to the
-    // interrupt_received bool.
-
     if duration == -1.0 {
         duration = INFINITY;
     }
@@ -900,7 +896,7 @@ pub fn main() {
     let mut image_list: Vec<Image> = Vec::with_capacity(19);
 
 
-    let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm", "figures/Pokemon30.ppm", "figures/Pokemon15.ppm", "figures/Pokemon18.ppm", "figures/Pokemon19.ppm", "figures/Pokemon20.ppm", "figures/Pokemon21.ppm", "figures/Pokemon22.ppm", "figures/Pokemon23.ppm", "figures/Pokemon24.ppm", "figures/Pokemon25.ppm", "figures/Pokemon26.ppm", "figures/Pokemon27.ppm", "figures/Pokemon28.ppm", "figures/Pokemon29.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
+    let image_names: Vec<&str> = vec!["figures/Pokemon1.ppm", "figures/Pokemon2.ppm", "figures/Pokemon3.ppm", "figures/Pokemon4.ppm", "figures/Pokemon5.ppm", "figures/Pokemon6.ppm", "figures/Pokemon31.ppm", "figures/Pokemon7.ppm", "figures/Pokemon8.ppm", "figures/Pokemon9.ppm", "figures/Pokemon10.ppm", "figures/Pokemon11.ppm", "figures/Pokemon12.ppm", "figures/Pokemon13.ppm", "figures/Pokemon14.ppm", "figures/Pokemon30.ppm", "figures/Pokemon15.ppm", "figures/Pokemon18.ppm", "figures/Pokemon19.ppm", "figures/Pokemon20.ppm", "figures/Pokemon21.ppm", "figures/Pokemon22.ppm", "figures/Pokemon23.ppm", "figures/Pokemon24.ppm", "figures/Pokemon25.ppm", "figures/Pokemon26.ppm", "figures/Pokemon27.ppm", "figures/Pokemon28.ppm", "figures/Pokemon29.ppm", "figures/Pokemon16.ppm", "figures/Pokemon17.ppm"];
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
@@ -938,7 +934,7 @@ pub fn main() {
         }
 
         image_list.push(image.clone());
-        if (index == 2) || (index == 5) {
+        if (index == 2) {
             image_list.push(first_image.clone());
         }
         if index == 2 {
