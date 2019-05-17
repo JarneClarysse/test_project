@@ -108,23 +108,23 @@ const PIN_B1: u64 = 6;
 const PIN_R2: u64 = 12;
 const PIN_G2: u64 = 16;
 const PIN_B2: u64 = 23;
-const COLOR_FIX: [u16;256] = [
-0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
-1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
-2,  3,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
-5,  6,  6,  6,  6,  7,  7,  7,  7,  8,  8,  8,  9,  9,  9, 10,
-10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 15, 15, 16, 16,
-17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 24, 24, 25,
-25, 26, 27, 27, 28, 29, 29, 30, 31, 32, 32, 33, 34, 35, 35, 36,
-37, 38, 39, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50,
-51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68,
-69, 70, 72, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89,
-90, 92, 93, 95, 96, 98, 99,101,102,104,105,107,109,110,112,114,
-115,117,119,120,122,124,126,127,129,131,133,135,137,138,140,142,
-144,146,148,150,152,154,156,158,160,162,164,167,169,171,173,175,
-177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
-215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 ];
+const COLOR_FIX: [u16; 256] = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,
+    2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5,
+    5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10,
+    10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 15, 15, 16, 16,
+    17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 24, 24, 25,
+    25, 26, 27, 27, 28, 29, 29, 30, 31, 32, 32, 33, 34, 35, 35, 36,
+    37, 38, 39, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50,
+    51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68,
+    69, 70, 72, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89,
+    90, 92, 93, 95, 96, 98, 99, 101, 102, 104, 105, 107, 109, 110, 112, 114,
+    115, 117, 119, 120, 122, 124, 126, 127, 129, 131, 133, 135, 137, 138, 140, 142,
+    144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 167, 169, 171, 173, 175,
+    177, 180, 182, 184, 186, 189, 191, 193, 196, 198, 200, 203, 205, 208, 210, 213,
+    215, 218, 220, 223, 225, 228, 231, 233, 236, 239, 241, 244, 247, 249, 252, 255];
 // Convenience macro for creating bitmasks. See comment above "impl GPIO" below
 macro_rules! GPIO_BIT {
     ($bit:expr) => {
@@ -414,11 +414,11 @@ impl Timer {
     // no perfect solution here.
     fn nanosleep(self: &Timer, mut nanos: u32) {
         // TODO: Implement this yourself.
-        let k_jitter_allowance_nanos: u32 = 60*200;
+        let k_jitter_allowance_nanos: u32 = 60 * 200;
         if nanos > k_jitter_allowance_nanos + 5000 {
             let before = unsafe { self.read() };
-	        let difference = nanos - k_jitter_allowance_nanos;
-	        match sleep(std::time::Duration::new(0, difference)) {
+            let difference = nanos - k_jitter_allowance_nanos;
+            match sleep(std::time::Duration::new(0, difference)) {
                 Some(_reamin) => {
                     let after = unsafe { self.read() };
                     let nanoseconds_passed: u32 = 1000 * (after - before) as u32;
@@ -431,7 +431,7 @@ impl Timer {
         }
         if nanos < 20 { return; }
         let nanoseconds_left = ((nanos - 20) * 100 / 36000) as i64;
-	    for _x in 0..nanoseconds_left {
+        for _x in 0..nanoseconds_left {
             //unsafe{self.read()};
             print!("");
         }
@@ -518,7 +518,7 @@ fn render_water(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, interrupt
     for x in 0..14 {
         frame = Frame::render_water_frame(x, &image);
         image2 = Image { height: image.height, width: image.width, pixels: frame.pixels };
-        scroll_for(gpio, timer, &mut image2, 100000 as f64, 1, false, interrupt_received,true);
+        scroll_for(gpio, timer, &mut image2, 100000 as f64, 1, false, interrupt_received, true);
     }
 }
 
@@ -549,9 +549,9 @@ impl Image {
             match &c {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -563,9 +563,9 @@ impl Image {
             match c[0] {
                 b'0'...b'9' => { v.push(c[0]); }
                 b' ' | b'\t' | b'\n' => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
                 _ => { bail!("Parse error"); }
@@ -578,16 +578,16 @@ impl Image {
         Ok(num)
     }
 
-    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>) -> Result<Image, Box<std::error::Error>> {
+    fn decode_ppm_image(cursor: &mut Cursor<Vec<u8>>, &count_int: i32) -> Result<Image, Box<std::error::Error>> {
         let mut image = Image {
             width: 0,
             height: 0,
             pixels: vec![],
         };
         let mut header: [u8; 2] = [0, 2];
-        match cursor.read(&mut header){
-            Ok(_res)=> _res,
-            Err(why)=> panic!("something happened while parsing header - {}", why.description()),
+        match cursor.read(&mut header) {
+            Ok(_res) => _res,
+            Err(why) => panic!("something happened while parsing header - {}", why.description()),
         };
 
 
@@ -612,9 +612,9 @@ impl Image {
                 }
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -636,9 +636,9 @@ impl Image {
                 }
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -661,9 +661,9 @@ impl Image {
                 }
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -689,9 +689,9 @@ impl Image {
                 }
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -708,9 +708,9 @@ impl Image {
             match &c {
                 b" " | b"\t" | b"\n" => {}
                 _ => {
-                    match cursor.seek(std::io::SeekFrom::Current(-1)){
+                    match cursor.seek(std::io::SeekFrom::Current(-1)) {
                         Ok(_res) => break,
-                        Err(why)=> panic!("something happened while parsing header - {}", why.description() ),
+                        Err(why) => panic!("something happened while parsing header - {}", why.description()),
                     };
                 }
             };
@@ -724,15 +724,66 @@ impl Image {
             }
             alle_pix.insert(0, hoogte_pix)
         }
-        image.width = w;
-        image.height = h;
-        image.pixels = alle_pix;
+        match count_int == 0 {
+            true => {
+                image.width = 32;
+                image.height = 16;
+                image.pixels = resize(allePix,w as u32,h as u32 ,32,16);;
+            }
+            false => {
+                image.width = w;
+                image.height = h;
+                image.pixels = alle_pix;
+            }
+        }
+
 
         Ok(image)
     }
 }
 
-fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left:bool) {
+fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWidth: u32, targetHeight: u32) -> Vec<Vec<Pixel>> {
+    let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
+    let x_ratio = (sourceWidth - 1) / targetWidth;
+    let y_ratio = (sourceHeight - 1) / targetHeight;
+    let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u32, u32, u8, u8, u8);
+    let mut offset: u32 = 0;
+    let mut output: Vec<Vec<Pixel>> = vec![];
+    for i in 0..targetHeight {
+        let mut rij: Vec<Pixel> = vec![];
+
+        for j in 0..targetWidth {
+            x = (x_ratio * j);
+            y = (y_ratio * i);
+            x_diff = (x_ratio * j) - x;
+            y_diff = (y_ratio * i) - y;
+            index = (y * sourceWidth + x);
+            println!("x: {}, y: {}", x, y);
+
+            a = input[y as usize][x as usize].clone();
+            b = input[y as usize][(x + 1) as usize].clone();
+            c = input[(y + 1) as usize][x as usize].clone();
+            d = input[(y + 1) as usize][(x + 1) as usize].clone();
+
+            // blue element
+            blue = a.B * (1 - x_diff) * (1 - y_diff) + b.B * (x_diff) * (1 - y_diff) +
+                c.B * (y_diff) * (1 - x_diff) + d.B * (x_diff * y_diff);
+
+            // green element
+            green = a.G * (1 - x_diff) * (1 - y_diff) + b.G * (x_diff) * (1 - y_diff) +
+                c.G * (y_diff) * (1 - x_diff) + c.G * (x_diff * y_diff);
+
+            // red element
+            red = a.R * (1 - x_diff) * (1 - y_diff) + a.R * (x_diff) * (1 - y_diff) +
+                c.R * (y_diff) * (1 - x_diff) + d.R * (x_diff * y_diff);
+            rij.push(Pixel { r: red as u16, b: blue as u16, g: green as u16});
+        }
+        output.push(rij);
+    }
+    output
+}
+
+fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duration: f64, slowfactor: u64, scrollable: bool, interrupt_received: &Arc<AtomicBool>, left: bool) {
     let mut frame: Frame = Frame::next_frame(0, &image);
 
     if duration == -1.0 {
@@ -793,12 +844,11 @@ fn scroll_for(gpio: &mut GPIO, timer: &mut Timer, image: &mut Image, mut duratio
             if usec_since_prev_frame >= (40000 * slowfactor) {
                 prev_time = current_time;
 
-                if left{
+                if left {
                     frame = Frame::next_frame(frame.pos, &image);
-                } else{
+                } else {
                     frame = Frame::prev_frame(frame.pos, &image);
                 }
-
             }
         }
 
@@ -864,7 +914,7 @@ pub fn main() {
 
     // construct a cursor so we can seek in the raw buffer
     let mut cursor = Cursor::new(raw_file);
-    let mut image = match Image::decode_ppm_image(&mut cursor) {
+    let mut image = match Image::decode_ppm_image(&mut cursor, choice_int.clone()) {
         Ok(img) => img,
         Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
     };
@@ -885,7 +935,7 @@ pub fn main() {
     }).unwrap();
 
     if choice_int == 0 {
-        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received,true);
+        scroll_for(&mut gpio, &mut timer, &mut image, -1 as f64, 1, true, &interrupt_received, true);
     }
 
     //scroll_for(&mut gpio,&mut timer,&mut image, -1 as f64,1,true,&interrupt_received);
@@ -917,7 +967,7 @@ pub fn main() {
 
         // construct a cursor so we can seek in the raw buffer
         cursor = Cursor::new(raw_file);
-        image = match Image::decode_ppm_image(&mut cursor) {
+        image = match Image::decode_ppm_image(&mut cursor,count_int.clone()) {
             Ok(image) => image,
             Err(why) => panic!("Could not parse PPM file - Desc: {}", why.description()),
         };
@@ -929,7 +979,7 @@ pub fn main() {
         if index == 1 {
             pika_image = image.clone();
         }
-        if index == 2{
+        if index == 2 {
             squirt_image = image.clone();
         }
 
@@ -946,35 +996,33 @@ pub fn main() {
     }
     while interrupt_received.load(Ordering::SeqCst) == false {
         for ind in 0..image_list.len() {
-	    println!("{}", image_list.len());
+            println!("{}", image_list.len());
             let mut image1 = image_list[ind].clone();
 
 
-            if (ind == 0) || (ind == 3) || (ind == 8) || (ind==18) || (ind == 31) || (ind==32){
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received,true);
+            if (ind == 0) || (ind == 3) || (ind == 8) || (ind == 18) || (ind == 31) || (ind == 32) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received, true);
             } else if ind == 33 {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received, true);
             } else if (ind == 2) || (ind == 4) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,false);
-            } else if (ind == 1)  || (ind == 9) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received, false);
+            } else if (ind == 1) || (ind == 9) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, true, &interrupt_received, true);
             } else if ind == 5 {
                 render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
-            }else if ind >19 && ind < 27 {
-                if ind == 20{
-                    for _i in 0..3{
-                        for offst in 0..7{
-                            let mut image1 = image_list[ind+offst].clone();
-                            scroll_for(&mut gpio, &mut timer, &mut image1, 150000 as f64, 10, false, &interrupt_received,true);
+            } else if ind > 19 && ind < 27 {
+                if ind == 20 {
+                    for _i in 0..3 {
+                        for offst in 0..7 {
+                            let mut image1 = image_list[ind + offst].clone();
+                            scroll_for(&mut gpio, &mut timer, &mut image1, 150000 as f64, 10, false, &interrupt_received, true);
                         }
                     }
-
                 }
-
-            } else if (ind >26 && ind < 32) || (ind >9 && ind < 17) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
+            } else if (ind > 26 && ind < 32) || (ind > 9 && ind < 17) {
+                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received, true);
             } else {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received, true);
             }
         }
     }
