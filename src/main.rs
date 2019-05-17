@@ -936,8 +936,8 @@ pub fn main() {
             }else if ind >19 && ind < 27 {
                 if ind == 19{
                     for i in 0..3{
-                        for i in 0..8{
-                            let mut image1 = image_list[ind+i].clone();
+                        for offst in 0..8{
+                            let mut image1 = image_list[ind+offst].clone();
                             scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &_interrupt_received);
                         }
                     }
