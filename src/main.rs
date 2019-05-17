@@ -1013,7 +1013,7 @@ pub fn main() {
             } else if ind == 6 {
                 render_water(&mut gpio, &mut timer, &mut image1, &interrupt_received);
             }else if ind >21 && ind < 29 {
-                if ind == 21{
+                if ind == 22{
                     for _i in 0..3{
                         for offst in 0..7{
                             let mut image1 = image_list[ind+offst].clone();
