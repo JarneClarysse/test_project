@@ -725,8 +725,7 @@ impl Image {
             alle_pix.insert(0, hoogte_pix)
 
         }
-	println!("count int {}", count_int);
-        match count_int == 0 && image.height>16 {
+        match count_int == 0 && h>16 {
             true => {
                 image.width = 32;
                 image.height = 16;
@@ -745,25 +744,20 @@ impl Image {
     }
 }
 
-fn resize(input: Vec<Vec<Pixel>>, sourceWidth: u32, sourceHeight: u32, targetWidth: u32, targetHeight: u32) -> Vec<Vec<Pixel>> {
-    let (mut a, mut b, mut c, mut d, mut x, mut y, mut index): (Pixel, Pixel, Pixel, Pixel, u32, u32, u32);
-    let x_ratio = (sourceWidth - 1) / targetWidth;
-    let y_ratio = (sourceHeight - 1) / targetHeight;
+fn resize(input: Vec<Vec<Pixel>>, source_width: u32, source_height: u32, target_width: u32, target_height: u32) -> Vec<Vec<Pixel>> {
+    let (mut a, mut b, mut c, mut d, mut x, mut y): (Pixel, Pixel, Pixel, Pixel, u32, u32);
+    let x_ratio = (source_width - 1) / target_width;
+    let y_ratio = (source_height - 1) / target_height;
     let (mut x_diff, mut y_diff, mut blue, mut red, mut green): (u16, u16, u16, u16, u16);
-    let mut offset: u32 = 0;
     let mut output: Vec<Vec<Pixel>> = vec![];
-    for i in 0..targetHeight {
+    for i in 0..target_height {
         let mut rij: Vec<Pixel> = vec![];
 
-        for j in 0..targetWidth {
-	    println!("yratio {}", y_ratio);
-	    println!("source {} target {}",sourceHeight,targetHeight);
-            x = (x_ratio * j);
-            y = (y_ratio * i);
+        for j in 0..target_width {
+            x = x_ratio * j;
+            y = y_ratio * i;
             x_diff = ((x_ratio * j) - x)as u16;
             y_diff = ((y_ratio * i) - y) as u16;
-            index = (y * sourceWidth + x);
-            println!("x: {}, y: {}", x, y);
 
             a = input[y as usize][x as usize].clone();
             b = input[y as usize][(x + 1) as usize].clone();
@@ -955,7 +949,7 @@ pub fn main() {
     let mut first_image = image.clone();
     let mut pika_image = image.clone();
     let mut squirt_image = image.clone();
-    for index in 0..32 {
+    for index in 0..33 {
         //let pad = image_names[index].clone();
         path = Path::new(image_names[index].clone());
         display = path.display();
@@ -989,7 +983,7 @@ pub fn main() {
         }
 
         image_list.push(image.clone());
-        if (index == 2) {
+        if index == 2 {
             image_list.push(first_image.clone());
         }
         if index == 3 {
@@ -1001,11 +995,9 @@ pub fn main() {
     }
     while interrupt_received.load(Ordering::SeqCst) == false {
         for ind in 0..image_list.len() {
-//            println!("{}", image_list.len());
             let mut image1 = image_list[ind].clone();
 
-
-            if (ind == 0) || (ind == 3) || (ind == 10) || (ind==21) || (ind == 33) || (ind==34){
+            if (ind == 0) || (ind == 3) || (ind == 9) || (ind == 20) ||(ind==21) || (ind == 33) || (ind==34){
                 scroll_for(&mut gpio, &mut timer, &mut image1, 1500000 as f64, 10, false, &interrupt_received,true);
             } else if ind == 35 {
                 scroll_for(&mut gpio, &mut timer, &mut image1, 100000000 as f64, 1, true, &interrupt_received,true);
@@ -1021,17 +1013,18 @@ pub fn main() {
                 if ind == 22{
                     for _i in 0..3{
                         for offst in 0..7{
-                            let mut image1 = image_list[ind+offst].clone();
-                            scroll_for(&mut gpio, &mut timer, &mut image1, 150000 as f64, 10, false, &interrupt_received,true);
-                        }
+	               	   image1 = image_list[ind+offst].clone();
+                           scroll_for(&mut gpio, &mut timer, &mut image1, 150000 as f64, 10, false, &interrupt_received,true);
+                        
+			}
                     }
 
                 }
 
             } else if (ind >28 && ind < 34) || (ind >11 && ind < 19) {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 300000 as f64, 10, false, &interrupt_received,true);
+                scroll_for(&mut gpio, &mut timer,&mut image1, 300000 as f64, 10, false, &interrupt_received,true);
             } else {
-                scroll_for(&mut gpio, &mut timer, &mut image1, 800000 as f64, 10, false, &interrupt_received, true);
+                scroll_for(&mut gpio, &mut timer,&mut image1, 800000 as f64, 10, false, &interrupt_received, true);
             }
         }
     }
